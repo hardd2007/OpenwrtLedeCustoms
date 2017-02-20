@@ -1,0 +1,18 @@
+#!/bin/sh /etc/rc.common
+
+START=90
+STOP=98
+
+
+boot() {
+#mkdir -p /tmp/mnt-ro
+#mkdir -p /tmp/mnt-rw
+#mkdir -p /tmp/mnt-tmp
+#chown nobody -R /tmp/mnt-ro /tmp/mnt-rw /tmp/mnt-tmp
+swconfig dev switch0 port 1 set disable 1
+swconfig dev switch0 port 2 set disable 1
+swconfig dev switch0 port 3 set disable 1
+swconfig dev switch0 port 4 set disable 1
+swconfig dev switch0 set apply
+
+}

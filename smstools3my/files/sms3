@@ -1,0 +1,56 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006 OpenWrt.org
+# smsd initscript openwrt mod
+
+START=99
+STOP=99
+
+EXTRA_COMMANDS="status"
+EXTRA_HELP="        status  View pid and service status "
+
+
+boot() {
+        # Set/edit this before starting service !!!!!
+        WRT_SPOOL=/var/spool
+
+        echo "Creating minimum spool directories"
+        mkdir -p $WRT_SPOOL
+        mkdir -p $WRT_SPOOL/sms
+        mkdir -p $WRT_SPOOL/sms/incoming
+        mkdir -p $WRT_SPOOL/sms/outgoing
+        mkdir -p $WRT_SPOOL/sms/checked
+
+        start
+}
+
+start() {
+        echo "Starting SMS Daemon....."
+        sleep 5
+        /usr/bin/smsd
+}
+
+stop() {
+        echo "Stopping SMS Daemon:"
+        echo "Wait 5 sec........."
+        killall smsd
+        sleep 5
+}
+
+restart() {
+        stop
+        start
+}
+
+
+status() {
+        PIDFILE=/var/run/smsd.pid
+        PID=$(cat $PIDFILE)
+
+        test -e $PIDFILE
+        if [ $? == 0 ]; then
+                echo "Smsd running! pid $PID"
+        else
+                echo "Smsd not running !!!"
+        fi
+}
+ 

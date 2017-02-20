@@ -1,0 +1,38 @@
+
+config system
+	option ttylogin '0'
+	option hostname 'HardDWRT'
+	option zonename 'Europe/Moscow'
+	option timezone 'MSK-3'
+	option conloglevel '8'
+	option cronloglevel '8'
+
+config timeserver 'ntp'
+	list server '0.openwrt.pool.ntp.org'
+	list server '1.openwrt.pool.ntp.org'
+	list server '2.openwrt.pool.ntp.org'
+	list server '3.openwrt.pool.ntp.org'
+	option enabled '1'
+
+config led 'led_power'
+	option sysfs 'wt3020:blue:power'
+	option default '1'
+	option trigger 'netdev'
+	option dev 'eth0'
+	option mode 'tx rx'
+	option name 'eth0'
+
+config led
+	option default '0'
+	option name 'wifi'
+	option sysfs 'nexx:green:wifi'
+	option trigger 'netdev'
+	option dev 'wlan0'
+	option mode 'tx rx'
+
+config led
+	option default '0'
+	option name 'Red'
+	option sysfs 'nexx:red:usb'
+	option trigger 'usb-host'
+

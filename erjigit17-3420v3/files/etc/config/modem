@@ -1,0 +1,5 @@
+
+config modem
+	option language 'ru'
+	option device '/dev/ttyUSB0'
+	option pcontrol18 '0'

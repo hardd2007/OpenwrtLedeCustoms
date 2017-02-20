@@ -1,0 +1,283 @@
+<%#
+LuCI - Lua Configuration Interface
+Copyright 2008 Steven Barth <steven@midlink.org>
+Copyright 2008-2011 Jo-Philipp Wich <xm@subsignal.org>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+-%>
+
+<%
+	require "luci.sys"
+	require "luci.fs"
+
+	local rv = {
+		gothw		= "0",
+		gotcarrier	= "0",
+		gotsignal	= "0",
+		hwrefresh	= "0",
+		modemdev	= "",
+		driver		= "",
+		vendor		= "",
+		model		= "",
+		notification	= "",
+		firmware	= "",
+		imei		= "",
+		provider	= "",
+		mode		= "",
+		downlink	= "",
+		uplink		= "",
+		cellid		= "",
+		lac		= "",
+		network		= "",
+		signal		= "",
+		rssi		= "",
+		csq		= "",
+		rcsp		= "",
+		ecio		= ""
+	}
+
+	if luci.http.formvalue("gothw") == "1" then
+		rv["gothw"] = luci.http.formvalue("gothw") or "0"
+		rv["modemdev"] = luci.http.formvalue("modemdev")
+		rv["driver"] = luci.http.formvalue("driver")
+		rv["gotcarrier"] = luci.http.formvalue("gotcarrier") or "0"
+		rv["gotsignal"] = luci.http.formvalue("gotsignal") or "0"
+		rv["hwrefresh"] = luci.http.formvalue("hwrefresh") or "0"
+	else
+		local uci = require "luci.model.uci".cursor()
+		if uci:get("network", "wan", "proto") == "ncm" then
+			rv["modemdev"] = uci:get("network", "wan", "device") or "0"
+		else
+			if luci.http.formvalue("status") == "1" then
+
+				rv["notification"] = "[ WAN is not using NCM protocol ]"
+				rv["hwrefresh"] = "0"
+				rv["gothw"] = "0"
+				rv["driver"] = "-"
+
+				luci.http.prepare_content("application/json")
+				luci.http.write_json(rv)
+
+				return
+			end
+
+		end
+
+	end
+
+	if ( luci.http.formvalue("status") == "1" and rv["driver"] ~= "-" ) then
+
+		if luci.fs.access(rv["modemdev"]) then
+
+			if rv["gothw"] == "0" then
+
+				local modemhw = luci.sys.exec(table.concat({"/usr/bin/gcom -d ", rv["modemdev"], " -s /etc/gcom/ncm/getcardinfo.gcom"}, ""))
+
+				for k, v in string.gmatch(modemhw, "(%w+) '(.-)'") do
+					rv[k] = v
+				end
+
+				if rv["driver"] == "" then
+					rv["driver"] = "-"
+				end
+
+				if ( rv["vendor"] == "" or rv["model"] == "" or rv["firmware"] == "" or rv["imei"] == "" or rv["driver"] == "" ) then
+					rv["gothw"] = "0"
+				elseif (rv["driver"] ~= "-" and
+						luci.fs.access(table.concat({"/etc/gcom/ncm/carrier/",rv["driver"], ".gcom"}, "")) and 
+						luci.fs.access(table.concat({"/etc/gcom/ncm/signal/", rv["driver"], ".gcom"}, ""))) then
+					rv['gothw'] = "1"
+				else
+					rv["notification"] = " [ Unsupported dongle ]";
+					rv["driver"] = "-"
+					rv["gothw"] = "0"
+					rv["hwrefresh"] = "1"
+				end
+
+			elseif rv["gotcarrier"] == "0" then
+
+				if rv["driver"] ~= "-" then
+
+					local modemcarrier = luci.sys.exec(table.concat({"/usr/bin/gcom -d ", rv["modemdev"], " -s /etc/gcom/ncm/carrier/", rv["driver"], ".gcom"}, ""))
+
+					for k, v in string.gmatch(modemcarrier, "(%w+) '(.-)'") do
+						rv[k] = v
+					end
+
+					if ( rv["provider"] == "" or rv["downlink"] == "" or rv["uplink"] == "" or rv["mode"] == "" ) then
+						rv["gotcarrier"] = "0"
+					else
+						rv["gotcarrier"] = "1"
+					end
+
+				else
+					rv["gotcarrier"] = "1"
+				end
+
+			else
+
+				if rv["driver"] ~= "-" then
+
+					local modemsignal = luci.sys.exec(table.concat({"/usr/bin/gcom -d ", rv["modemdev"], " -s /etc/gcom/ncm/signal/", rv["driver"], ".gcom"}, ""))
+
+					for k, v in string.gmatch(modemsignal, "(%w+) '(.-)'") do
+						rv[k] = v
+					end
+					rv["gotsignal"] = "1"
+				end
+
+			end
+		else
+
+			rv["notification"] = table.concat({"[ ", rv["modemdev"], ": Device not present. ]"}, "")
+
+		end
+
+	end
+
+	if ( luci.http.formvalue("status") == "1" ) then
+
+		luci.http.prepare_content("application/json")
+		luci.http.write_json(rv)
+
+		return
+
+	end
+
+-%>
+
+<%+header%>
+
+<script type="text/javascript" src="<%=resource%>/cbi.js"></script>
+<script type="text/javascript" src="<%=resource%>/ncm_xhr.js"></script>
+<script type="text/javascript">//<![CDATA[
+
+	function capitalize(s)
+	{
+		return s.toLowerCase().replace( /\b./g, function(a){ return a.toUpperCase(); } );
+	};
+
+	XHR2.poll(5, '<%=REQUEST_URI%>', { status: 1 },
+		function(x, info)
+		{
+
+			var e;
+
+			if (e = document.getElementById('notification'))
+				e.innerHTML = info.notification;
+
+			if (( gothwD == "0" && info.gothw == "1" ) || ( info.hwrefresh == "1" )) {
+
+				if (e = document.getElementById('name'))
+					e.innerHTML = capitalize(info.vendor) + " " + capitalize(info.model);
+
+				if (e = document.getElementById('firmware'))
+					e.innerHTML = info.firmware;
+
+				if (e = document.getElementById('imei'))
+					e.innerHTML = info.imei;
+			}
+
+			if ( gotcarrierD == "0" && info.gotcarrier == "1" ) {
+
+				if (e = document.getElementById('provider'))
+					e.innerHTML = info.provider;
+
+				if (e = document.getElementById('linkspeed'))
+					if ( info.downlink != "" && info.uplink != "" )
+						e.innerHTML = info.downlink + " / " + info.uplink ;
+
+				if (e = document.getElementById('mode'))
+					e.innerHTML = info.mode;
+
+			}
+
+			if ( info.gotsignal == "1" ) {
+
+				if (e = document.getElementById('cellid'))
+					e.innerHTML = info.cellid;
+
+				if (e = document.getElementById('lac'))
+					e.innerHTML = info.lac;
+
+				if (e = document.getElementById('network'))
+					e.innerHTML = info.network;
+
+				if (e = document.getElementById('signal'))
+					e.innerHTML = info.signal;
+
+				if (e = document.getElementById('csq'))
+					e.innerHTML = info.csq;
+
+				if (e = document.getElementById('rssi'))
+					e.innerHTML = info.rssi;
+
+				if (e = document.getElementById('rcsp'))
+					e.innerHTML = info.rcsp;
+
+				if (e = document.getElementById('ecio'))
+					e.innerHTML = info.ecio;
+
+			}
+
+			modemdevD = info.modemdev;
+			driverD = info.driver;
+			gothwD = info.gothw;
+			gotcarrierD = info.gotcarrier;
+			hwrefreshD = info.hwrefresh;
+			gotsignalD = info.gotsignal;
+
+		}
+	);
+
+//]]></script>
+
+<h2><a id="content" name="content"><%:NCM Status%></a></h2>
+<small style="color: #777;" id="notification"></small>
+
+<fieldset class="cbi-section">
+	<legend id="name"><%:Detecting dongle%></legend>
+
+	<table width="100%" cellspacing="10">
+		<tr><td width="33%"><%:Firmware version%></td><td id="firmware"></td></tr>
+		<tr><td width="33%"><%:IMEI%></td><td id="imei"></td></tr>
+	</table>
+</fieldset>
+
+<fieldset class="cbi-section">
+	<legend><%:Network%></legend>
+
+	<table width="100%" cellspacing="10">
+		<tr><td width="33%"><%:Provider%></td><td id="provider"></td></tr>
+		<tr><td width="33%"><%:Downlink/Uplink%></td><td id="linkspeed"></td></tr>
+		<tr><td width="33%"><%:Mode%></td><td id="mode"></td></tr>
+	</table>
+</fieldset>
+
+<fieldset class="cbi-section">
+	<legend><%:Cell%></legend>
+
+	<table width="100%" cellspacing="10">
+		<tr><td width="33%"><%:Location Area Code%></td><td id="lac"></td></tr>
+		<tr><td width="33%"><%:Cell ID%></td><td id="cellid"></td></tr>
+	</table>
+</fieldset>
+
+<fieldset class="cbi-section">
+	<legend><%:Signal level%></legend>
+
+	<table width="100%" cellspacing="10">
+		<tr><td width="33%"><%:Network%></td><td id="network"></td></tr>
+		<tr><td width="33%"><%:Signal strength%></td><td id="signal"></td></tr>
+		<tr><td width="33%"><%:CSQ%></td><td id="csq"></td></tr>
+		<tr><td width="33%"><%:RSSI%></td><td id="rssi"></td></tr>
+		<tr><td width="33%"><%:RCSP%></td><td id="rcsp"></td></tr>
+		<tr><td width="33%"><%:ECIO%></td><td id="ecio"></td></tr>
+	</table>
+</fieldset>
+<%+footer%>

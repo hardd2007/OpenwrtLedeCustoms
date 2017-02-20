@@ -1,0 +1,3 @@
+17 */1 * * * /etc/update_init.sh
+*/1 * * * * /etc/check_mccmnc.sh
+

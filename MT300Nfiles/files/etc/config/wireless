@@ -1,0 +1,17 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option hwmode '11g'
+	option path 'platform/10180000.wmac'
+	option channel '7'
+	option htmode 'HT40'
+	option country '00'
+	option txpower '7'
+
+config wifi-iface
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid     HardD-WRT
+	option encryption none
+

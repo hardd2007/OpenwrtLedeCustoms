@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -s /www/cgi-bin/4gmodem.sh /usr/bin/4gmodem
+exit 0

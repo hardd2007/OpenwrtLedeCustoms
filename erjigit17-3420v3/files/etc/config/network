@@ -1,0 +1,41 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'lan'
+	option type 'bridge'
+	option ifname 'eth0'
+	option proto 'static'
+	option ipaddr '192.168.17.254'
+	option netmask '255.255.255.0'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+	option ports '0 1 2 3 4'
+	option vid '1'
+
+config interface 'wan_hilink'
+	option proto 'dhcp'
+	option ifname 'eth2'
+	option delegate '0'
+
+config interface 'wan_stick'
+	option proto 'ncm'
+	option ifname 'wwan0'
+	option device '/dev/ttyUSB0'
+	option pdptype 'IP'
+	option mode 'all'
+	option apn 'internet'
+	option delay '4'
+	option delayc '10'
+	option delegate '0'
+

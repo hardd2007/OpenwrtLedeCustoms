@@ -1,0 +1,12 @@
+<%+header%>
+<h2 name="content"><%:Configuration%> / <%:Apply%></h2>
+<% if changes then %>
+<%+cbi/apply_xhr%>
+<%+admin_uci/changelog%>
+<%- cbi_apply_xhr('uci-apply', configs) -%>
+<p><strong><%:The following changes have been committed%>:</strong></p>
+<%- uci_changelog(changes) -%>
+<% else %>
+<p><strong><%:There are no pending changes to apply!%></strong></p>
+<% end %>
+<%+footer%>

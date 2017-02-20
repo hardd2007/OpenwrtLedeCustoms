@@ -1,0 +1,47 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=smstools3
+PKG_VERSION:=3.1.15
+PKG_RELEASE:=2
+
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=http://smstools3my.kekekasvi.com/packages
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
+
+include $(INCLUDE_DIR)/package.mk
+
+define Package/smstools3my
+	SECTION:=MYREP
+	CATEGORY:=MYREP
+	TITLE:=Sms Server Tools 3
+	DEPENDS:=+libiconv-full +iconv
+	URL:=http://smstools3my.kekekasvi.com/
+endef
+
+define Package/smstools3my/description
+	The SMS Server Tools 3 is a SMS Gateway software which can send and receive
+	short messages through GSM modems and mobile phones.
+endef
+
+define Build/Compile
+	$(MAKE) -C $(PKG_BUILD_DIR) \
+		CC=$(TARGET_CC) \
+	USER_CFLAGS='$(TARGET_CFLAGS) $(EXTRA_CFLAGS) \
+		$(TARGET_CPPFLAGS) $(EXTRA_CPPFLAGS) \
+		-I$(STAGING_DIR)/usr/lib/libiconv-full/include' \
+	USER_LDFLAGS='$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) \
+		-L$(STAGING_DIR)/usr/lib/libiconv-full/lib'
+endef
+
+define Package/smstools3my/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/smsd $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/scripts/sendsms $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_DATA) -m 0755 ./files/sms3 $(1)/etc/init.d/
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DATA) ./files/smsd.conf $(1)/etc/
+endef
+
+$(eval $(call BuildPackage,smstools3my))

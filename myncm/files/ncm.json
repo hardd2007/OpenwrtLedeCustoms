@@ -1,0 +1,79 @@
+{
+	"huawei": {
+		"initialize": [
+			"AT",
+			"ATZ",
+			"ATQ0",
+			"ATV1",
+			"ATE1",
+			"ATS0=0",
+			"AT+CGDCONT=1,\\\"${pdptype}\\\",\\\"${apn}\\\""
+		],
+		"modes": {
+			"prefer4g": "AT^SYSCFGEX=\"030201\",3fffffff,2,4,7fffffffffffffff,,",
+			"prefer3g": "AT^SYSCFGEX=\"0201\",3fffffff,2,4,7fffffffffffffff,,",
+			"4g": "AT^SYSCFGEX=\"03\",3fffffff,2,4,7fffffffffffffff,,",
+			"3g": "AT^SYSCFGEX=\"02\",3fffffff,2,4,7fffffffffffffff,,",
+			"2g": "AT^SYSCFGEX=\"01\",3fffffff,2,4,7fffffffffffffff,,",
+			"3g_2100": "AT^SYSCFGEX=\"02\",400000,2,4,7FFFFFFFFFFFFFFF,,",
+			"3g_900": "AT^SYSCFGEX=\"02\",2000000000000,2,4,7FFFFFFFFFFFFFFF,,",
+			"2g_1800": "AT^SYSCFGEX=\"01\",80,2,4,7fffffffffffffff,,",
+			"2g_900": "AT^SYSCFGEX=\"01\",300,2,4,7fffffffffffffff,,",
+			"2g_850": "AT^SYSCFGEX=\"01\",80000,2,4,7fffffffffffffff,,",
+			"2g_1900": "AT^SYSCFGEX=\"01\",200000,2,4,7fffffffffffffff,,",
+			"4g_B1": "AT^SYSCFGEX=\"03\",3fffffff,2,4,1,,",
+			"4g_B3": "AT^SYSCFGEX=\"03\",3fffffff,2,4,4,,",
+			"4g_B7": "AT^SYSCFGEX=\"03\",3fffffff,2,4,40,,",
+			"4g_B8": "AT^SYSCFGEX=\"03\",3fffffff,2,4,80,,",
+			"4g_B20": "AT^SYSCFGEX=\"03\",3fffffff,2,4,80000,,",
+			"all": "AT^SYSCFGEX=\"00\",3fffffff,2,4,7fffffffffffffff,,"
+		},
+		"connect": "AT^NDISDUP=1,1,\\\"${apn}\\\"${username:+,\\\"$username\\\"}${password:+,\\\"$password\\\"}${auth:+,$auth}",
+		"disconnect": "AT^NDISDUP=1,0"
+	},
+	"samsung": {
+		"initialize": [
+			"AT",
+			"AT+CGREG=2",
+			"AT+CFUN=5",
+			"AT+MODESELECT=3",
+			"AT+CGDCONT=1,\\\"${pdptype}\\\",\\\"${apn}\\\""
+		],
+		"modes": {
+			"3g": "AT+CHANGEALLPATH=1"
+		},
+		"connect": "AT+CGATT=1",
+		"disconnect": "AT+CGATT=0"
+	},
+	"sierra wireless, incorporated": {
+		"initialize": [
+			"AT+CFUN=1",
+			"AT+CGDCONT=1,\\\"${pdptype}\\\",\\\"${apn}\\\"",
+			"AT$QCPDPP=1${auth:+,$auth}${password:+,\\\"$password\\\"}${username:+,\\\"$username\\\"}"
+		],
+		"modes": {
+			"prefer4g": "AT!SELRAT=07",
+			"prefer3g": "AT!SELRAT=05",
+			"4g": "AT!SELRAT=06",
+			"3g": "AT!SELRAT=01",
+			"2g": "AT!SELRAT=02",
+			"all": "AT!SELRAT=00"
+		},
+		"connect": "AT!SCACT=1,1",
+		"disconnect": "AT!SCACT=0,1"
+	},
+	"sony ericsson": {
+		"initialize": [
+			"AT+CFUN=1",
+			"AT+CGDCONT=1,\\\"${pdptype}\\\",\\\"${apn}\\\"",
+			"AT*EIAAUW=1,1,\\\"${username}\\\",\\\"${password}\\\",${auth:-00111}"
+		],
+		"modes": {
+			"3g": "AT+CFUN=6",
+			"2g": "AT+CFUN=5"
+		},
+		"connect": "AT*ENAP=1,1",
+		"disconnect": "AT*ENAP=0"
+	}
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>"Hame A5-V11 HardD-WRT"</title>
+<script language="javascript" type="text/javascript">
+function loadinfo(contentblock, reload) {
+var a;
+
+try {a = new XMLHttpRequest();} catch (e) {
+try {a = new ActiveXObject("Msxml2.XMLHTTP");} catch (e) {
+try {a = new ActiveXObject("Microsoft.XMLHTTP");} catch (e) {
+alert("Нет поддержки браузером...");
+return false;
+}
+}
+}
+
+document.getElementById('loader').style.display = "block";
+document.getElementById('mainblock').innerHTML = "";
+
+a.open("GET", contentblock);
+
+a.onreadystatechange = function() {
+if (a.readyState == 4) {
+document.getElementById('loader').style.display = "none";
+document.getElementById('mainblock').innerHTML = a.responseText;
+if (reload == 1) {
+location.reload(true);
+}
+}
+}
+
+a.send(null);
+}
+</script>
+</head>
+<body onLoad="loadinfo('cgi-bin/settings.sh',0);" bgcolor="#FFFFFF">
+
+<div id='mainblock'></div>
+<div id='loader' style="text-align:center;display:block;">Опрос устройства</div>
+
+</body></html>

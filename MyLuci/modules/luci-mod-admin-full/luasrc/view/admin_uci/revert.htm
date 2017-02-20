@@ -1,0 +1,16 @@
+<%+header%>
+<h2 name="content"><%:Configuration%> / <%:Revert%></h2>
+<% if changes then %>
+<%+cbi/apply_xhr%>
+<%+admin_uci/changelog%>
+<p><strong><%:The following changes have been reverted%>:</strong></p>
+<%- uci_changelog(changes) -%>
+<% else %>
+<p><strong><%:There are no pending changes to revert!%></strong></p>
+<% end %>
+<div class="cbi-page-actions">
+<form class="inline" method="get" action="<%=luci.util.pcdata(luci.http.formvalue("redir"))%>">
+<input class="cbi-button cbi-button-link" style="margin:0" type="submit" value="<%:Back%>" />
+</form>
+</div>
+<%+footer%>

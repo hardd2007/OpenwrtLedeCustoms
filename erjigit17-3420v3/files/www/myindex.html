@@ -1,0 +1,36 @@
+<form action="cgi-bin/settings.sh" method="post">
+<p align="center">
+<table align="center">
+<tr><td>Включить беспроводную сеть</td><td><input name="wifion" type="checkbox" value="1" {WIFION}></td></tr>
+<tr><td>Имя беспроводной сети</td><td> <input name="wifiname" type="text" value="{WIFINAME}" maxlength="100"></td></tr>
+<tr><td>Пароль беспроводной сети</td><td><input name="wifipass" type="text" value="{WIFIPASS}" maxlength="100"></td></tr>
+<tr><td>Канал беспроводной сети</td><td><select name="wifichan">
+ <option value="1">01</option>
+ <option value="2">02</option>
+ <option value="3">03</option>
+ <option value="4">04</option>
+ <option value="5">05</option>
+ <option value="6">06</option>
+ <option value="7">07</option>
+ <option value="8">08</option>
+ <option value="9">09</option>
+ <option value="10">10</option>
+ <option value="11">11</option>
+ <option value="auto">auto</option>
+ 
+</select> <b>{WIFICHAN}</b></td></tr>
+<tr><td>Мощность беспроводной сети</td><td><select name="wifipw">
+ <option value="0">Минимум (0db)</option>
+ <option value="10">Средняя (10db)</option>
+ <option value="15">Высокая (15db)</option>
+ <option value="20">Максимальная (20db)</option>
+</select><b>{WIFIPW}</b></td></tr>
+<tr><td>Блокировка контента 18+</td><td><input name="pcontrol18" type="checkbox" value="1" {PCONTROL18}></td></tr>
+<tr><td><input name="sub" type="submit" value="Применить" align="absmiddle"></td><td><input name="reset" type="reset" value="Сброс" align="absmiddle"></td></tr>
+</table>
+</form>
+<p>&nbsp;</p>
+<div style="display: {MODEM_SHOW};"><p align="center"><a href="{MODEMSTATUS}">Статус модема / Modem status</a></p></div>
+<div style="display: {MSG_SHOW};"><p align="center"><font color="#FF0000"><strong>Модем не обнаружен</strong></font></p></div>
+<p align="center"><a href="cgi-bin/luci">Расширенные настройки Luci / Luci settings</a></p>
+

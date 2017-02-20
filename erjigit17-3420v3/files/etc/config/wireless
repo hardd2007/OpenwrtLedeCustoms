@@ -1,0 +1,17 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option hwmode '11g'
+	option path 'platform/qca953x_wmac'
+	option channel '11'
+	option htmode 'HT40'
+	option txpower '15'
+	option country 'JP'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'TP-Link_3420v3'
+	option encryption 'none'
+

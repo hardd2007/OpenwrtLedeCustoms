@@ -1,0 +1,35 @@
+
+config system
+	option hostname 'HardDWRT'
+	option conloglevel '8'
+	option cronloglevel '8'
+	option zonename 'Asia/Almaty'
+	option timezone 'ALMT-6'
+	option log_proto 'udp'
+
+config timeserver 'ntp'
+	list server '3.openwrt.pool.ntp.org'
+	list server '2.openwrt.pool.ntp.org'
+	list server '0.openwrt.pool.ntp.org'
+	list server '1.openwrt.pool.ntp.org'
+
+config led
+	option default '0'
+	option name 'usb'
+	option sysfs 'a5-v11:blue:system'
+	option trigger 'usb-host'
+
+config led
+	option default '0'
+	option name 'eth'
+	option trigger 'netdev'
+	option dev 'eth0'
+	option sysfs 'a5-v11:red:power'
+	option mode 'tx rx'
+
+config watchcat
+	option period '6h'
+	option mode 'ping'
+	option pinghosts '8.8.8.8'
+	option forcedelay '30'
+

@@ -1,0 +1,48 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'lan'
+	option type 'bridge'
+	option ifname 'eth0'
+	option proto 'static'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option ipaddr '192.168.100.1'
+	option dns '208.67.222.222 208.67.220.220'
+
+config device 'lan_dev'
+	option name 'eth0'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '0'
+
+config interface 'wan'
+	option proto 'dhcp'
+	option ifname 'eth1'
+	option delegate '0'
+	option peerdns '0'
+
+config interface 'wan2'
+	option proto 'ncm'
+	option ifname 'wwan0'
+	option delegate '0'
+	option device '/dev/ttyUSB0'
+	option pdptype 'IP'
+	option mode 'all'
+	option apn 'internet'
+	option peerdns '0'
+	option delay '8'
+	option delayc '15'
+
+config interface 'wan823'
+	option proto 'dhcp'
+	option ifname 'usb0'
+	option delegate '0'
+	option peerdns '0'
+

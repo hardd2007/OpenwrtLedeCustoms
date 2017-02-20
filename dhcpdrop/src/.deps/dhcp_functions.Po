@@ -1,0 +1,266 @@
+dhcp_functions.o: dhcp_functions.c /usr/include/stdc-predef.h \
+ common_includes.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stdint.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdint.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/features.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_config.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/cdefs.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/wchar.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/wordsize.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdio.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stddef.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/types.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/typesizes.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/pthreadtypes.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/endian.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/endian.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/byteswap.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/byteswap.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/byteswap-common.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sgidefs.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_stdio.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/wchar.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_mutex.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/pthread.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sched.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/time.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sched.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/time.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_clk_tck.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/signal.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigset.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/setjmp.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_pthread.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stdarg.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/stdio_lim.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdlib.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/types.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/select.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/select.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/sysmacros.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/alloca.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/unistd.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix_opt.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/confname.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/getopt.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/errno.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/errno.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/linux/errno.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/errno.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm-generic/errno-base.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/string.h \
+ /usr/include/pcap.h /usr/include/pcap/pcap.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/time.h \
+ /usr/include/pcap/bpf.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/arpa/inet.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/netinet/in.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/socket.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/uio.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uio.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/socket.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include-fixed/limits.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include-fixed/syslimits.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/limits.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix1_lim.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/local_lim.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/linux/limits.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_local_lim.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix2_lim.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sockaddr.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/socket.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/sockios.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/ioctl.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm-generic/ioctl.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/in.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/wait.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/signum.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/siginfo.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigaction.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigcontext.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigstack.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigthread.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/resource.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/resource.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/waitflags.h \
+ /home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/waitstatus.h \
+ dhcp.h net.h dhcdrop_types.h dhcp_functions.h
+
+/usr/include/stdc-predef.h:
+
+common_includes.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stdint.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdint.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/features.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_config.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/cdefs.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/wchar.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/wordsize.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdio.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stddef.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/types.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/typesizes.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/pthreadtypes.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/endian.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/endian.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/byteswap.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/byteswap.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/byteswap-common.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sgidefs.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_stdio.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/wchar.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_mutex.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/pthread.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sched.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/time.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sched.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/time.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_clk_tck.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/signal.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigset.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/setjmp.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_pthread.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include/stdarg.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/stdio_lim.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/stdlib.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/types.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/select.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/select.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/sysmacros.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/alloca.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/unistd.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix_opt.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/confname.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/getopt.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/errno.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/errno.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/linux/errno.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/errno.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm-generic/errno-base.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/string.h:
+
+/usr/include/pcap.h:
+
+/usr/include/pcap/pcap.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/time.h:
+
+/usr/include/pcap/bpf.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/arpa/inet.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/netinet/in.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/socket.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/uio.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uio.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/socket.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include-fixed/limits.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mips-openwrt-linux-uclibc/4.8.3/include-fixed/syslimits.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/limits.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix1_lim.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/local_lim.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/linux/limits.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/uClibc_local_lim.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/posix2_lim.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sockaddr.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/socket.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/sockios.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm/ioctl.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/asm-generic/ioctl.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/in.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/wait.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/signum.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/siginfo.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigaction.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigcontext.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigstack.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/sigthread.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/sys/resource.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/resource.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/waitflags.h:
+
+/home/hardd/openwrt/mr3020modem/trunk/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include/bits/waitstatus.h:
+
+dhcp.h:
+
+net.h:
+
+dhcdrop_types.h:
+
+dhcp_functions.h:

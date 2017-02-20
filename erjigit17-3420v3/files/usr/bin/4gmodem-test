@@ -1,0 +1,29 @@
+#!/bin/sh
+
+DEVICE=$(uci -q get 4gmodem.@4gmodem[0].device)
+if [ "x$DEVICE" = "x" ]; then
+	echo "Error"
+	exit 0
+fi
+if [ ! -e $DEVICE ]; then
+	echo "Error $DEVICE!"
+	exit 0
+fi
+
+# gcom -d $DEVICE reg
+O=$(gcom -d $DEVICE -s /usr/share/4gmodem/scripts/4gmodem.gcom)
+
+echo "$O"
+
+echo "---------------------------------------------------------------"
+ls /dev/tty*
+echo "---------------------------------------------------------------"
+if [ -e /proc/bus/usb/devices ]; then
+	cat /proc/bus/usb/devices
+else
+	[ -e /sys/kernel/debug/usb/devices ] && cat /sys/kernel/debug/usb/devices
+fi
+echo "---------------------------------------------------------------"
+uci show 4gmodem
+
+exit 0

@@ -1,0 +1,18 @@
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option hwmode '11g'
+	option path 'platform/10180000.wmac'
+	option htmode 'HT20'
+	option country '00'
+	option txpower '20'
+	option channel 'auto'
+
+config wifi-iface
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'antenna.on.kg'
+	option encryption 'psk-mixed'
+	option key '12345678'
+
