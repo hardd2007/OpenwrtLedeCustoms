@@ -1,0 +1,13 @@
+body {font-family: Verdana, Arial, Helvetica, sans-serif;}
+.button {width:150px;}
+a:link {text-decoration:none;color:blue;}
+a:visited {text-decoration:none;color:blue;}
+a:active {text-decoration:none;color:blue;}
+a:hover {text-decoration:underline;color:blue;}
+.c {margin:auto;text-align:center;clear:both;}
+.l {width:39%;clear:both;float:left;text-align:right;}
+.r {width:59%;float:right; text-align:left;}
+#centered {width: 800px;margin: auto;text-align: center;}
+.label {text-align: left;}
+.text {width: 100%;}
+pre {text-align: left;}
