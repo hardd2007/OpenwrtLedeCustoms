@@ -87,6 +87,8 @@ define Package/A5-V11files/postinst
 	rm -f $(TARGET_DIR)/lib/preinit/04_handle_checksumming
 	rm -f $(TARGET_DIR)/lib/upgrade/ubnt.sh
 #	rm -f $(TARGET_DIR)/www/index.html
+	rm -f $(TARGET_DIR)/etc/init.d/enablemodem
+	rm -f $(TARGET_DIR)/etc/init.d/gpio_switch
 	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
 
