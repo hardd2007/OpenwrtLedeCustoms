@@ -427,7 +427,7 @@ end
 end
 if #list > 0 then
 _uci:set("wireless", s['.name'], "network",
-  table.concat(list, " "))
+table.concat(list, " "))
 end
 end)
 _uci:delete("network", old)
@@ -641,7 +641,7 @@ end
 function protocol._ubus(self, field)
 if not _ubusnetcache[self.sid] then
 _ubusnetcache[self.sid] = utl.ubus("network.interface.%s" % self.sid,
-	   "status", { })
+   "status", { })
 end
 if _ubusnetcache[self.sid] and field then
 return _ubusnetcache[self.sid][field]
@@ -972,7 +972,7 @@ end
 function interface._ubus(self, field)
 if not _ubusdevcache[self.ifname] then
 _ubusdevcache[self.ifname] = utl.ubus("network.device", "status",
-		  { name = self.ifname })
+	  { name = self.ifname })
 end
 if _ubusdevcache[self.ifname] and field then
 return _ubusdevcache[self.ifname][field]
@@ -1149,8 +1149,6 @@ function wifidev.get_i18n(self)
 local t = "Generic"
 if self.iwinfo.type == "wl" then
 t = "Broadcom"
-elseif self.iwinfo.type == "madwifi" then
-t = "Atheros"
 end
 local m = ""
 local l = self:hwmodes()

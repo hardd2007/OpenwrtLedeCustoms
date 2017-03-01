@@ -48,8 +48,6 @@ end
 fd:close()
 end
 return name
-elseif name == "ath" or name == "wifi" then
-return translatef("Atheros 802.11%s Wireless Controller", bands)
 elseif name == "ra" then
 return translatef("RaLink 802.11%s Wireless Controller", bands)
 elseif name == "eth" then
@@ -218,8 +216,8 @@ info.innerHTML = String.format(
 '<em>%s</em>',
 iw.ssid || '?', iw.mode,
 is_reconnecting
-? '<em><%:Wireless is restarting...%></em>'
-: '<em><%:Wireless is disabled or not associated%></em>'
+	? '<em><%:Wireless is restarting...%></em>'
+	: '<em><%:Wireless is disabled or not associated%></em>'
 );
 }
 var dev = document.getElementById(wifidevs[iw.id] + '-iw-devinfo');
@@ -272,8 +270,8 @@ if (host)
 tr.insertCell(-1).innerHTML = String.format(
 '<div style="max-width:200px;overflow:hidden;text-overflow:ellipsis">%s</div>',
 ((host.name && (host.ipv4 || host.ipv6))
-? '%h (%s)'.format(host.name, host.ipv4 || host.ipv6)
-: '%h'.format(host.name || host.ipv4 || host.ipv6)).nobr()
+	? '%h (%s)'.format(host.name, host.ipv4 || host.ipv6)
+	: '%h'.format(host.name || host.ipv4 || host.ipv6)).nobr()
 );
 else
 tr.insertCell(-1).innerHTML = '?';
