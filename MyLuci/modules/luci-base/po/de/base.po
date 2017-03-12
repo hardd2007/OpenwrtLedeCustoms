@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-26 17:57+0200\n"
-"PO-Revision-Date: 2013-03-29 12:13+0200\n"
+"PO-Revision-Date: 2017-03-06 11:15+0200\n"
 "Last-Translator: JoeSemler <josef.semler@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -168,9 +168,6 @@ msgstr ""
 msgid "APN"
 msgstr "APN"
 
-msgid "AR Support"
-msgstr "AR-Unterstützung"
-
 msgid "ARP retry threshold"
 msgstr "Grenzwert für ARP-Auflösungsversuche"
 
@@ -274,9 +271,11 @@ msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
 "address"
 msgstr ""
+"IP-Adressen sequenziell vergeben, beginnend mit der kleinsten "
+"verfügbaren Adresse"
 
 msgid "Allocate IP sequentially"
-msgstr ""
+msgstr "IPs sequenziell vergeben"
 
 msgid "Allow <abbr title=\"Secure Shell\">SSH</abbr> password authentication"
 msgstr "Erlaube Anmeldung per Passwort"
@@ -413,9 +412,6 @@ msgstr ""
 msgid "Associated Stations"
 msgstr "Assoziierte Clients"
 
-msgid "Atheros 802.11%s Wireless Controller"
-msgstr "Atheros 802.11%s W-LAN Adapter"
-
 msgid "Auth Group"
 msgstr ""
 
@@ -493,9 +489,6 @@ msgstr "Zurück zur Übersicht"
 
 msgid "Back to scan results"
 msgstr "Zurück zu den Scan-Ergebnissen"
-
-msgid "Background Scan"
-msgstr "Hintergrundscan"
 
 msgid "Backup / Flash Firmware"
 msgstr "Backup / Firmware Update"
@@ -662,9 +655,6 @@ msgstr "Befehl"
 
 msgid "Common Configuration"
 msgstr "Allgemeine Konfiguration"
-
-msgid "Compression"
-msgstr "Kompression"
 
 msgid "Configuration"
 msgstr "Konfiguration"
@@ -883,9 +873,6 @@ msgstr "DNS-Verarbeitung deaktivieren"
 msgid "Disable Encryption"
 msgstr ""
 
-msgid "Disable HW-Beacon timer"
-msgstr "Deaktiviere Hardware-Beacon Zeitgeber"
-
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -934,9 +921,6 @@ msgstr ""
 
 msgid "Do not forward reverse lookups for local networks"
 msgstr "Keine Rückwärtsauflösungen für lokale Netzwerke weiterleiten"
-
-msgid "Do not send probe responses"
-msgstr "Scan-Anforderungen nicht beantworten"
 
 msgid "Domain required"
 msgstr "Anfragen nur mit Domain"
@@ -1136,9 +1120,6 @@ msgstr ""
 msgid "Extra SSH command options"
 msgstr ""
 
-msgid "Fast Frames"
-msgstr "Schnelle Frames"
-
 msgid "File"
 msgstr "Datei"
 
@@ -1173,6 +1154,9 @@ msgstr "Fertigstellen"
 
 msgid "Firewall"
 msgstr "Firewall"
+
+msgid "Firewall Mark"
+msgstr ""
 
 msgid "Firewall Settings"
 msgstr "Firewall Einstellungen"
@@ -1904,9 +1888,6 @@ msgstr ""
 msgid "Max. Attainable Data Rate (ATTNDR)"
 msgstr ""
 
-msgid "Maximum Rate"
-msgstr "Höchstübertragungsrate"
-
 msgid "Maximum allowed number of active DHCP leases"
 msgstr "Maximal zulässige Anzahl von aktiven DHCP-Leases"
 
@@ -1941,9 +1922,6 @@ msgstr "Speichernutzung (%)"
 
 msgid "Metric"
 msgstr "Metrik"
-
-msgid "Minimum Rate"
-msgstr "Mindestübertragungsrate"
 
 msgid "Minimum hold time"
 msgstr "Minimalzeit zum Halten der Verbindung"
@@ -2017,9 +1995,6 @@ msgstr "Nach unten schieben"
 
 msgid "Move up"
 msgstr "Nach oben schieben"
-
-msgid "Multicast Rate"
-msgstr "Multicastrate"
 
 msgid "Multicast address"
 msgstr "Multicast-Adresse"
@@ -2227,6 +2202,11 @@ msgid "Optional."
 msgstr ""
 
 msgid ""
+"Optional. 32-bit mark for outgoing encrypted packets. Enter value in hex, "
+"starting with <code>0x</code>."
+msgstr ""
+
+msgid ""
 "Optional. Base64-encoded preshared key. Adds in an additional layer of "
 "symmetric-key cryptography for post-quantum resistance."
 msgstr ""
@@ -2264,9 +2244,6 @@ msgstr "Aus"
 
 msgid "Outbound:"
 msgstr "Ausgehend:"
-
-msgid "Outdoor Channels"
-msgstr "Funkkanal für den Ausseneinsatz"
 
 msgid "Output Interface"
 msgstr ""
@@ -2653,9 +2630,6 @@ msgstr "Verbinde Schnittstelle neu"
 msgid "References"
 msgstr "Verweise"
 
-msgid "Regulatory Domain"
-msgstr "Geltungsbereich (Regulatory Domain)"
-
 msgid "Relay"
 msgstr "Relay"
 
@@ -2860,9 +2834,6 @@ msgstr ""
 msgid "Separate Clients"
 msgstr "Clients isolieren"
 
-msgid "Separate WDS"
-msgstr "Separates WDS"
-
 msgid "Server Settings"
 msgstr "Servereinstellungen"
 
@@ -3029,9 +3000,6 @@ msgstr "Statische Einträge"
 msgid "Static Routes"
 msgstr "Statische Routen"
 
-msgid "Static WDS"
-msgstr "Statisches WDS"
-
 msgid "Static address"
 msgstr "Statische Adresse"
 
@@ -3058,10 +3026,11 @@ msgid "Submit"
 msgstr "Absenden"
 
 msgid "Suppress logging"
-msgstr ""
+msgstr "Logeinträge unterdrücken"
 
 msgid "Suppress logging of the routine operation of these protocols"
 msgstr ""
+"Logeinträge für erfolgreiche Operationen dieser Protokolle unterdrücken"
 
 msgid "Swap"
 msgstr ""
@@ -3459,9 +3428,6 @@ msgstr ""
 msgid "Tunnel type"
 msgstr ""
 
-msgid "Turbo Mode"
-msgstr "Turbo Modus"
-
 msgid "Tx-Power"
 msgstr "Sendestärke"
 
@@ -3748,9 +3714,6 @@ msgstr "Empfangene DNS-Anfragen in das Systemprotokoll schreiben"
 msgid "Write system log to file"
 msgstr ""
 
-msgid "XR Support"
-msgstr "XR-Unterstützung"
-
 msgid ""
 "You can enable or disable installed init scripts here. Changes will applied "
 "after a device reboot.<br /><strong>Warning: If you disable essential init "
@@ -3933,6 +3896,54 @@ msgstr "ja"
 
 msgid "« Back"
 msgstr "« Zurück"
+
+#~ msgid "AR Support"
+#~ msgstr "AR-Unterstützung"
+
+#~ msgid "Atheros 802.11%s Wireless Controller"
+#~ msgstr "Atheros 802.11%s W-LAN Adapter"
+
+#~ msgid "Background Scan"
+#~ msgstr "Hintergrundscan"
+
+#~ msgid "Compression"
+#~ msgstr "Kompression"
+
+#~ msgid "Disable HW-Beacon timer"
+#~ msgstr "Deaktiviere Hardware-Beacon Zeitgeber"
+
+#~ msgid "Do not send probe responses"
+#~ msgstr "Scan-Anforderungen nicht beantworten"
+
+#~ msgid "Fast Frames"
+#~ msgstr "Schnelle Frames"
+
+#~ msgid "Maximum Rate"
+#~ msgstr "Höchstübertragungsrate"
+
+#~ msgid "Minimum Rate"
+#~ msgstr "Mindestübertragungsrate"
+
+#~ msgid "Multicast Rate"
+#~ msgstr "Multicastrate"
+
+#~ msgid "Outdoor Channels"
+#~ msgstr "Funkkanal für den Ausseneinsatz"
+
+#~ msgid "Regulatory Domain"
+#~ msgstr "Geltungsbereich (Regulatory Domain)"
+
+#~ msgid "Separate WDS"
+#~ msgstr "Separates WDS"
+
+#~ msgid "Static WDS"
+#~ msgstr "Statisches WDS"
+
+#~ msgid "Turbo Mode"
+#~ msgstr "Turbo Modus"
+
+#~ msgid "XR Support"
+#~ msgstr "XR-Unterstützung"
 
 #~ msgid "An additional network will be created if you leave this unchecked."
 #~ msgstr ""
