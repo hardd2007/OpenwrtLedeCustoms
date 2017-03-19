@@ -80,9 +80,12 @@ define Package/WT3020files/postinst
 	rm -f $(TARGET_DIR)/etc/uci-defaults/09_fix-seama-header
 	rm -f $(TARGET_DIR)/lib/functions/uci-defaults.sh
 	rm -f $(TARGET_DIR)/etc/init.d/bootcount
+	rm -f $(TARGET_DIR)/etc/init.d/enablemodem
+	rm -f $(TARGET_DIR)/etc/init.d/gpio_switch
 	rm -f $(TARGET_DIR)/lib/preinit/04_handle_checksumming
 	rm -f $(TARGET_DIR)/lib/upgrade/ubnt.sh
 #	rm -f $(TARGET_DIR)/www/index.html
+	rm -f $(TARGET_DIR)/etc/uci-defaults/20_migrate_feeds
 	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
 
