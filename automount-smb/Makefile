@@ -48,7 +48,9 @@ define Package/automount-SMB/postinst
 #!/bin/sh
 
 	rm -f $(TARGET_DIR)/etc/config/samba
+	rm -f $(TARGET_DIR)/etc/config/samba-opkg
 	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
+	rm -fR $(TARGET_DIR)/CONTROL
 endef
 
 
