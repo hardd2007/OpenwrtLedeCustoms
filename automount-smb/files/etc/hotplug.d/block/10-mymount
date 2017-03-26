@@ -32,7 +32,10 @@ fi
 
 s=`blkid /dev/$device | sed -n 's/.*TYPE="\([^"]*\)".*/\1/p'`
 echo "$s" >> $logf
+label=`blkid /dev/$device|sed -n 's/.*LABEL="\([^"]*\)".*/\1/p'|sed 's/[^a-zA-Z0-9 \t]//g;'` 
+if [ "x$label" = "x" ]; then
 label=`blkid /dev/$device|sed -n 's/.*UUID="\([^"]*\)".*/\1/p'`
+fi
 echo "$label" >> $logf
 [ -z "$label" ] && label=$device
 
