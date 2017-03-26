@@ -1,0 +1,14 @@
+#!/bin/sh /etc/rc.common
+
+START=20
+STOP=98
+
+
+boot() {
+	mkdir -p /tmp/mnt-ro
+	mkdir -p /tmp/mnt-rw
+	mkdir -p /tmp/mnt-tmp
+	chown nobody -R /tmp/mnt-ro /tmp/mnt-rw /tmp/mnt-tmp
+	
+
+}

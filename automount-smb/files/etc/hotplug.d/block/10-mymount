@@ -1,0 +1,93 @@
+#!/bin/sh
+logf="/tmp/hot.log"
+blkdev=`dirname $DEVPATH`
+device=`basename $DEVPATH`
+hdorsd=`echo "$device" | grep -E '[sh]d*|mmcblk0*' `
+mkdir -p "/tmp/mnt/"
+mkdir -p "/tmp/mnt-ro/"
+mkdir -p "/tmp/mnt-rw/"
+chown nobody.nogroup -R /tmp/mnt-rw/
+chmod 0777 -R /tmp/mnt-rw/
+mkdir -p "/tmp/mnt-tmp/"
+echo "Test " >> $logf
+echo "$ACTION" >> $logf
+echo "$blkdev" >> $logf
+echo "$device" >> $logf
+echo "$DEVPATH" >> $logf
+
+case "$ACTION" in
+add)
+#when boot, the devices may not be ready, strange
+sleep 5
+#first time, wait unit the jffs is built
+if [ -z  "$(mount |grep 'overlayfs:/overlay')" ]
+then
+sleep 40
+fi
+sync=sync
+mmcblk0=`echo "$device" |grep 'mmcblk0'`
+if [ -n "$mmcblk0" ]; then
+sync=async
+fi
+
+s=`blkid /dev/$device | sed -n 's/.*TYPE="\([^"]*\)".*/\1/p'`
+echo "$s" >> $logf
+label=`blkid /dev/$device|sed -n 's/.*UUID="\([^"]*\)".*/\1/p'`
+echo "$label" >> $logf
+[ -z "$label" ] && label=$device
+
+if [ "$s" != 'vfat' -a "$s" != 'ntfs' -a "$s" != 'ext2' -a "$s" != 'ext3' -a "$s" != 'ext4' -a "$s" != 'exfat' -a "$s" != 'f2fs' ];then
+return;
+fi
+
+if [ "$s" = 'vfat' ];then
+mkdir -p "/tmp/mnt-rw/$label"
+chown nobody.nogroup -R "/tmp/mnt-rw/$label"
+chmod 0777 -R "/tmp/mnt-rw/$label"
+mount -t $s -o utf8,rw,$sync,fmask=0000,dmask=0000 /dev/$device "/tmp/mnt-rw/$label"
+fi
+
+if [ "$s" = 'ntfs' ];then
+mkdir -p "/tmp/mnt-rw/$label"
+chown nobody.nogroup -R "/tmp/mnt-rw/$label"
+chmod 0777 -R "/tmp/mnt-rw/$label"
+mount -t ntfs-3g -o utf8 /dev/$device "/tmp/mnt-rw/$label"
+fi
+
+if [ "$s" = 'f2fs' ];then
+mkdir -p "/tmp/mnt-rw/$label"
+chown nobody.nogroup -R "/tmp/mnt-rw/$label"
+chmod 0777 -R "/tmp/mnt-rw/$label"
+mount -t f2fs  /dev/$device "/tmp/mnt-rw/$label"
+fi
+
+if [ "$s" = 'ext2' -o "$s" = 'ext3' -o "$s" = 'ext4' ];then
+mkdir -p "/tmp/mnt-rw/$label"
+chown nobody.nogroup -R "/tmp/mnt-rw/$label"
+chmod 0777 -R "/tmp/mnt-rw/$label"
+mount -t ext4 -o rw,$sync /dev/$device "/tmp/mnt-rw/$label"
+#chmod 777 "/mnt/$label"
+#chown root:root "/mnt/$label"
+fi
+
+if [ "$s" = 'exfat' ]; then
+mkdir -p "/tmp/mnt-rw/$label"
+chown nobody.nogroup -R "/tmp/mnt-rw/$label"
+chmod 0777 -R "/tmp/mnt-rw/$label"
+mount -t exfat -o utf8,rw,$sync /dev/$device "/tmp/mnt-rw/$label"
+fi
+
+sleep 5
+
+;;
+
+remove)
+folder="$(grep /dev/$device /etc/mtab |awk '{print $2}')"
+procs=$(fuser -m "/tmp/mnt-ro/$folder")
+if [ "${#procs}" -lt 10 ]; then
+echo "$procs" | xargs kill -9
+fi
+umount "$folder"
+rmdir "$folder"
+;;
+esac
