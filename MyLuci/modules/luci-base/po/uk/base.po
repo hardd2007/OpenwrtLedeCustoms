@@ -1227,6 +1227,9 @@ msgstr "Примусово TKIP"
 msgid "Force TKIP and CCMP (AES)"
 msgstr "Примусово TKIP та CCMP (AES)"
 
+msgid "Force link"
+msgstr ""
+
 msgid "Force use of NAT-T"
 msgstr ""
 
@@ -2032,6 +2035,9 @@ msgstr ""
 msgid "NAT64 Prefix"
 msgstr ""
 
+msgid "NCM"
+msgstr ""
+
 msgid "NDP-Proxy"
 msgstr ""
 
@@ -2450,6 +2456,12 @@ msgid "Power Management Mode"
 msgstr ""
 
 msgid "Pre-emtive CRC errors (CRCP_P)"
+msgstr ""
+
+msgid "Prefer LTE"
+msgstr ""
+
+msgid "Prefer UMTS"
 msgstr ""
 
 msgid "Prefix Delegated"
@@ -2881,6 +2893,11 @@ msgstr "Тип сервісу"
 
 msgid "Services"
 msgstr "Сервіси"
+
+msgid ""
+"Set interface properties regardless of the link carrier (If set, carrier "
+"sense events do not invoke hotplug handlers)."
+msgstr ""
 
 #, fuzzy
 msgid "Set up Time Synchronization"

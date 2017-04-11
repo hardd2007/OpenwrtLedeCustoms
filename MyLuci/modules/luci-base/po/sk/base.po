@@ -1151,6 +1151,9 @@ msgstr ""
 msgid "Force TKIP and CCMP (AES)"
 msgstr ""
 
+msgid "Force link"
+msgstr ""
+
 msgid "Force use of NAT-T"
 msgstr ""
 
@@ -1923,6 +1926,9 @@ msgstr ""
 msgid "NAT64 Prefix"
 msgstr ""
 
+msgid "NCM"
+msgstr ""
+
 msgid "NDP-Proxy"
 msgstr ""
 
@@ -2332,6 +2338,12 @@ msgstr ""
 msgid "Pre-emtive CRC errors (CRCP_P)"
 msgstr ""
 
+msgid "Prefer LTE"
+msgstr ""
+
+msgid "Prefer UMTS"
+msgstr ""
+
 msgid "Prefix Delegated"
 msgstr ""
 
@@ -2738,6 +2750,11 @@ msgid "Service Type"
 msgstr ""
 
 msgid "Services"
+msgstr ""
+
+msgid ""
+"Set interface properties regardless of the link carrier (If set, carrier "
+"sense events do not invoke hotplug handlers)."
 msgstr ""
 
 msgid "Set up Time Synchronization"

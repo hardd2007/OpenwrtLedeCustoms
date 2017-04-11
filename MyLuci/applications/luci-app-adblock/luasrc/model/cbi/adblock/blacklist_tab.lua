@@ -16,8 +16,8 @@ m = SimpleForm("input", nil)
 	m:append(Template("adblock/config_css"))
 
 s = m:section(SimpleSection, nil,
-	translate("This form allows you to modify the content of the adblock blacklist (" .. adbinput .. ").<br />")
-	.. translate("Please add only one domain per line. Comments introduced with '#' are allowed - ip addresses, wildcards & regex are not."))
+	translatef("This form allows you to modify the content of the adblock blacklist (%s).<br />", adbinput)
+	.. translate("Please add only one domain per line. Comments introduced with '#' are allowed - ip addresses, wildcards and regex are not."))
 
 f = s:option(TextValue, "data")
 	f.rmempty = true
