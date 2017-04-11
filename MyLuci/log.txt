@@ -1,5 +1,0 @@
-error: Your local changes to the following files would be overwritten by merge:
-	modules/luci-base/luasrc/model/network.lua
-Please, commit your changes or stash them before you can merge.
-Aborting
-Обновление c5c199b..e871320
