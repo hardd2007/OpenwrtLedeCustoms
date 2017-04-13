@@ -46,10 +46,17 @@ endef
 
 define Package/automount-SMB/postinst
 #!/bin/sh
-
+	echo "(PKG_DIR_NAME):"$(PKG_DIR_NAME) >/tmp/log-smb.txt
+	echo "(PKG_BUILD_DIR):"$(PKG_BUILD_DIR) >>/tmp/log-smb.txt
+	echo "(TARGET_PATH_PKG):"$(TARGET_PATH_PKG) >>/tmp/log-smb.txt
+	echo "(PKG_INFO_DIR):"$(PKG_INFO_DIR) >>/tmp/log-smb.txt
+	echo "(PKGARCH):"$(PKGARCH) >>/tmp/log-smb.txt
+	echo "(PKG_BUILD_DIR):"$(PKG_BUILD_DIR) >>/tmp/log-smb.txt
+	
+	
 	rm -f $(TARGET_DIR)/etc/config/samba
 	rm -f $(TARGET_DIR)/etc/config/samba-opkg
-	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
+	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-$(PKGARCH)/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
 endef
 
