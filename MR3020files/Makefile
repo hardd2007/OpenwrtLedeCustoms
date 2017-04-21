@@ -93,6 +93,7 @@ define Package/MR3020files/postinst
 	rm -f $(TARGET_DIR)/lib/upgrade/dir825.sh
 	rm -f $(TARGET_DIR)/lib/upgrade/merakinand.sh
 	rm -f $(TARGET_DIR)/lib/upgrade/openmesh.sh
+	rm -f $(TARGET_DIR)/etc/config/uhttpd-opkg
 	
 #	rm -f $(TARGET_DIR)/www/index.html
 	rm -f $(TARGET_DIR)/etc/uci-defaults/20_migrate_feeds
