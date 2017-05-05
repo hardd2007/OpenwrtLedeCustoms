@@ -5,26 +5,26 @@
 <tr><td>Имя беспроводной сети</td><td> <input name="wifiname" type="text" value="{WIFINAME}" maxlength="100"></td></tr>
 <tr><td>Пароль беспроводной сети</td><td><input name="wifipass" type="text" value="{WIFIPASS}" maxlength="100"></td></tr>
 <tr><td>Канал беспроводной сети</td><td><select name="wifichan">
- <option value="1">01</option>
- <option value="2">02</option>
- <option value="3">03</option>
- <option value="4">04</option>
- <option value="5">05</option>
- <option value="6">06</option>
- <option value="7">07</option>
- <option value="8">08</option>
- <option value="9">09</option>
- <option value="10">10</option>
- <option value="11">11</option>
- <option value="auto">auto</option>
+ <option {SELCH01} value="1">01</option>
+ <option {SELCH02} value="2">02</option>
+ <option {SELCH03} value="3">03</option>
+ <option {SELCH04} value="4">04</option>
+ <option {SELCH05} value="5">05</option>
+ <option {SELCH06} value="6">06</option>
+ <option {SELCH07} value="7">07</option>
+ <option {SELCH08} value="8">08</option>
+ <option {SELCH09} value="9">09</option>
+ <option {SELCH10} value="10">10</option>
+ <option {SELCH11} value="11">11</option>
+ <option {SELCHAUTO} value="auto">auto</option>
  
-</select> <b>{WIFICHAN}</b></td></tr>
+</select> </td></tr>
 <tr><td>Мощность беспроводной сети</td><td><select name="wifipw">
- <option value="0">Минимум (0db)</option>
- <option value="10">Средняя (10db)</option>
- <option value="15">Высокая (15db)</option>
- <option value="20">Максимальная (20db)</option>
-</select><b>{WIFIPW}</b></td></tr>
+ <option {SELPWMIN} value="0">Минимум (0db)</option>
+ <option {SELPWMED} value="10">Средняя (10db)</option>
+ <option {SELPWHI} value="15">Высокая (15db)</option>
+ <option {SELPWBEST} value="20">Максимальная (20db)</option>
+</select></td></tr>
 <tr><td>Блокировка контента 18+</td><td><input name="pcontrol18" type="checkbox" value="1" {PCONTROL18}></td></tr>
 <tr><td><input name="sub" type="submit" value="Применить" align="absmiddle"></td><td><input name="reset" type="reset" value="Сброс" align="absmiddle"></td></tr>
 </table>

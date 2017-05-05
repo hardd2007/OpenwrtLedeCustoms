@@ -100,7 +100,7 @@ define Package/erjigit17-3420v3/postinst
 	echo $(PKG_DIR_NAME) >>/tmp/vars.txt
 	echo $(USE_SOURCE_DIR) >>/tmp/vars.txt
 	echo "End2" >>/tmp/vars.txt
-	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
+	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-$(PKGARCH)/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
 
 

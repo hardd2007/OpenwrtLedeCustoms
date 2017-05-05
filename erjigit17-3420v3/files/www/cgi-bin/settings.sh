@@ -34,7 +34,6 @@ else
 uci set network.lan.dns='208.67.222.222 208.67.220.220'
 fi
 
-
 uci commit
 echo "<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
 <meta http-equiv=\"refresh\" content=\"5; url=../index.html\">
@@ -55,7 +54,42 @@ fi
 WIFINAME=$(uci -q get wireless.default_radio0.ssid)
 WIFIPASS=$(uci -q get wireless.default_radio0.key)
 WIFICHAN=$(uci -q get wireless.radio0.channel)
+SELCH01=""
+SELCH02=""
+SELCH03=""
+SELCH04=""
+SELCH05=""
+SELCH06=""
+SELCH07=""
+SELCH08=""
+SELCH09=""
+SELCH10=""
+SELCH11=""
+SELCHAUTO=""
+
+[ "$WIFICHAN" = "1" ] && SELCH01="selected"
+[ "$WIFICHAN" = "2" ] && SELCH02="selected"
+[ "$WIFICHAN" = "3" ] && SELCH03="selected"
+[ "$WIFICHAN" = "4" ] && SELCH04="selected"
+[ "$WIFICHAN" = "5" ] && SELCH05="selected"
+[ "$WIFICHAN" = "6" ] && SELCH06="selected"
+[ "$WIFICHAN" = "7" ] && SELCH07="selected"
+[ "$WIFICHAN" = "8" ] && SELCH08="selected"
+[ "$WIFICHAN" = "9" ] && SELCH09="selected"
+[ "$WIFICHAN" = "10" ] && SELCH10="selected"
+[ "$WIFICHAN" = "11" ] && SELCH11="selected"
+[ "$WIFICHAN" = "auto" ] && SELCHAUTO="selected"
+
+SELPWMIN=""
+SELPWMED=""
+SELPWHI=""
+SELPWBEST=""
 WIFIPW=$(uci -q get wireless.radio0.txpower)
+[ "$WIFIPW" -eq 0 ] && SELPWMIN="selected"
+[ "$WIFIPW" -gt 0 ] && [ "$WIFIPW" -le 10 ] && SELPWMED="selected"
+[ "$WIFIPW" -gt 10 ] && [ "$WIFIPW" -le 15 ] && SELPWHI="selected"
+[ "$WIFIPW" -gt 15 ] && [ "$WIFIPW" -le 20 ] && SELPWBEST="selected"
+
 if [ $(uci -q get modem.@modem[0].pcontrol18) = "1" ]; then
 PCONTROL18="checked=\"checked\""
 else
@@ -85,6 +119,22 @@ if [ -e $TEMPLATE ]; then
 	s!{MODEMSTATUS}!$MODEMSTATUS!g; \
 	s!{MODEM_SHOW}!$MODEM_SHOW!g; \
 	s!{MSG_SHOW}!$MSG_SHOW!g; \
+	s!{SELCH01}!$SELCH01!g; \
+	s!{SELCH02}!$SELCH02!g; \
+	s!{SELCH03}!$SELCH03!g; \
+	s!{SELCH04}!$SELCH04!g; \
+	s!{SELCH05}!$SELCH05!g; \
+	s!{SELCH06}!$SELCH06!g; \
+	s!{SELCH07}!$SELCH07!g; \
+	s!{SELCH08}!$SELCH08!g; \
+	s!{SELCH09}!$SELCH09!g; \
+	s!{SELCH10}!$SELCH10!g; \
+	s!{SELCH11}!$SELCH11!g; \
+	s!{SELCHAUTO}!$SELCHAUTO!g; \
+	s!{SELPWMIN}!$SELPWMIN!g; \
+	s!{SELPWMED}!$SELPWMED!g; \
+	s!{SELPWHI}!$SELPWHI!g; \
+	s!{SELPWBEST}!$SELPWBEST!g; \
 	s!{PCONTROL18}!$PCONTROL18!g" $TEMPLATE
 else
 	echo "Template $TEMPLATE missing!"

@@ -4,36 +4,36 @@ echo -e "Content-type: text/html\n\n"
 if [ "$REQUEST_METHOD" = POST ]; then
 	read -t 3 QUERY_STRING
 	eval $(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
-	WIFION=`uhttpd -d $wifion 2>/dev/null`
+	WIFIN=`uhttpd -d $wifin 2>/dev/null`
 	WIFINAME=`uhttpd -d $wifiname 2>/dev/null`
 	WIFIPASS=`uhttpd -d $wifipass 2>/dev/null`
-	WIFICHAN=`uhttpd -d $wifichan 2>/dev/null`
+	WIFISEC=`uhttpd -d $wifisec 2>/dev/null`
 	WIFIPW=`uhttpd -d $wifipw 2>/dev/null`
-	PCONTROL18=`uhttpd -d $pcontrol18 2>/dev/null`
+	IPROUTER=`uhttpd -d $iprouter 2>/dev/null`
+	IPGW=`uhttpd -d $ipgw 2>/dev/null`
 
-if [ $WIFION = "1" ]; then
-uci delete wireless.default_radio0.disabled
+if [ $WIFIN = "11b" ]; then
+uci set wireless.radio0.hwmode='11b'
+uci delete wireless.radio0.htmode
 else
-uci set wireless.default_radio0.disabled='1'
+uci set wireless.radio0.hwmode='11g'
+uci set wireless.radio0.htmode='HT20'
 fi
-uci set wireless.default_radio0.ssid=$WIFINAME
-uci set wireless.radio0.channel=$WIFICHAN
-uci set wireless.radio0.txpower=$WIFIPW
-uci set modem.@modem[0].pcontrol18=$PCONTROL18
+uci set wireless.@wifi-iface[0].ssid=$WIFINAME
+#uci set wireless.radio0.channel=$WIFICHAN
+#uci set wireless.radio0.txpower=$WIFIPW
+
 
 if [ "x$WIFIPASS" = "x" ]; then
-uci set wireless.default_radio0.encryption='none'
-uci set wireless.default_radio0.key=$WIFIPASS
+uci set wireless.@wifi-iface[0].encryption='none'
+uci set wireless.@wifi-iface[0].key=$WIFIPASS
 else
-uci set wireless.default_radio0.key=$WIFIPASS
-uci set wireless.default_radio0.encryption='psk-mixed'
+uci set wireless.@wifi-iface[0].key=$WIFIPASS
+uci set wireless.@wifi-iface[0].encryption=$WIFISEC
 fi
-if [ $PCONTROL18 = "1" ]; then
-uci set network.lan.dns='77.88.8.7 77.88.8.3'
-else
-uci set network.lan.dns='208.67.222.222 208.67.220.220'
-fi
-
+uci set network.lan.ipaddr=$IPROUTER
+uci set network.bridge.ipaddr=$IPROUTER
+uci set network.bridge.gateway=$IPGW
 
 uci commit
 echo "<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
@@ -46,46 +46,60 @@ echo "</body></html>"
 #sleep 10
 exit 0
 fi
+SEL11g="";
+SEL11b="";
+WIFIN=$(uci -q get wireless.radio0.hwmode)
+if [ "$WIFIN" = "11b" ]; then
+SEL11b="selected"
+else
+SEL11g="selected"
+fi
+SELnone=""
+SELwep=""
+SELpsk1=""
+SELpsk2=""
+SELpsk3=""
+UPTIMEP=""
 
-if [ $(uci -q get wireless.default_radio0.disabled) = "1" ]; then 
-WIFION=""
-else
-WIFION="checked=\"checked\""
-fi
-WIFINAME=$(uci -q get wireless.default_radio0.ssid)
-WIFIPASS=$(uci -q get wireless.default_radio0.key)
-WIFICHAN=$(uci -q get wireless.radio0.channel)
+WIFINAME=$(uci -q get wireless.@wifi-iface[0].ssid)
+WIFIPASS=$(uci -q get wireless.@wifi-iface[0].key)
+WIFISEC=$(uci -q get wireless.@wifi-iface[0].encryption)
 WIFIPW=$(uci -q get wireless.radio0.txpower)
-if [ $(uci -q get modem.@modem[0].pcontrol18) = "1" ]; then
-PCONTROL18="checked=\"checked\""
+IPROUTER=$(uci -q get network.lan.ipaddr)
+IPGW=$(uci -q get network.bridge.gateway)
+[ "$WIFISEC" = "psk-mixed" ] && SELpsk3="selected"
+[ "$WIFISEC" = "none" ] && SELnone="selected"
+[ "$WIFISEC" = "wep" ] && SELwep="selected"
+[ "$WIFISEC" = "psk" ] && SELpsk1="selected"
+[ "$WIFISEC" = "psk2" ] && SELpsk2="selected"
+
+if [ "x$(ip link | grep wlan0)" != "x" ]; then
+iw wlan0 link >/tmp/wlink.info
+WLINK=$(cat /tmp/wlink.info | grep "SSID")/$(cat /tmp/wlink.info | grep "freq")/$(cat /tmp/wlink.info | grep "signal")/$(cat /tmp/wlink.info | grep "tx bitrate")
 else
-PCONTROL18=""
+WLINK="Wifi off"
 fi
-DEVICE=$(uci -q get modem.@modem[0].device)
-MODEMSTATUS=""
-if [ -e $DEVICE ]; then
-MODEMSTATUS="4g-index.html"
-else
-MODEMSTATUS="http://"$(route -e | grep default | awk '{print $2}')
-fi
-if [ "x$MODEMSTATUS" = "xhttp://" ]; then
-MODEM_SHOW="none"
-MSG_SHOW="block"
-else
-MODEM_SHOW="block"
-MSG_SHOW="none"
-fi
+UPTIMEP=$(uptime)
+VER=$(uname -a)
 TEMPLATE="myindex.html"
 if [ -e $TEMPLATE ]; then
-	sed -e "s!{WIFION}!$WIFION!g; \
+	sed -e "s!{WIFIN}!$WIFIN!g; \
 	s!{WIFINAME}!$WIFINAME!g; \
 	s!{WIFIPASS}!$WIFIPASS!g; \
-	s!{WIFICHAN}!$WIFICHAN!g; \
+	s!{WIFISEC}!$WIFISEC!g; \
 	s!{WIFIPW}!$WIFIPW!g; \
-	s!{MODEMSTATUS}!$MODEMSTATUS!g; \
-	s!{MODEM_SHOW}!$MODEM_SHOW!g; \
-	s!{MSG_SHOW}!$MSG_SHOW!g; \
-	s!{PCONTROL18}!$PCONTROL18!g" $TEMPLATE
+	s!{IPROUTER}!$IPROUTER!g; \
+	s!{VER}!$VER!g; \
+	s!{WLINK}!$WLINK!g; \
+	s!{SEL11g}!$SEL11g!g; \
+	s!{SEL11b}!$SEL11b!g; \
+	s!{SELnone}!$SELnone!g; \
+	s!{SELwep}!$SELwep!g; \
+	s!{SELpsk1}!$SELpsk1!g; \
+	s!{SELpsk3}!$SELpsk3!g; \
+	s!{SELpsk2}!$SELpsk2!g; \
+	s!{UPTIMEP}!$UPTIMEP!g; \
+	s!{IPGW}!$IPGW!g" $TEMPLATE
 else
 	echo "Template $TEMPLATE missing!"
 fi

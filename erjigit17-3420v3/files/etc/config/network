@@ -39,3 +39,13 @@ config interface 'wan_stick'
 	option delayc '10'
 	option delegate '0'
 
+config interface 'WAN_usb0'
+	option proto 'dhcp'
+	option ifname 'usb0'
+	option delegate '0'
+
+config interface 'WAN_eth0'
+	option proto 'dhcp'
+	option ifname 'eth1'
+	option delegate '0'
+

@@ -4,14 +4,14 @@ config wifi-device 'radio0'
 	option hwmode '11g'
 	option path 'platform/ar933x_wmac'
 	option channel 'auto'
-	option txpower '10'
-	option country 'US'
+	option txpower '12'
+	option country 'JP'
 
 config wifi-iface
 	option device 'radio0'
-	option ssid 'iddqd,idkfa.local'
+	option ssid 'test'
 	option mode 'sta'
 	option encryption 'psk-mixed'
-	option key 'yabudupovelitelemmira1961198519912012'
+	option key 'testtest'
 	option network 'lan wwan'
 

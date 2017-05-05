@@ -4,22 +4,28 @@
 <p align="center">
 <table align="center">
 <tr><td>Режим беспроводного подключения</td><td><select name="wifin">
- <option value="bonly">b-only</option>
- <option value="auto">auto</option>
+ <option {SEL11b} value="11b">b-only</option>
+ <option {SEL11g} value="11g">auto</option>
  </select> </td></tr>
 <tr><td>Имя беспроводной сети</td><td> <input name="wifiname" type="text" value="{WIFINAME}" maxlength="100"></td></tr>
+<tr><td>Режим шифрования</td><td><select name="wifisec">
+ <option {SELnone} value="none">none</option>
+ <option {SELwep} value="wep">wep</option>
+ <option {SELpsk1} value="psk">wpa</option>
+ <option {SELpsk2} value="psk2">wpa2</option>
+ <option {SELpsk3} value="psk-mixed">wpa+wpa2</option>
+</select></td></tr>
+
 <tr><td>Пароль беспроводной сети</td><td><input name="wifipass" type="text" value="{WIFIPASS}" maxlength="100"></td></tr>
-<tr><td>Мощность беспроводной сети</td><td><select name="wifipw">
- <option value="0">Минимум (0db)</option>
- <option value="10">Средняя (10db)</option>
- <option value="15">Высокая (15db)</option>
- <option value="20">Максимальная (20db)</option>
-</select><b>{WIFIPW}</b></td></tr>
 <tr><td>IP адрес устройства</td><td> <input name="iprouter" type="text" value="{IPROUTER}" maxlength="100"></td></tr>
 <tr><td>IP адрес шлюза</td><td> <input name="ipgw" type="text" value="{IPGW}" maxlength="100"></td></tr>
 <tr><td><input name="sub" type="submit" value="Применить" align="absmiddle"></td><td><input name="reset" type="reset" value="Сброс" align="absmiddle"></td></tr>
 </table>
 </form>
-<p>&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">Подключено: {WLINK}</p>
+<p align="center">Время работы: {UPTIMEP}</p>
+<p align="center">&nbsp;</p>
+<p align="center">Версия: {VER}</p>
 <p align="center"><a href="cgi-bin/luci">Расширенные настройки Luci / Luci settings</a></p>
 <p align="center">Разработка прошивки HardD специально для Георгия Павлова&nbsp;<a href="http://acs-house.ru/">продвинутые прошивки для обычных роутеров</a></p>
