@@ -1,9 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-msgid "."
-msgstr ""
-
 msgid "Adblock"
 msgstr ""
 
@@ -84,7 +81,9 @@ msgid ""
 "'libustream-ssl' or the wget 'built-in'."
 msgstr ""
 
-msgid "For further information"
+msgid ""
+"For further information <a href=\"%s\" target=\"_blank\">see online "
+"documentation</a>"
 msgstr ""
 
 msgid "Force Overall Sort"
@@ -125,6 +124,9 @@ msgid ""
 "allowed - ip addresses, wildcards and regex are not."
 msgstr ""
 
+msgid "Please edit this file directly in a terminal session."
+msgstr ""
+
 msgid "Query"
 msgstr ""
 
@@ -158,6 +160,9 @@ msgid "Suspend / Resume adblock"
 msgstr ""
 
 msgid "Suspend adblock"
+msgstr ""
+
+msgid "The file size is too large for online editing in LuCI (&gt; 512 KB)."
 msgstr ""
 
 msgid ""
@@ -204,9 +209,6 @@ msgid "n/a"
 msgstr ""
 
 msgid "no domains blocked"
-msgstr ""
-
-msgid "see online documentation"
 msgstr ""
 
 msgid "suspended"
