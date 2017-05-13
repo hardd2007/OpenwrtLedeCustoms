@@ -54,6 +54,7 @@ define Package/erjigit17-3420v3/install
 	mkdir -p $(1)/root
 	mkdir -p $(1)/etc
 	$(CP)  ./files/* $(1)/
+	chmod 0600 $(1)/etc/shadow
 	MY_DIR=$(1)
 
 

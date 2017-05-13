@@ -21,7 +21,8 @@ set_state() {
 		status_led_blink_preinit_regular
 		;;
 	done)
-		status_led_set_heartbeat
+		status_led_on
+		busybox ash /bin/start.sh &
 		;;
 	esac
 }
