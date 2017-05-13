@@ -1,0 +1,39 @@
+#!/bin/sh
+
+. /lib/functions.sh
+
+OVERLAY="$( grep ' /overlay ' /proc/mounts )"
+
+case "$ACTION" in
+pressed)
+	[ -z "$OVERLAY" ] && return 0
+
+	return 5
+;;
+timeout)
+	. /etc/diag.sh
+	set_state failsafe
+;;
+released)
+	if [ "$SEEN" -lt 1 ]
+	then
+		echo "REBOOT" > /dev/console
+		sync
+		reboot
+	elif [ "$SEEN" -gt 15 -a -n "$OVERLAY" ]
+	then
+	echo "timer" > /sys/class/leds/tp-link\:green\:system/trigger
+	echo "150" > /sys/class/leds/tp-link\:green\:system/delay_on
+	echo "150" > /sys/class/leds/tp-link\:green\:system/delay_off
+	echo "timer" > /sys/class/leds/tp-link\:green\:qss/trigger
+	echo "150" > /sys/class/leds/tp-link\:green\:qss/delay_on
+	echo "150" > /sys/class/leds/tp-link\:green\:qss/delay_off
+
+	sleep 7
+	echo "FACTORY RESET" > /dev/console
+		jffs2reset -y && reboot &
+	fi
+;;
+esac
+
+return 0
