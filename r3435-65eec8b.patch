@@ -1,0 +1,401 @@
+diff --git a/package/kernel/linux/modules/hwmon.mk b/package/kernel/linux/modules/hwmon.mk
+index e296205..0ff4855 100644
+--- a/package/kernel/linux/modules/hwmon.mk
++++ b/package/kernel/linux/modules/hwmon.mk
+@@ -402,3 +402,18 @@
+ endef
+ 
+ $(eval $(call KernelPackage,hwmon-k10temp))
++
++
++define KernelPackage/hwmon-coretemp
++  TITLE:=Intel temperature sensor
++  KCONFIG:=CONFIG_SENSORS_CORETEMP
++  FILES:=$(LINUX_DIR)/drivers/hwmon/coretemp.ko
++  AUTOLOAD:=$(call AutoLoad,60,coretemp)
++  $(call AddDepends/hwmon,@PCI_SUPPORT @TARGET_x86)
++endef
++
++define KernelPackage/hwmon-coretemp/description
++  Thermal sensor support
++endef
++
++$(eval $(call KernelPackage,hwmon-coretemp))
+diff --git a/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh b/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh
+index 35de6c5..065b59a 100755
+--- a/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh
++++ b/package/network/utils/uqmi/files/lib/netifd/proto/qmi.sh
+@@ -69,12 +69,14 @@
+ 	done
+ 
+ 	[ -n "$pincode" ] && {
+-		uqmi -s -d "$device" --verify-pin1 "$pincode" || {
+-			echo "Unable to verify PIN"
+-			proto_notify_error "$interface" PIN_FAILED
+-			proto_block_restart "$interface"
+-			return 1
+-		}
++		if uqmi -s -d "$device" --get-pin-status | grep -q '"pin1_status":"not_verified"'; then
++			uqmi -s -d "$device" --verify-pin1 "$pincode" || {
++				echo "Unable to verify PIN"
++				proto_notify_error "$interface" PIN_FAILED
++				proto_block_restart "$interface"
++				return 1
++			}
++		fi
+ 	}
+ 
+ 	[ -n "$plmn" ] && {
+diff --git a/package/utils/busybox/Config-defaults.in b/package/utils/busybox/Config-defaults.in
+index 1977e7f..d225466 100644
+--- a/package/utils/busybox/Config-defaults.in
++++ b/package/utils/busybox/Config-defaults.in
+@@ -249,13 +249,13 @@
+ 	default 256
+ config BUSYBOX_DEFAULT_FEATURE_EDITING_SAVEHISTORY
+ 	bool
+-	default n
++	default y
+ config BUSYBOX_DEFAULT_FEATURE_EDITING_SAVE_ON_EXIT
+ 	bool
+ 	default n
+ config BUSYBOX_DEFAULT_FEATURE_REVERSE_SEARCH
+ 	bool
+-	default n
++	default y
+ config BUSYBOX_DEFAULT_FEATURE_TAB_COMPLETION
+ 	bool
+ 	default y
+@@ -2076,7 +2076,7 @@
+ 	default n
+ config BUSYBOX_DEFAULT_FTPPUT
+ 	bool
+-	default n
++	default y
+ config BUSYBOX_DEFAULT_FEATURE_FTPGETPUT_LONG_OPTIONS
+ 	bool
+ 	default n
+diff --git a/package/utils/usbmode/Makefile b/package/utils/usbmode/Makefile
+index 7f0195f..1b1ef14 100644
+--- a/package/utils/usbmode/Makefile
++++ b/package/utils/usbmode/Makefile
+@@ -40,8 +40,13 @@
+ define Build/Prepare
+ 	$(Build/Prepare/Default)
+ 	tar xvfj $(DL_DIR)/$(PKG_DATA_FILENAME) -C $(PKG_BUILD_DIR)
+-	rm -f \
+-		$(PKG_BUILD_DIR)/$(PKG_DATA_PATH)/usb_modeswitch.d/05c6:1000:sVe=GT
++	#remove devices with unsupported modes
++	for filevar in $(PKG_BUILD_DIR)/$(PKG_DATA_PATH)/usb_modeswitch.d/* ; \
++	do \
++		if grep -q -E '(Quanta|Option|Blackberry|Pantech)Mode' "$$$$filevar" ; then \
++			rm "$$$$filevar" ; \
++		fi \
++	done
+ 	cp ./data/* $(PKG_BUILD_DIR)/$(PKG_DATA_PATH)/usb_modeswitch.d/
+ 	#in order to keep the Lede GIT repo free of filenames with colons,
+ 	#we name the files xxxx-yyyy
+diff --git a/target/linux/ar71xx/base-files/etc/board.d/01_leds b/target/linux/ar71xx/base-files/etc/board.d/01_leds
+index 0279dfc..c1c4275 100755
+--- a/target/linux/ar71xx/base-files/etc/board.d/01_leds
++++ b/target/linux/ar71xx/base-files/etc/board.d/01_leds
+@@ -533,6 +533,12 @@
+ 		;;
+ 	esac
+ 	;;
++tl-mr6400)
++	ucidef_set_led_netdev "lan" "LAN" "tp-link:white:lan" "eth0"
++	ucidef_set_led_netdev "wan" "WAN" "tp-link:white:wan" "eth1"
++	ucidef_set_led_netdev "4g" "4G" "tp-link:white:4g" "usb0"
++	ucidef_set_led_wlan "wlan" "WLAN" "tp-link:white:wlan" "phy0tpt"
++	;;
+ tl-wa7210n-v2)
+ 	ucidef_set_led_netdev "lan" "LAN" "tp-link:green:lan" "eth0"
+ 	ucidef_set_rssimon "wlan0" "200000" "1"
+diff --git a/target/linux/ar71xx/base-files/etc/board.d/02_network b/target/linux/ar71xx/base-files/etc/board.d/02_network
+index c8c7827..9807edd 100755
+--- a/target/linux/ar71xx/base-files/etc/board.d/02_network
++++ b/target/linux/ar71xx/base-files/etc/board.d/02_network
+@@ -288,6 +288,11 @@
+ 		ucidef_add_switch "switch0" \
+ 			"0:lan:4" "1:lan:3" "2:lan:2" "3:lan:1" "4@eth1"
+ 		;;
++	tl-mr6400)
++		ucidef_set_interfaces_lan_wan "eth0 eth1" "usb0"
++		ucidef_add_switch "switch0" \
++			"0@eth0" "1:lan" "2:lan" "3:lan"
++		;;
+ 	dir-825-b1|\
+ 	nbg460n_550n_550nh|\
+ 	tew-673gru|\
+diff --git a/target/linux/ar71xx/base-files/etc/diag.sh b/target/linux/ar71xx/base-files/etc/diag.sh
+index 7b8aac8..21bceef 100644
+--- a/target/linux/ar71xx/base-files/etc/diag.sh
++++ b/target/linux/ar71xx/base-files/etc/diag.sh
+@@ -342,6 +342,9 @@
+ 	tl-wa860re)
+ 		status_led="tp-link:green:power"
+ 		;;
++	tl-mr6400)
++		status_led="tp-link:white:power"
++		;;
+ 	tl-mr3220|\
+ 	tl-mr3220-v2|\
+ 	tl-mr3420|\
+diff --git a/target/linux/ar71xx/base-files/lib/ar71xx.sh b/target/linux/ar71xx/base-files/lib/ar71xx.sh
+index b035535..c86bf32 100755
+--- a/target/linux/ar71xx/base-files/lib/ar71xx.sh
++++ b/target/linux/ar71xx/base-files/lib/ar71xx.sh
+@@ -294,6 +294,9 @@
+ 	"342000"*)
+ 		model="TP-Link TL-MR3420"
+ 		;;
++	"640000"*)
++		model="TP-Link TL-MR6400"
++		;;
+ 	"332000"*)
+ 		model="TP-Link TL-WDR3320"
+ 		;;
+@@ -965,6 +968,9 @@
+ 	*"TL-MR3420 v2")
+ 		name="tl-mr3420-v2"
+ 		;;
++	*TL-MR6400)
++		name="tl-mr6400"
++		;;
+ 	*"TL-WA701ND v2")
+ 		name="tl-wa701nd-v2"
+ 		;;
+diff --git a/target/linux/ar71xx/base-files/lib/upgrade/platform.sh b/target/linux/ar71xx/base-files/lib/upgrade/platform.sh
+index 580e09a..f912e71 100755
+--- a/target/linux/ar71xx/base-files/lib/upgrade/platform.sh
++++ b/target/linux/ar71xx/base-files/lib/upgrade/platform.sh
+@@ -387,6 +387,7 @@
+ 	tl-mr3220|\
+ 	tl-mr3420-v2|\
+ 	tl-mr3420|\
++	tl-mr6400|\
+ 	tl-wa701nd-v2|\
+ 	tl-wa7210n-v2|\
+ 	tl-wa750re|\
+diff --git a/target/linux/ar71xx/config-4.4 b/target/linux/ar71xx/config-4.4
+index ff6bb13..82cb06d 100644
+--- a/target/linux/ar71xx/config-4.4
++++ b/target/linux/ar71xx/config-4.4
+@@ -162,6 +162,7 @@
+ CONFIG_ATH79_MACH_TL_MR13U=y
+ CONFIG_ATH79_MACH_TL_MR3020=y
+ CONFIG_ATH79_MACH_TL_MR3X20=y
++CONFIG_ATH79_MACH_TL_MR6400=y
+ CONFIG_ATH79_MACH_TL_WA701ND_V2=y
+ CONFIG_ATH79_MACH_TL_WA7210N_V2=y
+ CONFIG_ATH79_MACH_TL_WA801ND_V3=y
+diff --git a/target/linux/ar71xx/files/arch/mips/ath79/Kconfig.openwrt b/target/linux/ar71xx/files/arch/mips/ath79/Kconfig.openwrt
+index 76ba6fa..9aac371 100644
+--- a/target/linux/ar71xx/files/arch/mips/ath79/Kconfig.openwrt
++++ b/target/linux/ar71xx/files/arch/mips/ath79/Kconfig.openwrt
+@@ -1302,6 +1302,16 @@
+ 	select ATH79_DEV_M25P80
+ 	select ATH79_DEV_USB
+ 
++config ATH79_MACH_TL_MR6400
++	bool "TP-LINK TL-MR6400 support"
++	select SOC_QCA953X
++	select ATH79_DEV_ETH
++	select ATH79_DEV_GPIO_BUTTONS
++	select ATH79_DEV_LEDS_GPIO
++	select ATH79_DEV_M25P80
++	select ATH79_DEV_USB
++	select ATH79_DEV_WMAC
++
+ config ATH79_MACH_TL_WAX50RE
+ 	bool "TP-LINK TL-WA750/850RE support"
+ 	select SOC_AR934X
+diff --git a/target/linux/ar71xx/files/arch/mips/ath79/Makefile b/target/linux/ar71xx/files/arch/mips/ath79/Makefile
+index c91d03f..deb5020 100644
+--- a/target/linux/ar71xx/files/arch/mips/ath79/Makefile
++++ b/target/linux/ar71xx/files/arch/mips/ath79/Makefile
+@@ -166,6 +166,7 @@
+ obj-$(CONFIG_ATH79_MACH_TL_MR13U)		+= mach-tl-mr13u.o
+ obj-$(CONFIG_ATH79_MACH_TL_MR3020)		+= mach-tl-mr3020.o
+ obj-$(CONFIG_ATH79_MACH_TL_MR3X20)		+= mach-tl-mr3x20.o
++obj-$(CONFIG_ATH79_MACH_TL_MR6400)		+= mach-tl-mr6400.o
+ obj-$(CONFIG_ATH79_MACH_TL_WA701ND_V2)		+= mach-tl-wa701nd-v2.o
+ obj-$(CONFIG_ATH79_MACH_TL_WA7210N_V2)		+= mach-tl-wa7210n-v2.o
+ obj-$(CONFIG_ATH79_MACH_TL_WA801ND_V3)		+= mach-tl-wa801nd-v3.o
+diff --git a/target/linux/ar71xx/files/arch/mips/ath79/mach-rb2011.c b/target/linux/ar71xx/files/arch/mips/ath79/mach-rb2011.c
+index 0db359c..6e49839 100644
+--- a/target/linux/ar71xx/files/arch/mips/ath79/mach-rb2011.c
++++ b/target/linux/ar71xx/files/arch/mips/ath79/mach-rb2011.c
+@@ -270,6 +270,7 @@
+ 	rb2011_nand_init();
+ 
+ 	ath79_setup_ar934x_eth_cfg(AR934X_ETH_CFG_RGMII_GMAC0 |
++				   AR934X_ETH_CFG_RXD_DELAY |
+ 				   AR934X_ETH_CFG_SW_ONLY_MODE);
+ 
+ 	ath79_register_mdio(1, 0x0);
+@@ -283,7 +284,7 @@
+ 	ath79_eth0_data.phy_if_mode = PHY_INTERFACE_MODE_RGMII;
+ 	ath79_eth0_data.phy_mask = BIT(0);
+ 	ath79_eth0_data.mii_bus_dev = &ath79_mdio0_device.dev;
+-	ath79_eth0_pll_data.pll_1000 = 0x06000000;
++	ath79_eth0_pll_data.pll_1000 = 0x6f000000;
+ 
+ 	ath79_register_eth(0);
+ 
+diff --git a/target/linux/ar71xx/files/arch/mips/ath79/machtypes.h b/target/linux/ar71xx/files/arch/mips/ath79/machtypes.h
+index b9a8e3e..c1fee61 100644
+--- a/target/linux/ar71xx/files/arch/mips/ath79/machtypes.h
++++ b/target/linux/ar71xx/files/arch/mips/ath79/machtypes.h
+@@ -192,6 +192,7 @@
+ 	ATH79_MACH_TL_MR3220_V2,		/* TP-LINK TL-MR3220 v2 */
+ 	ATH79_MACH_TL_MR3420,			/* TP-LINK TL-MR3420 */
+ 	ATH79_MACH_TL_MR3420_V2,		/* TP-LINK TL-MR3420 v2 */
++	ATH79_MACH_TL_MR6400,			/* TP-LINK TL-MR6400 */
+ 	ATH79_MACH_TL_WA701ND_V2,		/* TP-LINK TL-WA701ND v2 */
+ 	ATH79_MACH_TL_WA7210N_V2,		/* TP-LINK TL-WA7210N v2 */
+ 	ATH79_MACH_TL_WA750RE,			/* TP-LINK TL-WA750RE */
+diff --git a/target/linux/ar71xx/image/legacy.mk b/target/linux/ar71xx/image/legacy.mk
+index c94bc26..9f0c3c4 100644
+--- a/target/linux/ar71xx/image/legacy.mk
++++ b/target/linux/ar71xx/image/legacy.mk
+@@ -281,7 +281,7 @@
+ wnr2000v4_mtdlayout=mtdparts=spi0.0:192k(u-boot)ro,64k(u-boot-env)ro,3776k(firmware),64k(art)ro
+ r6100_mtdlayout=mtdparts=ar934x-nfc:128k(u-boot)ro,256k(caldata)ro,256k(caldata-backup),512k(config),512k(pot),2048k(kernel),122240k(ubi),25600k@0x1a0000(firmware),2048k(language),3072k(traffic_meter)
+ tew823dru_mtdlayout=mtdparts=spi0.0:192k(u-boot)ro,64k(nvram)ro,15296k(firmware),192k(lang)ro,512k(my-dlink)ro,64k(mac)ro,64k(art)ro
+-wndr4300_mtdlayout=mtdparts=ar934x-nfc:256k(u-boot)ro,256k(u-boot-env)ro,256k(caldata)ro,512k(pot),2048k(language),512k(config),3072k(traffic_meter),2048k(kernel),23552k(ubi),25600k@0x6c0000(firmware),256k(caldata_backup),-(reserved)
++wndr4300_mtdlayout=mtdparts=ar934x-nfc:256k(u-boot)ro,256k(u-boot-env)ro,256k(caldata)ro,512k(pot),2048k(language),512k(config),3072k(traffic_meter),2048k(kernel),121856k(ubi),123904k@0x6c0000(firmware),256k(caldata_backup),-(reserved)
+ zcn1523h_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6208k(rootfs),1472k(kernel),64k(configure)ro,64k(mfg)ro,64k(art)ro,7680k@0x50000(firmware)
+ mynet_rext_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,7808k(firmware),64k(nvram)ro,64k(ART)ro
+ zyx_nbg6716_mtdlayout=mtdparts=spi0.0:256k(u-boot)ro,64k(env)ro,64k(RFdata)ro,-(nbu);ar934x-nfc:2048k(zyxel_rfsd),2048k(romd),1024k(header),2048k(kernel),-(ubi)
+diff --git a/target/linux/ar71xx/image/tp-link.mk b/target/linux/ar71xx/image/tp-link.mk
+index 1c88f43..dc1346a 100644
+--- a/target/linux/ar71xx/image/tp-link.mk
++++ b/target/linux/ar71xx/image/tp-link.mk
+@@ -413,6 +413,17 @@
+ endef
+ TARGET_DEVICES += tl-mr3020-v1 tl-mr3040-v1 tl-mr3040-v2 tl-mr3220-v1 tl-mr3220-v2 tl-mr3420-v1 tl-mr3420-v2
+ 
++define Device/tl-mr6400-v1
++    $(Device/tplink-8mlzma)
++    DEVICE_TITLE := TP-LINK TL-MR6400 v1
++    DEVICE_PACKAGES := kmod-usb-core kmod-usb2 kmod-usb-net kmod-usb-net-rndis kmod-usb-serial kmod-usb-serial-option adb-enablemodem
++    BOARDNAME := TL-MR6400
++    DEVICE_PROFILE := TLMR6400
++    TPLINK_HWID := 0x64000001
++endef
++TARGET_DEVICES += tl-mr6400-v1
++
++
+ define Device/tl-wpa8630
+     $(Device/tplink-8mlzma)
+     DEVICE_TITLE := TP-LINK TL-WPA8630
+diff --git a/target/linux/ipq806x/files/arch/arm/boot/dts/qcom-ipq8065-r7800.dts b/target/linux/ipq806x/files/arch/arm/boot/dts/qcom-ipq8065-r7800.dts
+index 79c8334..61e0ee7 100644
+--- a/target/linux/ipq806x/files/arch/arm/boot/dts/qcom-ipq8065-r7800.dts
++++ b/target/linux/ipq806x/files/arch/arm/boot/dts/qcom-ipq8065-r7800.dts
+@@ -357,13 +357,7 @@
+ 
+ 			ubi@1680000 {
+ 				label = "ubi";
+-				reg = <0x1680000 0x1E00000>;
+-			};
+-
+-			netgear@3480000 {
+-				label = "netgear";
+-				reg = <0x3480000 0x4480000>;
+-				read-only;
++				reg = <0x1680000 0x6280000>;
+ 			};
+ 
+ 			reserve@7900000 {
+@@ -374,7 +368,7 @@
+ 
+ 			firmware@1480000 {
+ 				label = "firmware";
+-				reg = <0x1480000 0x2000000>;
++				reg = <0x1480000 0x6480000>;
+ 			};
+ 		};
+ 
+diff --git a/target/linux/ramips/base-files/etc/init.d/enablemodem b/target/linux/ramips/base-files/etc/init.d/enablemodem
+deleted file mode 100755
+index ba54cc4..0000000
++++ /dev/null
+@@ -1,17 +0,0 @@
+-#!/bin/sh /etc/rc.common
+-
+-START=99
+-
+-start() {
+-	. /lib/ramips.sh
+-
+-	local board=$(ramips_board_name)
+-	if [ $board = "mr200" ]; then
+-		adb wait-for-device
+-		adb shell chmod +x /WEBSERVER/www/cgi-bin/*
+-		adb shell httpd -h /WEBSERVER/www/ &
+-		echo "2357 000d" > /sys/bus/usb-serial/drivers/option1/new_id
+-		sleep 2
+-		adb kill-server
+-	fi
+-}
+diff --git a/target/linux/ramips/base-files/lib/ramips.sh b/target/linux/ramips/base-files/lib/ramips.sh
+index e642d56..80c55ef 100755
+--- a/target/linux/ramips/base-files/lib/ramips.sh
++++ b/target/linux/ramips/base-files/lib/ramips.sh
+@@ -598,11 +598,8 @@
+ 	*"WT1520 (8M)")
+ 		name="wt1520-8M"
+ 		;;
+-	*"WT3020 (4M)")
+-		name="wt3020-4M"
+-		;;
+-	*"WT3020 (8M)")
+-		name="wt3020-8M"
++	*"WT3020"*)
++		name="wt3020"
+ 		;;
+ 	*"WZR-AGL300NH")
+ 		name="wzr-agl300nh"
+diff --git a/target/linux/ramips/image/mt7620.mk b/target/linux/ramips/image/mt7620.mk
+index e27c405..16e9364 100644
+--- a/target/linux/ramips/image/mt7620.mk
++++ b/target/linux/ramips/image/mt7620.mk
+@@ -62,7 +62,7 @@
+   KERNEL := $(KERNEL_DTB)
+   KERNEL_INITRAMFS := $(KERNEL_DTB) | tplink-header ArcherMR200 -c
+   IMAGE/sysupgrade.bin := append-kernel | tplink-header ArcherMR200 -j | append-metadata
+-  DEVICE_PACKAGES := kmod-usb2 kmod-usb-net kmod-usb-net-rndis kmod-usb-serial kmod-usb-serial-option adb
++  DEVICE_PACKAGES := kmod-usb2 kmod-usb-net kmod-usb-net-rndis kmod-usb-serial kmod-usb-serial-option adb-enablemodem
+   DEVICE_TITLE := TP-Link ArcherMR200
+ endef
+ TARGET_DEVICES += ArcherMR200
+@@ -110,6 +110,15 @@
+ endef
+ TARGET_DEVICES += wt3020-8M
+ 
++define Device/wt3020-16M
++  DTS := WT3020-16M
++  IMAGES += factory.bin
++  IMAGE/factory.bin := $$(sysupgrade_bin) | check-size $$$$(IMAGE_SIZE) | \
++	poray-header -B WT3020 -F 8M
++  DEVICE_TITLE := Nexx WT3020 (16MB)
++endef
++TARGET_DEVICES += wt3020-16M
++
+ define Device/wrh-300cr
+   DTS := WRH-300CR
+   IMAGE_SIZE := $(ralink_default_fw_size_16M)
+diff --git a/target/linux/x86/64/config-default b/target/linux/x86/64/config-default
+index 848f041..d19ed15 100644
+--- a/target/linux/x86/64/config-default
++++ b/target/linux/x86/64/config-default
+@@ -310,3 +310,6 @@
+ # CONFIG_X86_X32 is not set
+ CONFIG_XPS=y
+ CONFIG_ZONE_DMA32=y
++
++
++CONFIG_INTEL_IDLE=y
