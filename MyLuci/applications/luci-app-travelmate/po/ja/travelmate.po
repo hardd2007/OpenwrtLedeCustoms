@@ -107,12 +107,12 @@ msgstr ""
 "詳細な情報は <a href=\"%s\" target=\"_blank\">オンライン ドキュメント</a> を"
 "確認してください。"
 
-msgid "How long should travelmate wait for a successful wlan interface reload"
+msgid "How long should travelmate wait for a successful wlan interface reload."
 msgstr ""
 "無線LAN インターフェースのリロードが成功するまでの、Travelmate の待機時間で"
 "す。"
 
-msgid "How many times should travelmate try to connect to an Uplink"
+msgid "How many times should travelmate try to connect to an Uplink."
 msgstr "Travelmate がアップリンクへの接続を試行する回数です。"
 
 msgid "Input file not found, please check your configuration."
@@ -128,8 +128,8 @@ msgid ""
 "Keep travelmate in an active state. Check every n seconds the connection "
 "status, i.e. the uplink availability."
 msgstr ""
-"Travelmate をアクティブ状態で維持します。 n秒ごとにアップリンクの可用性確認と"
-"して、接続状態をチェックします"
+"Travelmate をアクティブ状態で維持します。\"実行間隔\" で設定された時間毎"
+"（秒）に、アップリンクの可用性を確認するために接続状態をチェックします"
 
 msgid "Last rundate"
 msgstr "最終実行日時"
@@ -161,7 +161,7 @@ msgid ""
 msgstr "デフォルトの設定が適切でない場合、さらに設定するためのオプションです。"
 
 msgid "Overall Timeout"
-msgstr "全体タイムアウト"
+msgstr "実行間隔"
 
 msgid "Overview"
 msgstr "概要"
@@ -188,8 +188,8 @@ msgstr "再スキャン"
 msgid "Rescan"
 msgstr "再スキャン"
 
-msgid "Restrict travelmate to a dedicated radio, e.g. 'radio0'"
-msgstr "Travelmate が特定の無線に接続するようにします。例: 'radio0'"
+msgid "Restrict travelmate to a dedicated radio, e.g. 'radio0'."
+msgstr "Travelmate が指定された無線に接続するよう制御します。（例: 'radio0'）"
 
 msgid "Runtime information"
 msgstr "実行情報"
@@ -199,6 +199,9 @@ msgstr "SSID"
 
 msgid "SSID (hidden)"
 msgstr "SSID（ステルス）"
+
+msgid "Save"
+msgstr "保存"
 
 msgid "Scan"
 msgstr "スキャン:"
@@ -253,8 +256,12 @@ msgstr ""
 "このフォームには、システムログ内の Travelmate に関するメッセージのみが表示さ"
 "れます。"
 
-msgid "Timeout in seconds between retries in 'automatic' mode"
-msgstr "'automatic' モード時に接続を再試行する間隔（秒）です。"
+msgid "Timeout in seconds between retries in 'automatic' mode."
+msgstr "'automatic' モード時に接続を確認または再試行する間隔（秒）です。"
+
+msgid "To disable this feature set it to '0' which means unlimited retries."
+msgstr ""
+"この機能を無効にして接続の再試行を無制限にする場合、 '0' を設定します。"
 
 msgid "Travelmate"
 msgstr "Travelmate"
@@ -272,7 +279,7 @@ msgid "Unknown"
 msgstr "不明"
 
 msgid "Uplink / Trigger interface"
-msgstr "アップリンク/トリガー インターフェース"
+msgstr "アップリンク / トリガー インターフェース"
 
 msgid "Uplink SSID"
 msgstr "アップリンク SSID"

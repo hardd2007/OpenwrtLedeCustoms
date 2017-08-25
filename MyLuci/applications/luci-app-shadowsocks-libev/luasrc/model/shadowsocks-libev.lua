@@ -3,6 +3,7 @@
 
 local _up = getfenv(3)
 local ut = require("luci.util")
+local sys = require("luci.sys")
 local ds = require("luci.dispatcher")
 local nw = require("luci.model.network")
 nw.init()
@@ -14,20 +15,25 @@ module("luci.model.shadowsocks-libev", function(m)
 end)
 
 function values_actions(o)
-	for _, a in ipairs(actions) do
-		o:value(a)
+	o:value("bypass")
+	o:value("forward")
+	if o.option ~= "dst_default" then
+		o:value("checkdst")
 	end
 end
 
 function values_redir(o, xmode)
 	o.map.uci.foreach("shadowsocks-libev", "ss_redir", function(sdata)
+		local disabled = ucival_to_bool(sdata["disabled"])
 		local sname = sdata[".name"]
-		local mode = sdata["mode"]
-		if mode and mode:find(xmode) then
+		local mode = sdata["mode"] or "tcp_only"
+		if not disabled and mode:find(xmode) then
 			local desc = "%s - %s" % {sname, mode}
 			o:value(sname, desc)
 		end
 	end)
+	o:value("", "<unset>")
+	o.default = ""
 end
 
 function values_serverlist(o)
@@ -43,11 +49,16 @@ function values_serverlist(o)
 end
 
 function values_ipaddr(o)
-	local keys, vals = {}, {}
 	for _, v in ipairs(nw:get_interfaces()) do
 		for _, a in ipairs(v:ipaddrs()) do
 			o:value(a:host():string(), '%s (%s)' %{ a:host(), v:shortname() })
 		end
+	end
+end
+
+function values_ifnames(o)
+	for _, v in ipairs(sys.net.devices()) do
+		o:value(v)
 	end
 end
 
@@ -156,6 +167,9 @@ function cfgvalue_overview_(sdata, lines, names)
 	for _, n in ipairs(names) do
 		local v = sdata[n]
 		if v ~= nil then
+			if n == "key" or n == "password" then
+				v = translate("<hidden>")
+			end
 			local fv = "<var>%s</var>" % ut.pcdata(v)
 			if sdata[".type"] ~= "ss_server" and n == "server" then
 				fv = '<a class="label" href="%s">%s</a>' % {
@@ -223,17 +237,13 @@ modes = {
 	"udp_only",
 }
 
-actions = {
-	"bypass",
-	"forward",
-	"checkdst",
-}
-
 methods = {
 	-- aead
 	"aes-128-gcm",
 	"aes-192-gcm",
 	"aes-256-gcm",
+	"chacha20-ietf-poly1305",
+	"xchacha20-ietf-poly1305",
 	-- stream
 	"table",
 	"rc4",

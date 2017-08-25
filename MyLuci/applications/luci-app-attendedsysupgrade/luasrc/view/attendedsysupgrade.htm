@@ -1,16 +1,102 @@
+<%
+-- all lua code provided by https://github.com/jow-/
+-- thank you very much!
+
+    function apply_acls(filename, session)
+        local json = require "luci.jsonc"
+        local util = require "luci.util"
+        local fs   = require "nixio.fs"
+
+        local grants = { }
+
+        local acl = json.parse(fs.readfile(filename))
+        if type(acl) ~= "table" then
+            return
+        end
+
+        local group, perms
+        for group, perms in pairs(acl) do
+            local perm, scopes
+            for perm, scopes in pairs(perms) do
+                if type(scopes) == "table" then
+                    local scope, objects
+                    for scope, objects in pairs(scopes) do
+                        if type(objects) == "table" then
+                            if not grants[scope] then
+                                grants[scope] = { }
+                            end
+
+                            if next(objects) == 1 then
+                                local _, object
+                                for _, object in ipairs(objects) do
+                                    if not grants[scope][object] then
+                                        grants[scope][object] = { }
+                                    end
+                                    table.insert(grants[scope][object], perm)
+                                end
+                            else
+                                local object, funcs
+                                for object, funcs in pairs(objects) do
+                                    if type(funcs) == "table" then
+                                        local _, func
+                                        for _, func in ipairs(funcs) do
+                                            if not grants[scope][object] then
+                                                grants[scope][object] = { }
+                                            end
+                                            table.insert(grants[scope][object], func)
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+
+        local _, scope, object, func
+        for scope, _ in pairs(grants) do
+            local objects = { }
+            for object, _ in pairs(_) do
+                for _, func in ipairs(_) do
+                    table.insert(objects, { object, func })
+                end
+            end
+
+            util.ubus("session", "grant", {
+                ubus_rpc_session = session,
+                scope = scope, objects = objects
+            })
+        end
+    end
+
+    apply_acls("/usr/share/rpcd/acl.d/attendedsysupgrade.json", luci.dispatcher.context.authsession)
+    apply_acls("/usr/share/rpcd/acl.d/packagelist.json", luci.dispatcher.context.authsession)
+%>
 <%+header%>
 <h2 name="content"><%:Attended Sysupgrade%></h2>
-<div  class="container">
-	<div style="display: none" id="update_info" class="alert-message info">
-	</div>
-	<div style="display: none" id="update_error" class="alert-message danger">
-	</div>
+<div class="container">
+	<div style="display: none" id="update_info" class="alert-message info"></div>
+	<div style="display: none" id="update_error" class="alert-message danger"></div>
 </div>
 <input class="cbi-button" value="search for updates" onclick="update_request()" type="button" id="update_button">
+<div style="display: none" id="packages" class="alert-message success"></div>
+<div class="cbi-value" id="update_packages_container" style="display: block">
+	<label class="cbi-value-title" for="keep">search for package updates:</label>
+	<div class="cbi-value-field">
+		<input type="checkbox" name="update_packages" id="update_packages" />
+	</div>
+</div>
+<div class="cbi-value" id="keep_container" style="display: none">
+	<label class="cbi-value-title" for="keep">keep settings:</label>
+	<div class="cbi-value-field">
+		<input type="checkbox" name="keep" id="keep" checked="checked" />
+	</div>
+</div>
 
 <script type="text/javascript">
 
-latest_release = "";
+latest_version = "";
 data = {};
 ubus_counter = 1
 origin = document.location.href.replace(location.pathname, "")
@@ -22,7 +108,6 @@ function server_request(request_dict, path, callback) {
 	request_dict.distro = data.release.distribution;
 	request_dict.target = data.release.target.split("\/")[0];
 	request_dict.subtarget = data.release.target.split("\/")[1];
-	request_dict.packages = data.packagelist;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", url, true);
 	xmlhttp.setRequestHeader("Content-type", "application/json");
@@ -37,8 +122,11 @@ function server_request(request_dict, path, callback) {
 
 // requests ubus via rpcd
 function ubus_request(command, argument, params, callback) {
-	// perform login if ubus_rpc_session is empty
-	var request_data = '{ "jsonrpc": "2.0", "id": ' + ubus_counter + ', "method": "call", "params": [ "'+ data["ubus_rpc_session"] +'", "' + command + '", "' + argument + '", ' + params + ' ] }'
+	request_data = {};
+	request_data.jsonrpc = "2.0";
+	request_data.id = ubus_counter;
+	request_data.method = "call";
+	request_data.params = [ data.ubus_rpc_session, command, argument, params ]
 	ubus_counter++
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", ubus_url, true);
@@ -53,7 +141,7 @@ function ubus_request(command, argument, params, callback) {
 			ubus_request_callback(xmlhttp, callback)
 		}
 	});
-	xmlhttp.send(request_data);
+	xmlhttp.send(JSON.stringify(request_data));
 }
 
 // handle ubus_requests, set variables or perform functions
@@ -62,6 +150,9 @@ function ubus_request_callback(response_object, callback) {
 		console.log(callback)
 		if(typeof callback === "string") {
 			response_json = JSON.parse(response_object.responseText).result[1]
+			if (callback == "release") {
+				latest_version = response_json.release.version
+			}
 			data[callback] = response_json[callback]
 		} else {
 			callback(response_object)
@@ -76,6 +167,8 @@ function ubus_request_callback_uci(response_object, callback) {
 		console.log(callback)
 		response_json = JSON.parse(response_object.responseText).result[1].value
 		data[callback] = response_json
+
+		document.getElementById("update_packages").checked = data.update_packages;
 	} else {
 		console.log(respons_object.responseText)
 	}
@@ -84,10 +177,12 @@ function ubus_request_callback_uci(response_object, callback) {
 // initial setup, get system information
 function setup() {
 	data["ubus_rpc_session"] = "<%=luci.dispatcher.context.authsession%>"
-	ubus_request("packagelist", "list", '{  }', "packagelist")
-	ubus_request("system", "board", '{  }', "release")
-	ubus_request("system", "board", '{  }', "board_name")
-	ubus_request("uci", "get", '{"config": "attendedsysupgrade", "section": "@settings[0]", "option": "update_server"}', "update_server")
+	ubus_request("packagelist", "list", {}, "packagelist");
+	ubus_request("system", "board", {}, "release");
+	ubus_request("system", "board", {}, "board_name");
+	ubus_request("system", "board", {}, "model");
+	ubus_request("uci", "get", { "config": "attendedsysupgrade", "section": "updateserver", "option": "url" }, "update_server")
+	ubus_request("uci", "get", { "config": "attendedsysupgrade", "section": "updateclient", "option": "update_packages" }, "update_packages")
 }
 
 // shows notification if update is available
@@ -99,7 +194,7 @@ function update_info(info_output) {
 function update_error(error_output) {
 	document.getElementById("update_error").style.display = "block";
 	document.getElementById("update_error").innerHTML = error_output;
-	document.getElementById("update_info").style.display = "None";
+	document.getElementById("update_info").style.display = "none";
 }
 
 // asks server for news updates, actually only based on relesae not packages
@@ -107,6 +202,10 @@ function update_request() {
 	console.log("update_request")
 	request_dict = {}
 	request_dict.version = data.release.version;
+	request_dict.packages = data.packagelist;
+	if (document.getElementById("update_packages").checked == 1) {
+		request_dict.update_packages = 1
+	}
 	server_request(request_dict, "update-request", update_request_callback)
 }
 
@@ -135,7 +234,7 @@ function update_request_callback(response_object) {
 		// bad request
 		console.log(response_object.responseText)
 		response_object_content = JSON.parse(response_object.responseText)
-		update_error(response_object_content)
+		update_error(response_object_content.error)
 	} else if (response_object.status === 200) {
 		// new release/updates
 		response_object_content = JSON.parse(response_object.responseText)
@@ -144,7 +243,7 @@ function update_request_callback(response_object) {
 }
 
 function back_online() {
-	ubus_request("session", "login", '{  }', back_online_callback)
+	ubus_request("session", "login", {}, back_online_callback)
 }
 
 function back_online_callback(response_object) {
@@ -161,23 +260,32 @@ function back_online_callback(response_object) {
 function update_request_200(response_content) {
 	info_output = ""
 	if(response_content.version != undefined) {
-		info_output += "new update available. from " + data.release.version + " to " + response_content.version
+		info_output += "<h3>new update available</h3>"
+		info_output += data.release.version + " to " + response_content.version
 		latest_version = response_content.version;
 	}
-	if(response_content.packages != undefined) {
-		info_output += "package updates available"
+	if(response_content.updates != undefined) {
+		info_output += "<h3>package updates available</h3>"
+		for (update in response_content.updates) {
+			info_output += "<b>" + update + "</b>: " + response_content.updates[update][1] + " to " + response_content.updates[update][0] + "</br>"
+		}
 	}
+	data.packages = response_content.packages
 	update_info(info_output)
 	document.getElementById("update_button").value = "request image";
+	document.getElementById("update_packages_container").style.display = "none";
 	document.getElementById("update_button").onclick = image_request;
 }
 
 // request the image, need merge with update_request
 function image_request() {
 	console.log("image_request")
+	document.getElementById("update_packages_container").style.display = "none";
 	request_dict = {}
 	request_dict.version = latest_version;
 	request_dict.board = data.board_name
+	request_dict.packages = data.packages;
+	request_dict.model = data.model
 	server_request(request_dict, "image-request", image_request_handler)
 }
 
@@ -211,8 +319,9 @@ function image_request_handler(response) {
 		// ready to download
 		response_content = JSON.parse(response.responseText)
 		update_info("image created")
-		document.getElementById("update_button").value = "download and flash"
+		document.getElementById("update_button").value = "sysupgrade"
 		document.getElementById("update_button").onclick = function() {download_image(response_content.url); }
+		document.getElementById("keep_container").style.display = "block";
 	}
 }
 
@@ -230,7 +339,8 @@ function upload_image(blob) {
 	upload_request.addEventListener('load', function(event) {
 		// this checksum should be parsed
 		document.getElementById("update_info").innerHTML = "flashing... please wait" // show fancy indicator http://www.ajaxload.info/
-		ubus_request("attendedsysupgrade", "sysupgrade", '{  }', 'done');
+
+		ubus_request("attendedsysupgrade", "sysupgrade", { "keep_settings": document.getElementById("keep").checked }, 'done');
   	});
 
   	upload_request.addEventListener('error', function(event) {
