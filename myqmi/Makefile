@@ -34,7 +34,7 @@ define Package/myqmi/description
  This package contains protocol support for QMI.
 endef
 
-define Package/luci-proto-qmi
+define Package/luci-proto-myqmi
 $(call Package/myqmi/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
@@ -43,7 +43,7 @@ $(call Package/myqmi/Default)
   DEPENDS:=+uqmi +myqmi
 endef
 
-define Package/luci-proto-qmi/description
+define Package/luci-proto-myqmi/description
  This package contains LuCI support for uqmi
 endef
 
@@ -76,7 +76,7 @@ define Package/myqmi/install
 #	$(INSTALL_DATA) ./files/etc/gcom/ncm/getcardinfo.gcom $(1)/etc/gcom/ncm/
 endef
 
-define Package/luci-proto-qmi/install
+define Package/luci-proto-myqmi/install
 	$(INSTALL_DIR) $(1)/usr
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/lib/lua
@@ -90,4 +90,4 @@ define Package/luci-proto-qmi/install
 endef
 
 $(eval $(call BuildPackage,myqmi))
-$(eval $(call BuildPackage,luci-proto-qmi))
+$(eval $(call BuildPackage,luci-proto-myqmi))

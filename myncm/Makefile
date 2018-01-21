@@ -30,7 +30,7 @@ $(call Package/myncm/Default)
   DEPENDS:=+comgt +wwan +netifd
 endef
 
-define Package/luci-proto-ncm
+define Package/luci-proto-myncm
 $(call Package/myncm/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
@@ -62,7 +62,7 @@ define Package/myncm/install
 	$(INSTALL_BIN) ./files/ncm.sh $(1)/lib/netifd/proto/ncm.sh
 endef
 
-define Package/luci-proto-ncm/install
+define Package/luci-proto-myncm/install
 	$(INSTALL_DIR) $(1)/usr
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/lib/lua
@@ -78,4 +78,4 @@ endef
 
 
 $(eval $(call BuildPackage,myncm))
-$(eval $(call BuildPackage,luci-proto-ncm))
+$(eval $(call BuildPackage,luci-proto-myncm))
