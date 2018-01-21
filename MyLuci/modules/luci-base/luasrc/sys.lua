@@ -7,6 +7,7 @@ local table  = require "table"
 local nixio  = require "nixio"
 local fs     = require "nixio.fs"
 local uci    = require "luci.model.uci"
+local ntm    = require "luci.model.network"
 
 local luci  = {}
 luci.util   = require "luci.util"
@@ -451,37 +452,19 @@ end
 wifi = {}
 
 function wifi.getiwinfo(ifname)
-	local stat, iwinfo = pcall(require, "iwinfo")
+	ntm.init()
 
-	if ifname then
-		local d, n = ifname:match("^(%w+)%.network(%d+)")
-		local wstate = luci.util.ubus("network.wireless", "status") or { }
-
-		d = d or ifname
-		n = n and tonumber(n) or 1
-
-		if type(wstate[d]) == "table" and
-		   type(wstate[d].interfaces) == "table" and
-		   type(wstate[d].interfaces[n]) == "table" and
-		   type(wstate[d].interfaces[n].ifname) == "string"
-		then
-			ifname = wstate[d].interfaces[n].ifname
-		else
-			ifname = d
-		end
-
-		local t = stat and iwinfo.type(ifname)
-		local x = t and iwinfo[t] or { }
-		return setmetatable({}, {
-			__index = function(t, k)
-				if k == "ifname" then
-					return ifname
-				elseif x[k] then
-					return x[k](ifname)
-				end
-			end
-		})
+	local wnet = ntm:get_wifinet(ifname)
+	if wnet and wnet.iwinfo then
+		return wnet.iwinfo
 	end
+
+	local wdev = ntm:get_wifidev(ifname)
+	if wdev and wdev.iwinfo then
+		return wdev.iwinfo
+	end
+
+	return { ifname = ifname }
 end
 
 

@@ -8,6 +8,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+msgid "%.1f dB"
+msgstr ""
+
 msgid "%s is untagged in multiple VLANs!"
 msgstr ""
 
@@ -123,6 +126,9 @@ msgstr ""
 msgid "<abbr title=\"Media Access Control\">MAC</abbr>-Address"
 msgstr ""
 
+msgid "<abbr title=\"The DHCP Unique Identifier\">DUID</abbr>"
+msgstr ""
+
 msgid ""
 "<abbr title=\"maximal\">Max.</abbr> <abbr title=\"Dynamic Host Configuration "
 "Protocol\">DHCP</abbr> leases"
@@ -198,9 +204,6 @@ msgstr ""
 msgid "Access Point"
 msgstr ""
 
-msgid "Action"
-msgstr ""
-
 msgid "Actions"
 msgstr ""
 
@@ -270,6 +273,9 @@ msgid "Allow <abbr title=\"Secure Shell\">SSH</abbr> password authentication"
 msgstr ""
 
 msgid "Allow all except listed"
+msgstr ""
+
+msgid "Allow legacy 802.11b rates"
 msgstr ""
 
 msgid "Allow listed only"
@@ -537,9 +543,6 @@ msgid ""
 "preserved in any sysupgrade."
 msgstr ""
 
-msgid "Buttons"
-msgstr ""
-
 msgid "CA certificate; if empty it will be saved after the first connection."
 msgstr ""
 
@@ -570,7 +573,7 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
-msgid "Check fileystems before mount"
+msgid "Check filesystems before mount"
 msgstr ""
 
 msgid "Check this option to delete the existing networks from this radio."
@@ -624,6 +627,13 @@ msgid "Command"
 msgstr ""
 
 msgid "Common Configuration"
+msgstr ""
+
+msgid ""
+"Complicates key reinstallation attacks on the client side by disabling "
+"retransmission of EAPOL-Key frames that are used to install keys. This "
+"workaround might cause interoperability issues and reduced robustness of key "
+"negotiation especially in environments with heavy traffic load."
 msgstr ""
 
 msgid "Configuration"
@@ -899,6 +909,9 @@ msgstr ""
 msgid "Download backup"
 msgstr ""
 
+msgid "Downstream SNR offset"
+msgstr ""
+
 msgid "Dropbear Instance"
 msgstr ""
 
@@ -975,6 +988,9 @@ msgid "Enable VLAN functionality"
 msgstr ""
 
 msgid "Enable WPS pushbutton, requires WPA(2)-PSK"
+msgstr ""
+
+msgid "Enable key reinstallation (KRACK) countermeasures"
 msgstr ""
 
 msgid "Enable learning and aging"
@@ -1068,6 +1084,15 @@ msgid "External system log server protocol"
 msgstr ""
 
 msgid "Extra SSH command options"
+msgstr ""
+
+msgid "FT over DS"
+msgstr ""
+
+msgid "FT over the Air"
+msgstr ""
+
+msgid "FT protocol"
 msgstr ""
 
 msgid "File"
@@ -1171,6 +1196,9 @@ msgstr ""
 msgid "Forward broadcast traffic"
 msgstr ""
 
+msgid "Forward mesh peer traffic"
+msgstr ""
+
 msgid "Forwarding mode"
 msgstr ""
 
@@ -1215,6 +1243,9 @@ msgstr ""
 msgid "Generate Config"
 msgstr ""
 
+msgid "Generate PMK locally"
+msgstr ""
+
 msgid "Generate archive"
 msgstr ""
 
@@ -1249,9 +1280,6 @@ msgid "HE.net username"
 msgstr ""
 
 msgid "HT mode (802.11n)"
-msgstr ""
-
-msgid "Handler"
 msgstr ""
 
 msgid "Hang Up"
@@ -1420,7 +1448,7 @@ msgstr ""
 msgid "Identity"
 msgstr ""
 
-msgid "If checked, 1DES is enaled"
+msgid "If checked, 1DES is enabled"
 msgstr ""
 
 msgid "If checked, encryption is disabled"
@@ -1828,9 +1856,6 @@ msgstr ""
 msgid "Maximum amount of seconds to wait for the modem to become ready"
 msgstr ""
 
-msgid "Maximum hold time"
-msgstr ""
-
 msgid ""
 "Maximum length of the name is 15 characters including the automatic protocol/"
 "bridge prefix (br-, 6in4-, pppoe- etc.)"
@@ -1848,10 +1873,10 @@ msgstr ""
 msgid "Memory usage (%)"
 msgstr ""
 
-msgid "Metric"
+msgid "Mesh Id"
 msgstr ""
 
-msgid "Minimum hold time"
+msgid "Metric"
 msgstr ""
 
 msgid "Mirror monitor port"
@@ -2288,9 +2313,6 @@ msgid "Path to Client-Certificate"
 msgstr ""
 
 msgid "Path to Private Key"
-msgstr ""
-
-msgid "Path to executable which handles the button event"
 msgstr ""
 
 msgid "Path to inner CA-Certificate"
@@ -2850,9 +2872,6 @@ msgstr ""
 msgid "Source routing"
 msgstr ""
 
-msgid "Specifies the button state to handle"
-msgstr ""
-
 msgid "Specifies the directory the device is attached to"
 msgstr ""
 
@@ -2950,6 +2969,9 @@ msgstr ""
 
 msgid ""
 "Switch %q has an unknown topology - the VLAN settings might not be accurate."
+msgstr ""
+
+msgid "Switch Port Mask"
 msgstr ""
 
 msgid "Switch VLAN"
@@ -3195,9 +3217,6 @@ msgid ""
 "their status."
 msgstr ""
 
-msgid "This page allows the configuration of custom button actions"
-msgstr ""
-
 msgid "This page gives an overview over currently active network connections."
 msgstr ""
 
@@ -3379,9 +3398,9 @@ msgstr ""
 
 msgid ""
 "Use the <em>Add</em> Button to add a new lease entry. The <em>MAC-Address</"
-"em> indentifies the host, the <em>IPv4-Address</em> specifies to the fixed "
-"address to use and the <em>Hostname</em> is assigned as symbolic name to the "
-"requesting host. The optional <em>Lease time</em> can be used to set non-"
+"em> indentifies the host, the <em>IPv4-Address</em> specifies the fixed "
+"address to use, and the <em>Hostname</em> is assigned as a symbolic name to "
+"the requesting host. The optional <em>Lease time</em> can be used to set non-"
 "standard host-specific lease time, e.g. 12h, 3d or infinite."
 msgstr ""
 
@@ -3493,6 +3512,11 @@ msgid "Warning"
 msgstr ""
 
 msgid "Warning: There are unsaved changes that will get lost on reboot!"
+msgstr ""
+
+msgid ""
+"When using a PSK, the PMK can be generated locally without inter AP "
+"communications"
 msgstr ""
 
 msgid "Whether to create an IPv6 default route over the tunnel"

@@ -31,7 +31,19 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
+msgid "Authentication"
+msgstr ""
+
+msgid "Automatic"
+msgstr ""
+
+msgid "BSSID"
+msgstr ""
+
 msgid "Back to overview"
+msgstr ""
+
+msgid "Cipher"
 msgstr ""
 
 msgid ""
@@ -56,6 +68,9 @@ msgid "Delete this Uplink"
 msgstr ""
 
 msgid "Device"
+msgstr ""
+
+msgid "EAP-Method"
 msgstr ""
 
 msgid "Edit"
@@ -102,10 +117,28 @@ msgid ""
 "documentation</a>"
 msgstr ""
 
+msgid "Force CCMP (AES)"
+msgstr ""
+
+msgid "Force TKIP"
+msgstr ""
+
+msgid "Force TKIP and CCMP (AES)"
+msgstr ""
+
+msgid "Force a manual uplink rescan / reconnect in 'trigger' mode."
+msgstr ""
+
 msgid "How long should travelmate wait for a successful wlan interface reload."
 msgstr ""
 
 msgid "How many times should travelmate try to connect to an Uplink."
+msgstr ""
+
+msgid "Identity"
+msgstr ""
+
+msgid "Ignore BSSID"
 msgstr ""
 
 msgid "Input file not found, please check your configuration."
@@ -134,12 +167,7 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
-msgid ""
-"Name of the uplink interface that triggers travelmate processing in 'manual' "
-"mode."
-msgstr ""
-
-msgid "Online Status"
+msgid "Name of the used uplink interface."
 msgstr ""
 
 msgid "Open"
@@ -155,7 +183,22 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-msgid "Passphrase (%s)"
+msgid "Passphrase"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password of Private Key"
+msgstr ""
+
+msgid "Path to CA-Certificate"
+msgstr ""
+
+msgid "Path to Client-Certificate"
+msgstr ""
+
+msgid "Path to Private Key"
 msgstr ""
 
 msgid ""
@@ -176,7 +219,7 @@ msgstr ""
 msgid "Restrict travelmate to a dedicated radio, e.g. 'radio0'."
 msgstr ""
 
-msgid "Runtime information"
+msgid "Runtime Information"
 msgstr ""
 
 msgid "SSID"
@@ -194,16 +237,13 @@ msgstr ""
 msgid "Signal strength"
 msgstr ""
 
-msgid "Specify the secret encryption key here."
+msgid "Station ID (SSID/BSSID)"
 msgstr ""
 
 msgid "Station Interface"
 msgstr ""
 
 msgid "Station Radio"
-msgstr ""
-
-msgid "Station SSID"
 msgstr ""
 
 msgid ""
@@ -243,7 +283,10 @@ msgstr "Travelmate"
 msgid "Travelmate Logfile"
 msgstr ""
 
-msgid "Travelmate version"
+msgid "Travelmate Status"
+msgstr ""
+
+msgid "Travelmate Version"
 msgstr ""
 
 msgid "Trigger delay"
@@ -253,6 +296,9 @@ msgid "Unknown"
 msgstr ""
 
 msgid "Uplink / Trigger interface"
+msgstr ""
+
+msgid "Uplink BSSID"
 msgstr ""
 
 msgid "Uplink SSID"
@@ -267,13 +313,19 @@ msgstr ""
 msgid "WEP"
 msgstr ""
 
-msgid "WEP passphrase"
+msgid "WEP-Passphrase"
 msgstr ""
 
-msgid "WPA / WPA2"
+msgid "WPA"
 msgstr ""
 
-msgid "WPA passphrase"
+msgid "WPA-Passphrase"
+msgstr ""
+
+msgid "WPA/WPA2"
+msgstr ""
+
+msgid "WPA2"
 msgstr ""
 
 msgid "Wireless Scan"
@@ -289,6 +341,9 @@ msgstr ""
 msgid "connected"
 msgstr ""
 
+msgid "error"
+msgstr ""
+
 msgid "hidden"
 msgstr ""
 
@@ -296,6 +351,9 @@ msgid "n/a"
 msgstr ""
 
 msgid "not connected"
+msgstr ""
+
+msgid "running"
 msgstr ""
 
 #~ msgid ""

@@ -7,7 +7,7 @@ msgstr ""
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.5\n"
 "Last-Translator: INAGAKI Hiroshi <musashino.open@gmail.com>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language: ja\n"
@@ -31,8 +31,20 @@ msgstr "Travelmate の処理が開始されるまでの、追加の遅延時間�
 msgid "Advanced"
 msgstr "詳細設定"
 
+msgid "Authentication"
+msgstr "認証"
+
+msgid "Automatic"
+msgstr "自動"
+
+msgid "BSSID"
+msgstr "BSSID"
+
 msgid "Back to overview"
 msgstr "概要へ戻る"
+
+msgid "Cipher"
+msgstr "暗号化方式"
 
 msgid ""
 "Configuration of the travelmate package to to enable travel router "
@@ -60,6 +72,9 @@ msgstr "このアップリンクを削除"
 
 msgid "Device"
 msgstr "デバイス"
+
+msgid "EAP-Method"
+msgstr "EAP メソッド"
 
 msgid "Edit"
 msgstr "編集"
@@ -107,6 +122,19 @@ msgstr ""
 "詳細な情報は <a href=\"%s\" target=\"_blank\">オンライン ドキュメント</a> を"
 "確認してください。"
 
+msgid "Force CCMP (AES)"
+msgstr "CCMP (AES)"
+
+msgid "Force TKIP"
+msgstr "TKIP"
+
+msgid "Force TKIP and CCMP (AES)"
+msgstr "TKIP と CCMP (AES)"
+
+msgid "Force a manual uplink rescan / reconnect in 'trigger' mode."
+msgstr ""
+"'trigger' モード時に、手動でアップリンクの再スキャンと再接続を行います。"
+
 msgid "How long should travelmate wait for a successful wlan interface reload."
 msgstr ""
 "無線LAN インターフェースのリロードが成功するまでの、Travelmate の待機時間で"
@@ -114,6 +142,12 @@ msgstr ""
 
 msgid "How many times should travelmate try to connect to an Uplink."
 msgstr "Travelmate がアップリンクへの接続を試行する回数です。"
+
+msgid "Identity"
+msgstr "ID"
+
+msgid "Ignore BSSID"
+msgstr "BSSID の無視"
 
 msgid "Input file not found, please check your configuration."
 msgstr "入力ファイルが見つかりません。設定を確認してください。"
@@ -143,15 +177,8 @@ msgstr "下へ"
 msgid "Move up"
 msgstr "上へ"
 
-msgid ""
-"Name of the uplink interface that triggers travelmate processing in 'manual' "
-"mode."
-msgstr ""
-"'manual' モード時に Travelmate の処理のトリガーとなる、アップリンク インター"
-"フェースの名前です。"
-
-msgid "Online Status"
-msgstr "オンライン ステータス"
+msgid "Name of the used uplink interface."
+msgstr "使用されるアップリンク インターフェースの名前です。"
 
 msgid "Open"
 msgstr "オープン"
@@ -166,8 +193,23 @@ msgstr "実行間隔"
 msgid "Overview"
 msgstr "概要"
 
-msgid "Passphrase (%s)"
-msgstr "暗号フレーズ (%s)"
+msgid "Passphrase"
+msgstr "パスフレーズ"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Password of Private Key"
+msgstr "秘密鍵のパスワード"
+
+msgid "Path to CA-Certificate"
+msgstr "CA 証明書へのパス"
+
+msgid "Path to Client-Certificate"
+msgstr "クライアント証明書へのパス"
+
+msgid "Path to Private Key"
+msgstr "秘密鍵へのパス"
 
 msgid ""
 "Provides an overview of all configured uplinks for the travelmate interface "
@@ -191,7 +233,7 @@ msgstr "再スキャン"
 msgid "Restrict travelmate to a dedicated radio, e.g. 'radio0'."
 msgstr "Travelmate が指定された無線に接続するよう制御します。（例: 'radio0'）"
 
-msgid "Runtime information"
+msgid "Runtime Information"
 msgstr "実行情報"
 
 msgid "SSID"
@@ -209,17 +251,14 @@ msgstr "スキャン:"
 msgid "Signal strength"
 msgstr "信号強度"
 
-msgid "Specify the secret encryption key here."
-msgstr "暗号キーを設定します。"
+msgid "Station ID (SSID/BSSID)"
+msgstr "ステーション ID (SSID / BSSID)"
 
 msgid "Station Interface"
 msgstr "ステーション インターフェース"
 
 msgid "Station Radio"
 msgstr "ステーション電波"
-
-msgid "Station SSID"
-msgstr "ステーション SSID"
 
 msgid ""
 "This form allows you to modify the content of the main firewall "
@@ -269,7 +308,10 @@ msgstr "Travelmate"
 msgid "Travelmate Logfile"
 msgstr "Travelmate ログファイル"
 
-msgid "Travelmate version"
+msgid "Travelmate Status"
+msgstr "Travelmate ステータス"
+
+msgid "Travelmate Version"
 msgstr "Travelmate バージョン"
 
 msgid "Trigger delay"
@@ -280,6 +322,9 @@ msgstr "不明"
 
 msgid "Uplink / Trigger interface"
 msgstr "アップリンク / トリガー インターフェース"
+
+msgid "Uplink BSSID"
+msgstr "アップリンク BSSID"
 
 msgid "Uplink SSID"
 msgstr "アップリンク SSID"
@@ -293,14 +338,20 @@ msgstr "ログファイルの確認"
 msgid "WEP"
 msgstr "WEP"
 
-msgid "WEP passphrase"
-msgstr "WEP 暗号キー"
+msgid "WEP-Passphrase"
+msgstr "WEP パスフレーズ"
 
-msgid "WPA / WPA2"
-msgstr "WPA / WPA2"
+msgid "WPA"
+msgstr "WPA"
 
-msgid "WPA passphrase"
-msgstr "WPA 暗号キー"
+msgid "WPA-Passphrase"
+msgstr "WPA パスフレーズ"
+
+msgid "WPA/WPA2"
+msgstr "WPA/WPA2"
+
+msgid "WPA2"
+msgstr "WPA2"
 
 msgid "Wireless Scan"
 msgstr "無線スキャン"
@@ -315,7 +366,10 @@ msgstr ""
 "必要があります。"
 
 msgid "connected"
-msgstr "接続済み"
+msgstr "接続済"
+
+msgid "error"
+msgstr "エラー"
 
 msgid "hidden"
 msgstr "（不明）"
@@ -325,3 +379,6 @@ msgstr "利用不可"
 
 msgid "not connected"
 msgstr "未接続"
+
+msgid "running"
+msgstr "実行中"

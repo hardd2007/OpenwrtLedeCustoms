@@ -1,11 +1,11 @@
--- Copyright 2017 Dirk Brenken (dev@brenken.org)
+-- Copyright 2017-2018 Dirk Brenken (dev@brenken.org)
 -- This is free software, licensed under the Apache License, Version 2.0
 
 module("luci.controller.travelmate", package.seeall)
 
-local fs = require("nixio.fs")
-local util = require("luci.util")
-local i18n = require("luci.i18n")
+local fs    = require("nixio.fs")
+local util  = require("luci.util")
+local i18n  = require("luci.i18n")
 local templ = require("luci.template")
 
 function index()
@@ -30,6 +30,12 @@ function index()
 end
 
 function logread()
-	local logfile = util.trim(util.exec("logread -e 'travelmate'"))
+	local logfile
+
+	if nixio.fs.access("/var/log/messages") then
+		logfile = util.trim(util.exec("cat /var/log/messages | grep 'travelmate-'"))
+	else
+		logfile = util.trim(util.exec("logread -e 'travelmate-'"))
+	end
 	templ.render("travelmate/logread", {title = i18n.translate("Travelmate Logfile"), content = logfile})
 end
