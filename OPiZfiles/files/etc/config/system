@@ -12,9 +12,5 @@ config timeserver 'ntp'
 	list server '0.openwrt.pool.ntp.org'
 	list server '1.openwrt.pool.ntp.org'
 
-config watchcat
-	option period '6h'
-	option mode 'ping'
-	option pinghosts '8.8.8.8'
-	option forcedelay '30'
+
 
