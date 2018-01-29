@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: LuCI: simple-adblock\n"
 "POT-Creation-Date: 2017-12-07 14:00+0300\n"
-"PO-Revision-Date: 2018-01-18 23:11+0300\n"
+"PO-Revision-Date: 2018-01-22 13:18+0300\n"
 "Language-Team: http://cyber-place.ru\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,9 +26,6 @@ msgstr "Черный список хостов<br />URL адресов"
 
 msgid "Controls system log and console output verbosity"
 msgstr "Проверка системного журнала и уровень детализации вывода консоли."
-
-msgid "Enable/start service"
-msgstr "Включение / Запуск сервиса"
 
 msgid "Force Router DNS"
 msgstr "Назначить DNS роутера"
@@ -58,7 +55,7 @@ msgid "Output Verbosity Setting"
 msgstr "Настройка детализации вывода"
 
 msgid "Pick the LED not already used in"
-msgstr "Выберите LED не используется на странице "
+msgstr "Выберите LED не используется на странице"
 
 msgid "Simple AdBlock"
 msgstr "Simple AdBlock"
@@ -68,6 +65,9 @@ msgstr "Simple AdBlock настройки"
 
 msgid "Some output"
 msgstr "Неполный вывод"
+
+msgid "Start Simple Adblock service"
+msgstr "Запуск сервиса Simple Adblock"
 
 msgid "Suppress output"
 msgstr "Подавить вывод"
@@ -93,6 +93,5 @@ msgstr "URLs доменов Белого списка"
 msgid "Whitelisted Domains"
 msgstr "Белый список доменов"
 
-#, fuzzy
 msgid "none"
 msgstr "ничего"

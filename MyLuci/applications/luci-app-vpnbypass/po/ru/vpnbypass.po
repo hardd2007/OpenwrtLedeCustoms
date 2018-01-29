@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Project-Id-Version: LuCI: vpnbypass\n"
 "POT-Creation-Date: 2018-01-01 21:00+0300\n"
-"PO-Revision-Date: 2018-01-18 23:55+0300\n"
+"PO-Revision-Date: 2018-01-22 13:17+0300\n"
 "Language-Team: http://cyber-place.ru\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,9 +20,6 @@ msgstr "Домены, для<br />обхода блокировки"
 
 msgid "Domains to be accessed directly (outside of the VPN tunnel), see"
 msgstr "Домены должны быть доступны напрямую (вне VPN-туннеля), см."
-
-msgid "Enable/start service"
-msgstr "Включение / Запуск сервиса"
 
 msgid "Local IP Addresses to Bypass"
 msgstr "Локальный IP-адрес<br />обхода VPN"
@@ -59,6 +56,9 @@ msgstr "Удаленные порты<br />для обхода VPN"
 msgid "Remote ports to trigger VPN Bypass"
 msgstr "Удаленные порты для запуска обхода VPN"
 
+msgid "Start VPNBypass service"
+msgstr "Запуск сервиса VPNBypass"
+
 msgid "VPN Bypass"
 msgstr "Обход VPN"
 
@@ -66,4 +66,4 @@ msgid "VPN Bypass Settings"
 msgstr "Настройка обхода VPN"
 
 msgid "for syntax"
-msgstr " для синтаксиса"
+msgstr "для синтаксиса"
