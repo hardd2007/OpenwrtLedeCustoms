@@ -232,7 +232,7 @@ e6.default = e6.disabled
 e6.rmempty = true
 
 e7 = e:option(Value, "adb_maxqueue", translate("Max. Download Queue"),
-	translate("Size of the download queue to handle downloads & list processing in parallel (default '4').<br />")
+	translate("Size of the download queue to handle downloads &amp; list processing in parallel (default '4').<br />")
 	.. translate("For further performance improvements you can raise this value, e.g. '8' or '16' should be safe."))
 e7.default = 4
 e7.datatype = "range(1,32)"
@@ -251,7 +251,7 @@ e9.rmempty = true
 
 e10 = e:option(Flag, "adb_notify", translate("Email Notification"),
 	translate("Send notification emails in case of a processing error or if domain count is &le; 0.<br />")
-	.. translate("Please note: this needs additional 'mstmp' package installation and setup."))
+	.. translate("Please note: this needs additional 'msmtp' package installation and setup."))
 e10.default = e10.disabled
 e10.rmempty = true
 

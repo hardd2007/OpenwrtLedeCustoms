@@ -229,7 +229,7 @@ msgid "Please edit this file directly in a terminal session."
 msgstr "Por favor edite esse arquivo direto em uma sessão de terminal."
 
 msgid ""
-"Please note: this needs additional 'mstmp' package installation and setup."
+"Please note: this needs additional 'msmtp' package installation and setup."
 msgstr ""
 
 msgid "Please update your adblock config file to use this package.<br />"
@@ -267,7 +267,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Size of the download queue to handle downloads & list processing in parallel "
+"Size of the download queue to handle downloads &amp; list processing in parallel "
 "(default '4').<br />"
 msgstr ""
 
