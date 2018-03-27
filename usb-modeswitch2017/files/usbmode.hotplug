@@ -1,5 +1,1 @@
-#!/bin/sh
-usbmode -l
-sleep 3
-usbmode -s
-exit
+/etc/init.d/usbmode start

@@ -114,8 +114,11 @@ define Package/MR3020files/postinst
 	
 	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-$(PKGARCH)/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
+#	mips-openwrt-linux-musl-strip --strip-debug $(TARGET_DIR)/lib/modules/4.9.86/*
+	echo "----LUA----"
+	/home/hardd/MNT/Lua/lua.sh $(TARGET_DIR)
+	echo "----LUA----"
 
-	
 
 
 

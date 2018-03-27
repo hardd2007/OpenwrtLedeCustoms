@@ -9,13 +9,13 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=polarssl
 SRC_PKG_NAME:=mbedtls
-PKG_VERSION:=1.3.18
+PKG_VERSION:=1.3.22
 PKG_RELEASE:=1
 PKG_USE_MIPS16:=0
 
 PKG_SOURCE:=$(SRC_PKG_NAME)-$(PKG_VERSION)-gpl.tgz
 PKG_SOURCE_URL:=https://tls.mbed.org/download/
-PKG_HASH:=a229217182e024847deba3cb70bdd17e5ff4ffd9ff306cbbccfdbdff41950ea1
+PKG_HASH:=ded041aa4acf9a3e4d0c85bf334b0860135da996e75afdcc3abf22f403d14457
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(SRC_PKG_NAME)-$(PKG_VERSION)
 
@@ -26,7 +26,6 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/polarssl/Default
-  SUBMENU:=SSL
   TITLE:=Embedded SSL
   URL:=http://polarssl.org/
 endef
@@ -38,8 +37,8 @@ endef
 
 define Package/libpolarssl
 $(call Package/polarssl/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
+  SECTION:=MYREP
+  CATEGORY:=MYREP
   TITLE+= (library)
   ABI_VERSION:=$(PKG_VERSION)-$(PKG_RELEASE)
 endef
