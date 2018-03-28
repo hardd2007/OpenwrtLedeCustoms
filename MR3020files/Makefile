@@ -20,6 +20,7 @@ define Package/MR3020files
 	SECTION:=MYREP
 	CATEGORY:=MYREP
 	DEPENDS:=+base-files
+	SUBMENU:=Devices
 	TITLE:=MR3020files
 	URL:=http://acs-house.ru/
 endef

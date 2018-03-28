@@ -19,6 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/WT3020files
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=WT3020files
 	URL:=http://acs-house.ru/

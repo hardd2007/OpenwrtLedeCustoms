@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/mysmstools
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   TITLE:=Small program for SMS.
 endef
 

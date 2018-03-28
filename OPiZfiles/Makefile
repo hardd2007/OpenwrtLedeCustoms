@@ -19,6 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/OPiZfiles
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=OPiZfiles
 	URL:=http://acs-house.ru/

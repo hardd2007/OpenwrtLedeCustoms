@@ -32,6 +32,7 @@ define Package/openvpn2318/Default
   TITLE:=Open source VPN solution using $(2)
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=VPN
   URL:=http://openvpn.net
   MENU:=1
   DEPENDS:=+kmod-tun +OPENVPN2318_$(1)_ENABLE_LZO:liblzo +OPENVPN2318_$(1)_ENABLE_IPROUTE2:ip $(3)

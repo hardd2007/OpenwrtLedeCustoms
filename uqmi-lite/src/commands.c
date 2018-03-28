@@ -167,7 +167,6 @@ cmd_ctl_set_data_format_prepare(struct qmi_dev *qmi, struct qmi_request *req, st
 #include "commands-wds.c"
 #include "commands-dms.c"
 #include "commands-nas.c"
-#include "commands-wms.c"
 #include "commands-wda.c"
 #include "commands-uim.c"
 

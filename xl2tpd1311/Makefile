@@ -29,6 +29,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/xl2tpd1311
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=VPN
   TITLE:=An L2TP (Layer 2 Tunneling Protocol) daemon
   URL:=http://www.xelerance.com/software/xl2tpd/
   DEPENDS:=+ppp-mod-pppol2tp +resolveip

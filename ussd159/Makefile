@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/ussd159
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   TITLE:=Small program for sending USSD requests.
 endef
 

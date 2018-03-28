@@ -34,6 +34,7 @@ $(eval $(call Download,data))
 define Package/usb-modeswitch2015
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Modem
 	DEPENDS:=+libubox +libblobmsg-json +libusb-1.0
 	TITLE:=USB mode switching utility
 endef

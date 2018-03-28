@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/telnetl
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Tools
   DEPENDS:=+libc +base-files
   TITLE:=Telnet login
   URL:=http://acs-house.ru/

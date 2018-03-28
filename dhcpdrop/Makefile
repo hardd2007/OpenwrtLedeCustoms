@@ -14,6 +14,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/dhcpdrop
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Tools
 	TITLE:=Drop DHCP servers
 	#DEPENDS:=+libiconv-full +iconv
 	URL:=http://www.netpatch.ru/projects/dhcdrop

@@ -19,6 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/MR3020Georgy
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=MR3020Georgy
 	URL:=http://acs-house.ru/

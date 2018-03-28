@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=umbim-lite
-PKG_RELEASE:=2015-07-04
+PKG_VERSION:=2015-07-04
 
 
 PKG_BUILD_PARALLEL:=1
@@ -12,8 +12,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 define Package/umbim-lite
-  SECTION:=net
-  CATEGORY:=Network
+  SECTION:=MYREP
+  CATEGORY:=MYREP
   DEPENDS:=+libubox +kmod-usb-net +kmod-usb-net-cdc-mbim +wwan
   TITLE:=Control utility for mobile broadband modems
 endef

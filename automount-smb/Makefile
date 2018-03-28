@@ -14,6 +14,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/automount-SMB
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Tools
 	DEPENDS:=+base-files
 	TITLE:=automount-SMB
 	URL:=http://acs-house.ru/

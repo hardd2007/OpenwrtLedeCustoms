@@ -23,6 +23,7 @@ define Package/A5-V11files
 	SECTION:=MYREP
 	CATEGORY:=MYREP
 	DEPENDS:=+base-files
+	SUBMENU:=Devices
 	TITLE:=A5-V11files
 	URL:=http://acs-house.ru/
 endef

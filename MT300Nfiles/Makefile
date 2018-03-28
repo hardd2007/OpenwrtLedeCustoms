@@ -18,6 +18,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/MT300Nfiles
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=MT300Nfiles
 	URL:=http://acs-house.ru/

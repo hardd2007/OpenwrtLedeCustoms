@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/erjigit17
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=erjigit17
 	URL:=http://acs-house.ru/

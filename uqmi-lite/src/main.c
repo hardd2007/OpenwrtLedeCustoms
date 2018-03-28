@@ -71,7 +71,6 @@ static int usage(const char *progname)
 		dms_helptext
 		uim_helptext
 		nas_helptext
-		wms_helptext
 		wda_helptext
 		"\n", progname);
 	return 1;

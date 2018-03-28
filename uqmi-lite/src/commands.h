@@ -26,7 +26,6 @@
 #include "commands-wds.h"
 #include "commands-dms.h"
 #include "commands-nas.h"
-#include "commands-wms.h"
 #include "commands-wda.h"
 #include "commands-uim.h"
 
@@ -62,7 +61,6 @@ struct uqmi_cmd {
 	__uqmi_wds_commands, \
 	__uqmi_dms_commands, \
 	__uqmi_nas_commands, \
-	__uqmi_wms_commands, \
 	__uqmi_wda_commands, \
 	__uqmi_uim_commands
 

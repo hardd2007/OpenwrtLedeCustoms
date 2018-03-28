@@ -19,6 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/zbt-we826files
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=zbt-we826files
 	URL:=http://acs-house.ru/

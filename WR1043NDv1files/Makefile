@@ -19,6 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/WR1043NDv1files
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Devices
 	DEPENDS:=+base-files
 	TITLE:=WR1043NDv1files
 	URL:=http://acs-house.ru/

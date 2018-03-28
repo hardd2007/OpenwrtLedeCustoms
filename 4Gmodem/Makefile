@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/4Gmodem
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   DEPENDS:=+libc +base-files
   TITLE:=4G-modem
   URL:=http://acs-house.ru/
