@@ -33,7 +33,7 @@ endef
 define Package/comgt-lte-directip
 $(call Package/comgt-lte/Default)
   TITLE:=Sierra Wireless Direct-IP support
-  DEPENDS:=+comgt +kmod-usb-serial +kmod-usb-serial-sierrawireless +kmod-usb-net +kmod-usb-net-sierrawireless
+  DEPENDS:=+comgt-lte +kmod-usb-serial +kmod-usb-serial-sierrawireless +kmod-usb-net +kmod-usb-net-sierrawireless
 endef
 
 define Package/comgt-lte-ncm
@@ -47,6 +47,9 @@ define Package/comgt/description
  communications on serial lines and through PCMCIA modems as well as GPRS 
  and 3G datacards.
 endef
+
+TARGET_CFLAGS += -ffunction-sections -fdata-sections
+TARGET_LDFLAGS += -Wl,--gc-sections
 
 define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) \

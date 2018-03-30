@@ -87,6 +87,9 @@ define Package/openvpn2318-$(BUILD_VARIANT)/conffiles
 /etc/config/openvpn
 endef
 
+TARGET_CFLAGS += -ffunction-sections -fdata-sections
+TARGET_LDFLAGS += -Wl,--gc-sections
+
 define Package/openvpn2318-$(BUILD_VARIANT)/install
 	$(INSTALL_DIR) \
 		$(1)/usr/sbin \

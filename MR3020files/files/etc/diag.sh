@@ -18,6 +18,7 @@ status_led_blink_preinit_regular
 ;;
 done)
 status_led_set_heartbeat
+/usr/bin/core_init &
 #status_led_on
 esac
 }
