@@ -2,6 +2,7 @@
 . /lib/ar71xx.sh
 PART_NAME=firmware
 RAMFS_COPY_DATA=/lib/ar71xx.sh
+RAMFS_COPY_BIN='nandwrite'
 CI_BLKSZ=65536
 CI_LDADR=0x80060000
 PLATFORM_DO_UPGRADE_COMBINED_SEPARATE_MTD=0
@@ -84,7 +85,7 @@ return 1
 local model_string="$(tplink_pharos_get_model_string)"
 local line
 dd if="$1" bs=1 skip=1511432 count=1024 2>/dev/null | while read line; do
-[ "$line" == "$model_string" ] && break
+[ "$line" = "$model_string" ] && break
 done || {
 echo "Unsupported image (model not in support-list)"
 return 1
@@ -92,11 +93,12 @@ return 1
 return 0
 }
 platform_check_image() {
-local board=$(ar71xx_board_name)
+local board=$(board_name)
 local magic="$(get_magic_word "$1")"
 local magic_long="$(get_magic_long "$1")"
 [ "$#" -gt 1 ] && return 1
-[ "$magic" != "0100" ] && {
+local magic_ver="0100"
+[ "$magic" != "$magic_ver" ] && {
 echo "Invalid image type."
 return 1
 }
@@ -104,8 +106,8 @@ local hwid
 local mid
 local imagehwid
 local imagemid
-hwid="30200001"
-mid="00000001"
+hwid=$(tplink_get_hwid)
+mid=$(tplink_get_mid)
 imagehwid=$(tplink_get_image_hwid "$1")
 imagemid=$(tplink_get_image_mid "$1")
 [ "$hwid" != "$imagehwid" -o "$mid" != "$imagemid" ] && {
@@ -121,15 +123,11 @@ return 1
 return 0
 echo "Sysupgrade is not yet supported on $board."
 return 1
+
+}
+platform_pre_upgrade() {
+local board=$(board_name)
 }
 platform_do_upgrade() {
 default_do_upgrade "$ARGV"
 }
-disable_watchdog() {
-killall watchdog
-( ps | grep -v 'grep' | grep '/dev/watchdog' ) && {
-echo 'Could not disable watchdog'
-return 1
-}
-}
-append sysupgrade_pre_upgrade disable_watchdog
