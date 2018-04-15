@@ -2233,6 +2233,9 @@ msgstr "Notiz"
 msgid "Nslookup"
 msgstr "DNS-Auflösung"
 
+msgid "Number of cached DNS entries (max is 10000, 0 is no caching)"
+msgstr ""
+
 msgid "OK"
 msgstr "OK"
 
@@ -3044,6 +3047,9 @@ msgstr "Größe"
 msgid "Size (.ipk)"
 msgstr "Größe (.ipk)"
 
+msgid "Size of DNS query cache"
+msgstr ""
+
 msgid "Skip"
 msgstr "Überspringen"
 
@@ -3485,10 +3491,10 @@ msgstr ""
 
 msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
-"ends with <code>:2</code>"
+"ends with <code>...:2/64</code>"
 msgstr ""
 "Dies ist die lokale, vom Broker zugewiesene IPv6-Adresse, sie endet "
-"üblicherweise mit <code>:2</code>"
+"üblicherweise mit <code>...:2/64</code>"
 
 msgid ""
 "This is the only <abbr title=\"Dynamic Host Configuration Protocol\">DHCP</"

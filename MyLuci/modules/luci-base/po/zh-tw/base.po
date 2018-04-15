@@ -2124,6 +2124,9 @@ msgstr "通知"
 msgid "Nslookup"
 msgstr "DNS偵錯Nslookup"
 
+msgid "Number of cached DNS entries (max is 10000, 0 is no caching)"
+msgstr ""
+
 msgid "OK"
 msgstr "行"
 
@@ -2888,6 +2891,9 @@ msgstr "大小"
 msgid "Size (.ipk)"
 msgstr ""
 
+msgid "Size of DNS query cache"
+msgstr ""
+
 msgid "Skip"
 msgstr "跳過"
 
@@ -3280,8 +3286,8 @@ msgstr ""
 
 msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
-"ends with <code>:2</code>"
-msgstr "這是由通道代理人指定的本地終端位址, 通常用 <code>:2</code>結尾."
+"ends with <code>...:2/64</code>"
+msgstr "這是由通道代理人指定的本地終端位址, 通常用 <code>...:2/64</code>結尾."
 
 msgid ""
 "This is the only <abbr title=\"Dynamic Host Configuration Protocol\">DHCP</"

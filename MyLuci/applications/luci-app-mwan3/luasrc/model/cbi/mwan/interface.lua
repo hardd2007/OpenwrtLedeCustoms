@@ -3,17 +3,18 @@
 -- Licensed to the public under the GNU General Public License v2.
 
 dsp = require "luci.dispatcher"
+uci = require "uci"
 
 
-function interfaceWarnings(overview, count)
+function interfaceWarnings(overview, count, iface_max)
 	local warnings = ""
-	if count <= 250 then
+	if count <= iface_max then
 		warnings = string.format("<strong>%s</strong><br />",
-			translatef("There are currently %d of 250 supported interfaces configured", count)
+			translatef("There are currently %d of %d supported interfaces configured", count, iface_max)
 			)
 	else
 		warnings = string.format("<strong>%s</strong><br />",
-			translatef("WARNING: %d interfaces are configured exceeding the maximum of 250!", count)
+			translatef("WARNING: %d interfaces are configured exceeding the maximum of %d!", count, iface_max)
 			)
 	end
 
@@ -103,16 +104,43 @@ function configCheck()
 			end
 		end
 	)
-	return overview, count
+
+	-- calculate iface_max usage from firewall mmx_mask
+	function bit(p)
+		return 2 ^ (p - 1)
+	end
+	function hasbit(x, p)
+		return x % (p + p) >= p
+	end
+	function setbit(x, p)
+		return hasbit(x, p) and x or x + p
+	end
+
+	local uci = require("uci").cursor(nil, "/var/state")
+	local mmx_mask = uci:get("mwan3", "globals", "mmx_mask") or "0x3F00"
+	local number = tonumber(mmx_mask, 16)
+	local bits = 0
+	local iface_max = 0
+	for i=1,16 do
+		if hasbit(number, bit(i)) then
+			bits = bits + 1
+			iface_max = setbit( iface_max, bit(bits))
+		end
+	end
+
+	-- subtract blackhole, unreachable and default table from iface_max
+	iface_max = iface_max - 3
+
+	return overview, count, iface_max
 end
 
 m5 = Map("mwan3", translate("MWAN - Interfaces"),
 	interfaceWarnings(configCheck()))
 
 mwan_interface = m5:section(TypedSection, "interface", nil,
-	translate("MWAN supports up to 250 physical and/or logical interfaces<br />" ..
+	translate("MWAN supports up to 252 physical and/or logical interfaces<br />" ..
 	"MWAN requires that all interfaces have a unique metric configured in /etc/config/network<br />" ..
-	"Names must match the interface name found in /etc/config/network (see advanced tab)<br />" ..
+	"Names must match the interface name found in /etc/config/network<br />" ..
 	"Names may contain characters A-Z, a-z, 0-9, _ and no spaces<br />" ..
 	"Interfaces may not share the same name as configured members, policies or rules"))
 mwan_interface.addremove = true
@@ -142,7 +170,7 @@ track_method.rawhtml = true
 function track_method.cfgvalue(self, s)
 	local tracked = self.map:get(s, "track_ip")
 	if tracked then
-		return self.map:get(s, "track_method") or "&#8212;"
+		return self.map:get(s, "track_method") or "ping"
 	else
 		return "&#8212;"
 	end
@@ -153,7 +181,7 @@ reliability.rawhtml = true
 function reliability.cfgvalue(self, s)
 	local tracked = self.map:get(s, "track_ip")
 	if tracked then
-		return self.map:get(s, "reliability") or "&#8212;"
+		return self.map:get(s, "reliability") or "1"
 	else
 		return "&#8212;"
 	end
@@ -168,7 +196,7 @@ function interval.cfgvalue(self, s)
 		if intervalValue then
 			return intervalValue .. "s"
 		else
-			return "&#8212;"
+			return "5s"
 		end
 	else
 		return "&#8212;"
@@ -180,7 +208,7 @@ down.rawhtml = true
 function down.cfgvalue(self, s)
 	local tracked = self.map:get(s, "track_ip")
 	if tracked then
-		return self.map:get(s, "down") or "&#8212;"
+		return self.map:get(s, "down") or "3"
 	else
 		return "&#8212;"
 	end
@@ -191,7 +219,7 @@ up.rawhtml = true
 function up.cfgvalue(self, s)
 	local tracked = self.map:get(s, "track_ip")
 	if tracked then
-		return self.map:get(s, "up") or "&#8212;"
+		return self.map:get(s, "up") or "3"
 	else
 		return "&#8212;"
 	end

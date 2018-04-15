@@ -8,19 +8,20 @@ devices = {
   {"Linksys EA3500", "linksys-audi", "mtd3", "mtd5", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
   {"Linksys E4200v2/EA4500", "linksys-viper", "mtd3", "mtd5", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
   {"Linksys EA8500", "ea8500", "mtd13", "mtd15", 32, "boot_part", 1, 2},
-  {"Linksys WRT1200AC", "armada-385-linksys-caiman", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
-  {"Linksys WRT1900AC", "armada-xp-linksys-mamba", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
-  {"Linksys WRT1900ACv2", "armada-385-linksys-cobra", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
-  {"Linksys WRT1900ACS", "armada-385-linksys-shelby", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
-  {"Linksys WRT3200ACM", "armada-385-linksys-rango", "mtd5", "mtd7", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
+--  {"Linksys EA9500", "linksys,panamera", "mtd3", "mtd6", 28, "boot_part", 1, 2},
+  {"Linksys WRT1200AC", "linksys-caiman", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
+  {"Linksys WRT1900AC", "linksys-mamba", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
+  {"Linksys WRT1900ACv2", "linksys-cobra", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
+  {"Linksys WRT1900ACS", "linksys-shelby", "mtd4", "mtd6", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
+  {"Linksys WRT3200ACM", "linksys-rango", "mtd5", "mtd7", 32, "boot_part", 1, 2, "bootcmd", "run nandboot", "run altnandboot"},
   {"ZyXEL NBG6817","nbg6817","mmcblk0p4","mmcblk0p7",32,nil,255,1}
 }
 
 errorMessage = ""
 device_board_name = luci.util.trim(luci.sys.exec("cat /tmp/sysinfo/board_name"))
 for i=1, #devices do
-  table_board_name = devices[i][2]:gsub('-','')
-  if device_board_name and device_board_name:gsub('-',''):match(table_board_name) then
+  table_board_name = devices[i][2]:gsub('%p','')
+  if device_board_name and device_board_name:gsub('%p',''):match(table_board_name) then
     device_name = devices[i][1]
     partition_one_mtd = devices[i][3] or nil
     partition_two_mtd = devices[i][4] or nil
@@ -80,15 +81,17 @@ function index()
 end
 
 function action_reboot()
+  local uci = require "luci.model.uci".cursor()
   luci.template.render("admin_system/applyreboot", {
         title = luci.i18n.translate("Rebooting..."),
         msg   = luci.i18n.translate("The system is rebooting now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
-        addr  = luci.ip.new(uci.cursor():get("network", "lan", "ipaddr")) or "192.168.1.1"
+        addr  = luci.ip.new(uci:get("network", "lan", "ipaddr")) or "192.168.1.1"
       })
   luci.sys.reboot()
 end
 
 function action_altreboot()
+  local uci = require "luci.model.uci".cursor()
   local zyxelFlagPartition, zyxelBootFlag, zyxelNewBootFlag, errorCode, curEnvSetting, newEnvSetting
   errorMessage = ""
   errorCode = 0
@@ -162,7 +165,7 @@ function action_altreboot()
       luci.template.render("admin_system/applyreboot", {
             title = luci.i18n.translate("Rebooting..."),
             msg   = luci.i18n.translate("The system is rebooting to an alternative partition now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
-            addr  = luci.ip.new(uci.cursor():get("network", "lan", "ipaddr")) or "192.168.1.1"
+            addr  = luci.ip.new(uci:get("network", "lan", "ipaddr")) or "192.168.1.1"
           })
       luci.sys.reboot()
     else
@@ -179,6 +182,7 @@ function action_altreboot()
 end
 
 function action_poweroff()
+  local uci = require "luci.model.uci".cursor()
   if luci.http.formvalue("cancel") then
     luci.http.redirect(luci.dispatcher.build_url('admin/system/advanced_reboot'))
     return
@@ -194,7 +198,7 @@ function action_poweroff()
     luci.template.render("admin_system/applyreboot", {
           title = luci.i18n.translate("Shutting down..."),
           msg   = luci.i18n.translate("The system is shutting down now.<br /> DO NOT POWER OFF THE DEVICE!<br /> It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
-          addr  = luci.ip.new(uci.cursor():get("network", "lan", "ipaddr")) or "192.168.1.1"
+          addr  = luci.ip.new(uci:get("network", "lan", "ipaddr")) or "192.168.1.1"
         })
     luci.sys.call("/sbin/poweroff")
   end

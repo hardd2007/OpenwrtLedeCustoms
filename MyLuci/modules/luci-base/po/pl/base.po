@@ -2203,6 +2203,9 @@ msgstr "Spostrzeżenie"
 msgid "Nslookup"
 msgstr "Nslookup"
 
+msgid "Number of cached DNS entries (max is 10000, 0 is no caching)"
+msgstr ""
+
 msgid "OK"
 msgstr "OK"
 
@@ -2983,6 +2986,9 @@ msgstr "Rozmiar"
 msgid "Size (.ipk)"
 msgstr ""
 
+msgid "Size of DNS query cache"
+msgstr ""
+
 msgid "Skip"
 msgstr "Pomiń"
 
@@ -3405,10 +3411,10 @@ msgstr ""
 
 msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
-"ends with <code>:2</code>"
+"ends with <code>...:2/64</code>"
 msgstr ""
 "To jest lokalny adres końcowy przypisany przez tunnel broker'a, zwykle "
-"kończący się z <code>:2</code>"
+"kończący się z <code>...:2/64</code>"
 
 # w tłumaczeniu pojawiła się spacja po DHCP</abbr> co powoduje niepoprawne wyświetlanie się strony z lang PL
 msgid ""

@@ -2184,6 +2184,9 @@ msgstr "Megjegyzés"
 msgid "Nslookup"
 msgstr "Nslookup"
 
+msgid "Number of cached DNS entries (max is 10000, 0 is no caching)"
+msgstr ""
+
 msgid "OK"
 msgstr "OK"
 
@@ -2962,6 +2965,9 @@ msgstr "Méret"
 msgid "Size (.ipk)"
 msgstr ""
 
+msgid "Size of DNS query cache"
+msgstr ""
+
 msgid "Skip"
 msgstr "Ugrás"
 
@@ -3380,10 +3386,10 @@ msgstr ""
 
 msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
-"ends with <code>:2</code>"
+"ends with <code>...:2/64</code>"
 msgstr ""
 "Ez az alagút közvetítő (tunnel broker) által megadott helyi végpont címe, "
-"általában így végződik: <code>:2</code>"
+"általában így végződik: <code>...:2/64</code>"
 
 msgid ""
 "This is the only <abbr title=\"Dynamic Host Configuration Protocol\">DHCP</"
