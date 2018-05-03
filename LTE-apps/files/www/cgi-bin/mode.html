@@ -1,0 +1,108 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo ""
+echo "
+<html>
+<head>
+<title>Modem sms</title>
+<meta http-equiv=\"refresh\" content=\"5; url=../modem_status.html\" />
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+</head>
+<body>
+<a href=\"../modem_status.html\"><p>Главная / Index</h5></p></a><pre>
+"
+device=$(uci get modem.@modem[0].device)
+if [ "$REQUEST_METHOD" = POST ]; then
+read -t 3 QUERY_STRING
+eval $(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+action=$(uhttpd -d $action 2>/dev/null)
+mode=$(uhttpd -d $mode 2>/dev/null)
+fi
+if [ "$action" = "chband" ]; then
+C=""
+case "$mode" in
+auto_ext)
+C="AT^SYSCFGEX=\\\"00\\\",3FFFFFFF,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+auto_3g)
+C="AT^SYSCFG=2,0,3FFFFFFF,1,3"
+;;
+4g)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+3g)
+C="AT^SYSCFG=14,2,3FFFFFFF,1,3"
+;;
+2g)
+C="AT^SYSCFG=13,1,3FFFFFFF,1,3"
+;;
+3g_2100)
+C="AT^SYSCFGEX=\\\"02\\\",400000,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+3g_900)
+C="AT^SYSCFGEX=\\\"02\\\",2000000000000,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+2g_1800)
+C="AT^SYSCFGEX=\\\"01\\\",80,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+2g_900)
+C="AT^SYSCFGEX=\\\"01\\\",300,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+2g_850)
+C="AT^SYSCFGEX=\\\"01\\\",80000,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+2g_1900)
+C="AT^SYSCFGEX=\\\"01\\\",200000,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+4g_B1)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,1,,"
+;;
+4g_B3)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,4,,"
+;;
+4g_B7)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,40,,"
+;;
+4g_B8)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,80,,"
+;;
+4g_B20)
+C="AT^SYSCFGEX=\\\"03\\\",3FFFFFFF,1,2,80000,,"
+;;
+prefer4g)
+C="AT^SYSCFGEX=\\\"030201\\\",3FFFFFFF,1,2,7FFFFFFFFFFFFFFF,,"
+;;
+prefer3g)
+C="AT^SYSCFG=2,2,3FFFFFFF,1,3"
+;;
+esac
+eval COMMAND="$C" gcom -d "$device" -s /etc/gcom/runcommand.gcom
+# 2&1>/dev/null
+if [ "$?" = 0 ]; then
+echo "Set Mode OK"
+else
+echo "Set Mode Error"
+fi
+fi
+if [ "$REQUEST_METHOD" = GET ]; then
+read $QUERY_STRING
+#eval $(echo "QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+O=$(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+action=$(echo "$O" | awk -F'=' '{print $2}')
+if [ "$action" = "rmodem" ]; then
+eval COMMAND="AT\^RESET" gcom -d "$device" -s /etc/gcom/runcommand.gcom
+# 2&1>/dev/null
+fi
+if [ "$action" = "rport" ]; then
+echo 0 >/sys/devices/virtual/gpio/gpio8/value
+sleep 4
+echo 1 >/sys/devices/virtual/gpio/gpio8/value
+fi
+
+fi #get 
+echo "</pre>
+<p>Redirect 5 sec</p>
+</body></html>
+"
+exit 0

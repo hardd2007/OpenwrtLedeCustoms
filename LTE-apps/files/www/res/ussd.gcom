@@ -1,0 +1,31 @@
+opengt
+ set com 115200n81
+ set comecho off
+ set senddelay 0.02
+ waitquiet 0.2 0.2
+
+ send "ATE0^m"
+ waitfor 5 "OK"
+ if % = -1 goto error
+
+ send "AT+CMGF=0^m"
+ waitfor 5 "OK"
+ if % = -1 goto error
+
+ send "AT+CSCS=\"IRA\"^m"
+ waitfor 10 "OK"
+ if % = -1 goto error
+ 
+ send "AT+CUSD=1,\""
+ send $env("COMMAND")
+ send "\",15^m"
+ waitfor 10 "+CUSD: "
+ if % = -1 goto error
+
+ get 1 "^m" $s
+ print $s
+ exit 0
+
+:error
+ print "Error send ussd"
+ exit 0

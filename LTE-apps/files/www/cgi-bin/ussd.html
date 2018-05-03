@@ -1,0 +1,111 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo ""
+
+echo "
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=\"stylesheet\" href=\"../../res/style.css\">
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+<link rel=\"icon\" type=\"image/png\" href=\"../../res/favicon32.png\" sizes=\"32x32\" />
+<title>Modem ussd</title>
+</head>
+<body>
+"
+encode_gsm7bit() {
+local text="$1"
+local i=0
+local shift=0
+while [ $i -lt ${#text} ]
+do
+if [ $(( $i+1 )) -eq ${#text} ]; then
+next_byte=0
+else
+: $(( next_byte=(($(echo $(printf "%d" "'${text:$(( $i+1 )):1} ")) << (7 - $shift)) & 0xFF) ))
+fi
+: $(( current_byte=($(echo $(printf "%d" "'${text:$i:1} ")) >> $shift) | $next_byte ))
+ret=$ret$(echo $current_byte | awk '{printf("%02X",$0)}')
+: $(( i++ ))
+: $(( shift++ ))
+if [ $shift -eq 7 ]; then
+shift=0
+: $(( i++ ))
+fi
+done
+}
+decode_ucs2() {
+local text="$1"
+while [ -n "$text" ]; do
+local code="$((0x${text:0:4}))"
+if [ $code -le 127 ]; then
+echo -en \\x$(printf "%02x" $code)
+elif [ $code -le 2047 ]; then
+echo -en \\x$(printf "%02x" $(((($code >>  6) & 0x1F) | 0xC0)))
+echo -en \\x$(printf "%02x" $(( ($code        & 0x3F) | 0x80)))
+elif [ $code -le 65535 ]; then
+echo -en \\x$(printf "%02x" $(((($code >> 12) & 0x0F) | 0xE0)))
+echo -en \\x$(printf "%02x" $(((($code >>  6) & 0x3F) | 0x80)))
+echo -en \\x$(printf "%02x" $((( $code        & 0x3F) | 0x80)))
+elif [ $code -le 1114111 ]; then
+echo -en \\x$(printf "%02x" $(((($code >> 18) & 0x07) | 0xF0)))
+echo -en \\x$(printf "%02x" $(((($code >> 12) & 0x3F) | 0x80)))
+echo -en \\x$(printf "%02x" $(((($code >>  6) & 0x3F) | 0x80)))
+echo -en \\x$(printf "%02x" $((( $code        & 0x3F) | 0x80)))
+else
+echo -n "?"
+fi
+text="${text:4}"
+done
+echo ""
+}
+
+
+if [ "$REQUEST_METHOD" = POST ]; then
+read -t 3 QUERY_STRING
+eval $(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+action=`uhttpd -d $action`
+ussd=`uhttpd -d $ussd`
+else
+action="x"
+fi
+if [ "$action" = "send" ] && [ "x$ussd" != "x" ] ; then
+ret=''; encode_gsm7bit "$ussd"
+device=$(uci get modem.@modem[0].device)
+answer=$(eval COMMAND="$ret" gcom -d "$device" -s /www/res/ussd.gcom)
+#echo $answer
+answer=${answer%\"*} 
+answer=${answer##*\"}
+text=''; 
+echo "
+<div class=\"c\"> Запрос: $ussd</div>
+<div class=\"c\"> Ответ: $(decode_ucs2 "$answer")</div>
+"
+
+fi
+
+
+
+
+
+
+
+
+echo "
+<a href=\"../modem_status.html\"><h5 align=\"center\">Главная / Index</h5></a>
+
+<form method=\"post\">
+  <input type=\"hidden\" name=\"action\" id=\"action\" value=\"send\">
+  <div class=\"c\">ussd:</div>
+	<div class=\"c\"><input name=\"ussd\" class=text size=\"20\" required placeholder=\"Enter ussd\"></div>
+  <div class=\"c\"><input type=\"submit\" name=\"submit\" value=\"Отправить / Send\" text-align=center></div>
+</form>
+"
+
+echo "
+</body></html>
+"
+
+exit 0
+

@@ -1,0 +1,31 @@
+#!/bin/sh /etc/rc.common
+
+START=97
+PIDFILE="/tmp/run/NetMon.pid"
+
+
+stop() {
+	if [ -f "${PIDFILE}" ]
+	then
+		logger -p user.info -t "NetMon" "stopping all tasks"
+
+		while read pid
+		do
+			kill -9 "$pid"
+		done < "${PIDFILE}"
+
+		rm "${PIDFILE}"
+
+		logger -p user.info -t "NetMon" "all tasks stopped"
+	else
+		logger -p user.info -t "NetMon" "no tasks running"
+	fi
+	killall sleep
+}
+
+start() {
+	[ -f "${PIDFILE}" ] && stop
+	logger -p user.info -t "NetMon" "Start netmon"
+	/usr/bin/netmon.sh &
+	echo $! >$PIDFILE
+}
