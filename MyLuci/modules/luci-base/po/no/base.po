@@ -167,9 +167,6 @@ msgstr ""
 msgid "ADSL"
 msgstr ""
 
-msgid "AICCU (SIXXS)"
-msgstr ""
-
 msgid "ANSI T1.413"
 msgstr ""
 
@@ -208,9 +205,6 @@ msgid "ATM device number"
 msgstr "<abbr title=\"Asynchronous Transfer Mode\">ATM</abbr> enhetsnummer"
 
 msgid "ATU-C System Vendor ID"
-msgstr ""
-
-msgid "AYIYA"
 msgstr ""
 
 msgid "Access Concentrator"
@@ -315,11 +309,6 @@ msgstr "Tillat oppstrøms svar i 127.0.0.0/8 nettet, f.eks for RBL tjenester"
 msgid "Allowed IPs"
 msgstr ""
 
-msgid ""
-"Also see <a href=\"https://www.sixxs.net/faq/connectivity/?faq=comparison"
-"\">Tunneling Comparison</a> on SIXXS"
-msgstr ""
-
 msgid "Always announce default router"
 msgstr ""
 
@@ -398,11 +387,11 @@ msgstr "Antennekonfigurasjon"
 msgid "Any zone"
 msgstr "Alle soner"
 
-msgid "Apply"
-msgstr "Bruk"
+msgid "Apply request failed with status <code>%h</code>"
+msgstr ""
 
-msgid "Applying changes"
-msgstr "Utfører endringer"
+msgid "Apply unchecked"
+msgstr ""
 
 msgid ""
 "Assign a part of given length of every public IPv6-prefix to this interface"
@@ -508,9 +497,6 @@ msgstr "Ugyldig adresse oppgitt!"
 msgid "Band"
 msgstr ""
 
-msgid "Behind NAT"
-msgstr ""
-
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
 "configuration files marked by opkg, essential base files and the user "
@@ -582,11 +568,19 @@ msgstr "Endringer"
 msgid "Changes applied."
 msgstr "Endringer utført."
 
+msgid "Changes have been reverted."
+msgstr ""
+
 msgid "Changes the administrator password for accessing the device"
 msgstr "Endrer administrator passordet for tilgang til enheten"
 
 msgid "Channel"
 msgstr "Kanal"
+
+msgid ""
+"Channel %d is not available in the %s regulatory domain and has been auto-"
+"adjusted to %d."
+msgstr ""
 
 msgid "Check"
 msgstr "Kontroller"
@@ -668,11 +662,14 @@ msgstr ""
 msgid "Configuration"
 msgstr "Konfigurasjon"
 
-msgid "Configuration applied."
-msgstr "Konfigurasjons endring utført."
-
 msgid "Configuration files will be kept."
 msgstr "Konfigurasjonsfiler vil bli bevart."
+
+msgid "Configuration has been applied."
+msgstr ""
+
+msgid "Configuration has been rolled back!"
+msgstr ""
 
 msgid "Confirmation"
 msgstr "Bekreftelse"
@@ -686,11 +683,14 @@ msgstr "Tilkoblet"
 msgid "Connection Limit"
 msgstr "Tilkoblingsgrense (antall)"
 
-msgid "Connection to server fails when TLS cannot be used"
-msgstr ""
-
 msgid "Connections"
 msgstr "Tilkoblinger"
+
+msgid ""
+"Could not regain access to the device after applying the configuration "
+"changes. You might need to reconnect if you modified network related "
+"settings such as the IP address or wireless security credentials."
+msgstr ""
 
 msgid "Country"
 msgstr "Land"
@@ -820,9 +820,6 @@ msgstr "Standard gateway"
 msgid "Default is stateless + stateful"
 msgstr ""
 
-msgid "Default route"
-msgstr ""
-
 msgid "Default state"
 msgstr "Standard tilstand"
 
@@ -864,6 +861,9 @@ msgstr ""
 msgid "Device unreachable"
 msgstr ""
 
+msgid "Device unreachable!"
+msgstr ""
+
 msgid "Diagnostics"
 msgstr "Nettverksdiagnostikk"
 
@@ -897,6 +897,9 @@ msgstr ""
 
 msgid "Discard upstream RFC1918 responses"
 msgstr "Forkast oppstrøms RFC1918 svar"
+
+msgid "Dismiss"
+msgstr ""
 
 msgid "Displaying only packages containing"
 msgstr "Viser bare pakker som inneholder"
@@ -1013,6 +1016,11 @@ msgstr "Krisesituasjon"
 msgid "Enable"
 msgstr "Aktiver"
 
+msgid ""
+"Enable <abbr title=\"Internet Group Management Protocol\">IGMP</abbr> "
+"snooping"
+msgstr ""
+
 msgid "Enable <abbr title=\"Spanning Tree Protocol\">STP</abbr>"
 msgstr "Aktiver <abbr title=\"Spanning Tree Protocol\">STP</abbr>"
 
@@ -1069,6 +1077,9 @@ msgstr "Aktiver/Deaktiver"
 
 msgid "Enabled"
 msgstr "Aktivert"
+
+msgid "Enables IGMP snooping on this bridge"
+msgstr ""
 
 msgid ""
 "Enables fast roaming among access points that belong to the same Mobility "
@@ -1147,6 +1158,9 @@ msgid "FT over the Air"
 msgstr ""
 
 msgid "FT protocol"
+msgstr ""
+
+msgid "Failed to confirm apply within %ds, waiting for rollback…"
 msgstr ""
 
 msgid "File"
@@ -1343,9 +1357,6 @@ msgstr "Slå av"
 msgid "Header Error Code Errors (HEC)"
 msgstr ""
 
-msgid "Heartbeat"
-msgstr ""
-
 msgid ""
 "Here you can configure the basic aspects of your device like its hostname or "
 "the timezone."
@@ -1461,9 +1472,6 @@ msgstr "IPv6 WAN Status"
 
 msgid "IPv6 address"
 msgstr "IPv6 adresse"
-
-msgid "IPv6 address delegated to the local tunnel endpoint (optional)"
-msgstr ""
 
 msgid "IPv6 assignment hint"
 msgstr ""
@@ -2047,9 +2055,6 @@ msgstr ""
 msgid "NTP server candidates"
 msgstr "NTP server kandidater"
 
-msgid "NTP sync time-out"
-msgstr ""
-
 msgid "Name"
 msgstr "Navn"
 
@@ -2173,6 +2178,9 @@ msgstr ""
 msgid "Obfuscated Password"
 msgstr ""
 
+msgid "Obtain IPv6-Address"
+msgstr ""
+
 msgid "Off-State Delay"
 msgstr "Forsinkelse ved tilstand Av"
 
@@ -2222,12 +2230,6 @@ msgid "Option removed"
 msgstr "Innstilling fjernet"
 
 msgid "Optional"
-msgstr ""
-
-msgid "Optional, specify to override default server (tic.sixxs.net)"
-msgstr ""
-
-msgid "Optional, use when the SIXXS account has more than one tunnel"
 msgstr ""
 
 msgid ""
@@ -2706,9 +2708,6 @@ msgstr ""
 msgid "Request IPv6-prefix of length"
 msgstr ""
 
-msgid "Require TLS"
-msgstr ""
-
 msgid "Required"
 msgstr ""
 
@@ -2767,6 +2766,15 @@ msgstr "Vis/Skjul passord"
 msgid "Revert"
 msgstr "Tilbakestill"
 
+msgid "Revert changes"
+msgstr ""
+
+msgid "Revert request failed with status <code>%h</code>"
+msgstr ""
+
+msgid "Reverting configuration…"
+msgstr ""
+
 msgid "Root"
 msgstr "Rot"
 
@@ -2780,9 +2788,6 @@ msgid "Route Allowed IPs"
 msgstr ""
 
 msgid "Route type"
-msgstr ""
-
-msgid "Routed IPv6 prefix for downstream interfaces"
 msgstr ""
 
 msgid "Router Advertisement-Service"
@@ -2808,14 +2813,6 @@ msgid "Run filesystem check"
 msgstr "Kjør filsystem sjekk"
 
 msgid "SHA256"
-msgstr ""
-
-msgid ""
-"SIXXS supports TIC only, for static tunnels using IP protocol 41 (RFC4213) "
-"use 6in4 instead"
-msgstr ""
-
-msgid "SIXXS-handle[/Tunnel-ID]"
 msgstr ""
 
 msgid "SNR"
@@ -2845,9 +2842,6 @@ msgstr "Lagre"
 msgid "Save & Apply"
 msgstr "Lagre & Aktiver"
 
-msgid "Save &#38; Apply"
-msgstr "Lagre &#38; Aktiver"
-
 msgid "Scan"
 msgstr "Skann"
 
@@ -2875,17 +2869,6 @@ msgstr "Separerte Klienter"
 
 msgid "Server Settings"
 msgstr "Server Innstillinger"
-
-msgid "Server password"
-msgstr ""
-
-msgid ""
-"Server password, enter the specific password of the tunnel when the username "
-"contains the tunnel ID"
-msgstr ""
-
-msgid "Server username"
-msgstr ""
 
 msgid "Service Name"
 msgstr "Tjeneste navn"
@@ -2983,9 +2966,6 @@ msgstr "Sortering"
 msgid "Source"
 msgstr "Kilde"
 
-msgid "Source routing"
-msgstr ""
-
 msgid "Specifies the directory the device is attached to"
 msgstr "Hvor lagrings enheten blir tilsluttet filsystemet (f.eks. /mnt/sda1)"
 
@@ -3024,6 +3004,9 @@ msgstr "Start"
 
 msgid "Start priority"
 msgstr "Start prioritet"
+
+msgid "Starting configuration apply…"
+msgstr ""
 
 msgid "Startup"
 msgstr "Oppstart"
@@ -3190,6 +3173,16 @@ msgid "The configuration file could not be loaded due to the following error:"
 msgstr ""
 
 msgid ""
+"The device could not be reached within %d seconds after applying the pending "
+"changes, which caused the configuration to be rolled back for safety "
+"reasons. If you believe that the configuration changes are correct "
+"nonetheless, perform an unchecked configuration apply. Alternatively, you "
+"can dismiss this warning and edit changes before attempting to apply again, "
+"or revert all pending changes to keep the currently working configuration "
+"state."
+msgstr ""
+
+msgid ""
 "The device file of the memory or partition (<abbr title=\"for example\">e.g."
 "</abbr> <code>/dev/sda1</code>)"
 msgstr ""
@@ -3213,9 +3206,6 @@ msgstr ""
 "Firmwaren ble lastet opp. Nedenfor er kontrollsum og filstørrelse oppført, "
 "sammenlign dem med den opprinnelige filen for å sikre dataintegriteten.<br /"
 "> Klikk \"Fortsett\" nedenfor for å starte flash prosedyren."
-
-msgid "The following changes have been committed"
-msgstr "Følgende endringer er foretatt"
 
 msgid "The following changes have been reverted"
 msgstr "Følgende endringer er forkastet"
@@ -3285,11 +3275,6 @@ msgstr ""
 "datamaskinen din for å nå enheten på nytt. (avhengig av innstillingene dine)"
 
 msgid ""
-"The tunnel end-point is behind NAT, defaults to disabled and only applies to "
-"AYIYA"
-msgstr ""
-
-msgid ""
 "The uploaded image file does not contain a supported format. Make sure that "
 "you choose the generic image format for your platform."
 msgstr ""
@@ -3299,8 +3284,8 @@ msgstr ""
 msgid "There are no active leases."
 msgstr "Det er ingen aktive leieavtaler."
 
-msgid "There are no pending changes to apply!"
-msgstr "Det finnes ingen endringer som kan utføres!"
+msgid "There are no changes to apply."
+msgstr ""
 
 msgid "There are no pending changes to revert!"
 msgstr "Det finnes ingen endriger å reversere!"
@@ -3451,15 +3436,6 @@ msgstr "Tunnel grensesnitt"
 msgid "Tunnel Link"
 msgstr ""
 
-msgid "Tunnel broker protocol"
-msgstr ""
-
-msgid "Tunnel setup server"
-msgstr ""
-
-msgid "Tunnel type"
-msgstr ""
-
 msgid "Tx-Power"
 msgstr "Tx-Styrke"
 
@@ -3573,7 +3549,7 @@ msgstr "Bruk rutingtabellen"
 
 msgid ""
 "Use the <em>Add</em> Button to add a new lease entry. The <em>MAC-Address</"
-"em> indentifies the host, the <em>IPv4-Address</em> specifies the fixed "
+"em> identifies the host, the <em>IPv4-Address</em> specifies the fixed "
 "address to use, and the <em>Hostname</em> is assigned as a symbolic name to "
 "the requesting host. The optional <em>Lease time</em> can be used to set non-"
 "standard host-specific lease time, e.g. 12h, 3d or infinite."
@@ -3639,12 +3615,6 @@ msgstr ""
 msgid "Vendor Class to send when requesting DHCP"
 msgstr "Leverandør klasse som sendes ved DHCP spørring"
 
-msgid "Verbose"
-msgstr ""
-
-msgid "Verbose logging by aiccu daemon"
-msgstr ""
-
 msgid "Verify"
 msgstr "Bekreft"
 
@@ -3676,15 +3646,14 @@ msgstr ""
 "WPA-Kryptering krever at wpa_supplicant (for klient-modus) eller hostapd "
 "(for AP og ad-hoc-modus) er installert."
 
-msgid ""
-"Wait for NTP sync that many seconds, seting to 0 disables waiting (optional)"
-msgstr ""
-
 msgid "Waiting for changes to be applied..."
 msgstr "Venter på at endringer utføres..."
 
 msgid "Waiting for command to complete..."
 msgstr "Venter på at kommando fullføres..."
+
+msgid "Waiting for configuration to get applied… %ds"
+msgstr ""
 
 msgid "Waiting for device..."
 msgstr ""
@@ -3698,12 +3667,6 @@ msgstr ""
 msgid ""
 "When using a PSK, the PMK can be generated locally without inter AP "
 "communications"
-msgstr ""
-
-msgid "Whether to create an IPv6 default route over the tunnel"
-msgstr ""
-
-msgid "Whether to route only packets from delegated prefixes"
 msgstr ""
 
 msgid "Width"
@@ -3849,9 +3812,6 @@ msgstr "kbit/s"
 msgid "local <abbr title=\"Domain Name System\">DNS</abbr> file"
 msgstr "lokal <abbr title=\"Domain Navn System\">DNS</abbr>-fil"
 
-msgid "minimum 1280, maximum 1480"
-msgstr ""
-
 msgid "minutes"
 msgstr ""
 
@@ -3926,6 +3886,24 @@ msgstr "ja"
 
 msgid "« Back"
 msgstr "« Tilbake"
+
+#~ msgid "Apply"
+#~ msgstr "Bruk"
+
+#~ msgid "Applying changes"
+#~ msgstr "Utfører endringer"
+
+#~ msgid "Configuration applied."
+#~ msgstr "Konfigurasjons endring utført."
+
+#~ msgid "Save &#38; Apply"
+#~ msgstr "Lagre &#38; Aktiver"
+
+#~ msgid "The following changes have been committed"
+#~ msgstr "Følgende endringer er foretatt"
+
+#~ msgid "There are no pending changes to apply!"
+#~ msgstr "Det finnes ingen endringer som kan utføres!"
 
 #~ msgid "Action"
 #~ msgstr "Handling"

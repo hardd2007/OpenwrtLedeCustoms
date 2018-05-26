@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="res/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="res/favicon64.png" sizes="64x64" />
+<link rel="icon" type="image/png" href="res/favicon32.png" sizes="32x32" />
+<title>Modem status</title>
+<script language="javascript" type="text/javascript">
+function loadinfo(contentblock, reload) {
+var a;
+
+try {a = new XMLHttpRequest();} catch (e) {
+try {a = new ActiveXObject("Msxml2.XMLHTTP");} catch (e) {
+try {a = new ActiveXObject("Microsoft.XMLHTTP");} catch (e) {
+alert("Нет поддержки браузером...");
+return false;
+}
+}
+}
+
+document.getElementById('loader').style.display = "block";
+document.getElementById('mainblock').innerHTML = "";
+
+a.open("GET", contentblock);
+
+a.onreadystatechange = function() {
+if (a.readyState == 4) {
+document.getElementById('loader').style.display = "none";
+document.getElementById('mainblock').innerHTML = a.responseText;
+if (reload == 1) {
+location.reload(true);
+}
+}
+}
+a.send(null);
+}
+</script>
+</head>
+<body onload="loadinfo('cgi-bin/lte_modem.sh',0);">
+
+<table style='width:100%;height:100%;'>
+<tr><td colspan=3 style='height:10px;'>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td style="width:95%;  max-width: 800px" align="center" valign="top">
+<div id='mainblock'></div>
+<div id='loader' style="text-align:center;display:block;">
+Опрос модема...<br />
+Load data...
+</div>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td colspan=3 style='height:10px;'>&nbsp;</td></tr>
+</table>
+
+</body></html>

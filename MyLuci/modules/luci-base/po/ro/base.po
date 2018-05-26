@@ -168,9 +168,6 @@ msgstr ""
 msgid "ADSL"
 msgstr ""
 
-msgid "AICCU (SIXXS)"
-msgstr ""
-
 msgid "ANSI T1.413"
 msgstr ""
 
@@ -205,9 +202,6 @@ msgid "ATM device number"
 msgstr "ATM numar echipament"
 
 msgid "ATU-C System Vendor ID"
-msgstr ""
-
-msgid "AYIYA"
 msgstr ""
 
 msgid "Access Concentrator"
@@ -314,11 +308,6 @@ msgstr ""
 msgid "Allowed IPs"
 msgstr ""
 
-msgid ""
-"Also see <a href=\"https://www.sixxs.net/faq/connectivity/?faq=comparison"
-"\">Tunneling Comparison</a> on SIXXS"
-msgstr ""
-
 msgid "Always announce default router"
 msgstr ""
 
@@ -397,11 +386,11 @@ msgstr "Configurarea Antenei"
 msgid "Any zone"
 msgstr "Orice Zona"
 
-msgid "Apply"
-msgstr "Aplica"
+msgid "Apply request failed with status <code>%h</code>"
+msgstr ""
 
-msgid "Applying changes"
-msgstr "Se aplica modificarile"
+msgid "Apply unchecked"
+msgstr ""
 
 msgid ""
 "Assign a part of given length of every public IPv6-prefix to this interface"
@@ -507,9 +496,6 @@ msgstr "Adresa specificata gresit !"
 msgid "Band"
 msgstr ""
 
-msgid "Behind NAT"
-msgstr ""
-
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
 "configuration files marked by opkg, essential base files and the user "
@@ -578,11 +564,19 @@ msgstr "Modificari"
 msgid "Changes applied."
 msgstr "Modificari aplicate."
 
+msgid "Changes have been reverted."
+msgstr ""
+
 msgid "Changes the administrator password for accessing the device"
 msgstr "Schimba parola administratorului pentru accesarea dispozitivului"
 
 msgid "Channel"
 msgstr "Canal"
+
+msgid ""
+"Channel %d is not available in the %s regulatory domain and has been auto-"
+"adjusted to %d."
+msgstr ""
 
 msgid "Check"
 msgstr "Verificare"
@@ -656,11 +650,14 @@ msgstr ""
 msgid "Configuration"
 msgstr "Configurare"
 
-msgid "Configuration applied."
-msgstr "Configurarea aplicata."
-
 msgid "Configuration files will be kept."
 msgstr "Fisierele de configurare vor fi pastrate."
+
+msgid "Configuration has been applied."
+msgstr ""
+
+msgid "Configuration has been rolled back!"
+msgstr ""
 
 msgid "Confirmation"
 msgstr "Confirmare"
@@ -674,11 +671,14 @@ msgstr "Conectat"
 msgid "Connection Limit"
 msgstr "Limita de conexiune"
 
-msgid "Connection to server fails when TLS cannot be used"
-msgstr ""
-
 msgid "Connections"
 msgstr "Conexiuni"
+
+msgid ""
+"Could not regain access to the device after applying the configuration "
+"changes. You might need to reconnect if you modified network related "
+"settings such as the IP address or wireless security credentials."
+msgstr ""
 
 msgid "Country"
 msgstr "Tara"
@@ -806,9 +806,6 @@ msgstr ""
 msgid "Default is stateless + stateful"
 msgstr ""
 
-msgid "Default route"
-msgstr ""
-
 msgid "Default state"
 msgstr "Stare implicita"
 
@@ -848,6 +845,9 @@ msgstr ""
 msgid "Device unreachable"
 msgstr ""
 
+msgid "Device unreachable!"
+msgstr ""
+
 msgid "Diagnostics"
 msgstr "Diagnosticuri"
 
@@ -880,6 +880,9 @@ msgid "Disabled (default)"
 msgstr ""
 
 msgid "Discard upstream RFC1918 responses"
+msgstr ""
+
+msgid "Dismiss"
 msgstr ""
 
 msgid "Displaying only packages containing"
@@ -984,6 +987,11 @@ msgstr "Urgenta"
 msgid "Enable"
 msgstr "Activeaza"
 
+msgid ""
+"Enable <abbr title=\"Internet Group Management Protocol\">IGMP</abbr> "
+"snooping"
+msgstr ""
+
 msgid "Enable <abbr title=\"Spanning Tree Protocol\">STP</abbr>"
 msgstr "Activeaza <abbr title=\"Spanning Tree Protocol\">STP</abbr>"
 
@@ -1040,6 +1048,9 @@ msgstr "Activeaza/Dezactiveaza"
 
 msgid "Enabled"
 msgstr "Activat"
+
+msgid "Enables IGMP snooping on this bridge"
+msgstr ""
 
 msgid ""
 "Enables fast roaming among access points that belong to the same Mobility "
@@ -1117,6 +1128,9 @@ msgid "FT over the Air"
 msgstr ""
 
 msgid "FT protocol"
+msgstr ""
+
+msgid "Failed to confirm apply within %ds, waiting for rollback…"
 msgstr ""
 
 msgid "File"
@@ -1313,9 +1327,6 @@ msgstr ""
 msgid "Header Error Code Errors (HEC)"
 msgstr ""
 
-msgid "Heartbeat"
-msgstr ""
-
 msgid ""
 "Here you can configure the basic aspects of your device like its hostname or "
 "the timezone."
@@ -1429,9 +1440,6 @@ msgstr "Statusul IPv6 pe WAN"
 
 msgid "IPv6 address"
 msgstr "Adresa IPv6"
-
-msgid "IPv6 address delegated to the local tunnel endpoint (optional)"
-msgstr ""
 
 msgid "IPv6 assignment hint"
 msgstr ""
@@ -2001,9 +2009,6 @@ msgstr ""
 msgid "NTP server candidates"
 msgstr ""
 
-msgid "NTP sync time-out"
-msgstr ""
-
 msgid "Name"
 msgstr "Nume"
 
@@ -2127,6 +2132,9 @@ msgstr ""
 msgid "Obfuscated Password"
 msgstr ""
 
+msgid "Obtain IPv6-Address"
+msgstr ""
+
 msgid "Off-State Delay"
 msgstr ""
 
@@ -2170,12 +2178,6 @@ msgid "Option removed"
 msgstr "Optiunea eliminata"
 
 msgid "Optional"
-msgstr ""
-
-msgid "Optional, specify to override default server (tic.sixxs.net)"
-msgstr ""
-
-msgid "Optional, use when the SIXXS account has more than one tunnel"
 msgstr ""
 
 msgid ""
@@ -2638,9 +2640,6 @@ msgstr ""
 msgid "Request IPv6-prefix of length"
 msgstr ""
 
-msgid "Require TLS"
-msgstr ""
-
 msgid "Required"
 msgstr ""
 
@@ -2699,6 +2698,15 @@ msgstr "Arata / ascunde parola"
 msgid "Revert"
 msgstr ""
 
+msgid "Revert changes"
+msgstr ""
+
+msgid "Revert request failed with status <code>%h</code>"
+msgstr ""
+
+msgid "Reverting configuration…"
+msgstr ""
+
 msgid "Root"
 msgstr ""
 
@@ -2712,9 +2720,6 @@ msgid "Route Allowed IPs"
 msgstr ""
 
 msgid "Route type"
-msgstr ""
-
-msgid "Routed IPv6 prefix for downstream interfaces"
 msgstr ""
 
 msgid "Router Advertisement-Service"
@@ -2738,14 +2743,6 @@ msgid "Run filesystem check"
 msgstr ""
 
 msgid "SHA256"
-msgstr ""
-
-msgid ""
-"SIXXS supports TIC only, for static tunnels using IP protocol 41 (RFC4213) "
-"use 6in4 instead"
-msgstr ""
-
-msgid "SIXXS-handle[/Tunnel-ID]"
 msgstr ""
 
 msgid "SNR"
@@ -2775,9 +2772,6 @@ msgstr "Salveaza"
 msgid "Save & Apply"
 msgstr "Salveaza si aplica"
 
-msgid "Save &#38; Apply"
-msgstr "Salveaza &#38; Aplica"
-
 msgid "Scan"
 msgstr "Scan"
 
@@ -2803,17 +2797,6 @@ msgstr ""
 
 msgid "Server Settings"
 msgstr "Setarile serverului"
-
-msgid "Server password"
-msgstr ""
-
-msgid ""
-"Server password, enter the specific password of the tunnel when the username "
-"contains the tunnel ID"
-msgstr ""
-
-msgid "Server username"
-msgstr ""
 
 msgid "Service Name"
 msgstr "Nume serviciu"
@@ -2908,9 +2891,6 @@ msgstr ""
 msgid "Source"
 msgstr "Sursa"
 
-msgid "Source routing"
-msgstr ""
-
 msgid "Specifies the directory the device is attached to"
 msgstr ""
 
@@ -2947,6 +2927,9 @@ msgid "Start"
 msgstr "Start"
 
 msgid "Start priority"
+msgstr ""
+
+msgid "Starting configuration apply…"
 msgstr ""
 
 msgid "Startup"
@@ -3099,6 +3082,16 @@ msgid "The configuration file could not be loaded due to the following error:"
 msgstr ""
 
 msgid ""
+"The device could not be reached within %d seconds after applying the pending "
+"changes, which caused the configuration to be rolled back for safety "
+"reasons. If you believe that the configuration changes are correct "
+"nonetheless, perform an unchecked configuration apply. Alternatively, you "
+"can dismiss this warning and edit changes before attempting to apply again, "
+"or revert all pending changes to keep the currently working configuration "
+"state."
+msgstr ""
+
+msgid ""
 "The device file of the memory or partition (<abbr title=\"for example\">e.g."
 "</abbr> <code>/dev/sda1</code>)"
 msgstr ""
@@ -3113,9 +3106,6 @@ msgid ""
 "The flash image was uploaded. Below is the checksum and file size listed, "
 "compare them with the original file to ensure data integrity.<br /> Click "
 "\"Proceed\" below to start the flash procedure."
-msgstr ""
-
-msgid "The following changes have been committed"
 msgstr ""
 
 msgid "The following changes have been reverted"
@@ -3171,11 +3161,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"The tunnel end-point is behind NAT, defaults to disabled and only applies to "
-"AYIYA"
-msgstr ""
-
-msgid ""
 "The uploaded image file does not contain a supported format. Make sure that "
 "you choose the generic image format for your platform."
 msgstr ""
@@ -3183,8 +3168,8 @@ msgstr ""
 msgid "There are no active leases."
 msgstr ""
 
-msgid "There are no pending changes to apply!"
-msgstr "Nu exista modificari in asteptare de aplicat !"
+msgid "There are no changes to apply."
+msgstr ""
 
 msgid "There are no pending changes to revert!"
 msgstr "Nu exista modificari in asteptare de anulat !"
@@ -3320,15 +3305,6 @@ msgstr "Interfata de tunel"
 msgid "Tunnel Link"
 msgstr ""
 
-msgid "Tunnel broker protocol"
-msgstr ""
-
-msgid "Tunnel setup server"
-msgstr ""
-
-msgid "Tunnel type"
-msgstr ""
-
 msgid "Tx-Power"
 msgstr "Puterea TX"
 
@@ -3439,7 +3415,7 @@ msgstr ""
 
 msgid ""
 "Use the <em>Add</em> Button to add a new lease entry. The <em>MAC-Address</"
-"em> indentifies the host, the <em>IPv4-Address</em> specifies the fixed "
+"em> identifies the host, the <em>IPv4-Address</em> specifies the fixed "
 "address to use, and the <em>Hostname</em> is assigned as a symbolic name to "
 "the requesting host. The optional <em>Lease time</em> can be used to set non-"
 "standard host-specific lease time, e.g. 12h, 3d or infinite."
@@ -3501,12 +3477,6 @@ msgstr ""
 msgid "Vendor Class to send when requesting DHCP"
 msgstr ""
 
-msgid "Verbose"
-msgstr ""
-
-msgid "Verbose logging by aiccu daemon"
-msgstr ""
-
 msgid "Verify"
 msgstr ""
 
@@ -3538,14 +3508,13 @@ msgstr ""
 "Criptarea WPA necesita wpa_supplicant (pentru modul client) sau hostapd "
 "(pentru modul AP sau ad-hoc) instalate."
 
-msgid ""
-"Wait for NTP sync that many seconds, seting to 0 disables waiting (optional)"
-msgstr ""
-
 msgid "Waiting for changes to be applied..."
 msgstr ""
 
 msgid "Waiting for command to complete..."
+msgstr ""
+
+msgid "Waiting for configuration to get applied… %ds"
 msgstr ""
 
 msgid "Waiting for device..."
@@ -3560,12 +3529,6 @@ msgstr ""
 msgid ""
 "When using a PSK, the PMK can be generated locally without inter AP "
 "communications"
-msgstr ""
-
-msgid "Whether to create an IPv6 default route over the tunnel"
-msgstr ""
-
-msgid "Whether to route only packets from delegated prefixes"
 msgstr ""
 
 msgid "Width"
@@ -3703,9 +3666,6 @@ msgstr ""
 msgid "local <abbr title=\"Domain Name System\">DNS</abbr> file"
 msgstr ""
 
-msgid "minimum 1280, maximum 1480"
-msgstr ""
-
 msgid "minutes"
 msgstr ""
 
@@ -3780,6 +3740,21 @@ msgstr "da"
 
 msgid "« Back"
 msgstr "« Inapoi"
+
+#~ msgid "Apply"
+#~ msgstr "Aplica"
+
+#~ msgid "Applying changes"
+#~ msgstr "Se aplica modificarile"
+
+#~ msgid "Configuration applied."
+#~ msgstr "Configurarea aplicata."
+
+#~ msgid "Save &#38; Apply"
+#~ msgstr "Salveaza &#38; Aplica"
+
+#~ msgid "There are no pending changes to apply!"
+#~ msgstr "Nu exista modificari in asteptare de aplicat !"
 
 #~ msgid "Action"
 #~ msgstr "Actiune"

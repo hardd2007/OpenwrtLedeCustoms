@@ -1,0 +1,5 @@
+
+config modem
+	option language 'ru'
+	
+

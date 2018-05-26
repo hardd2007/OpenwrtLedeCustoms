@@ -172,9 +172,6 @@ msgstr ""
 msgid "ADSL"
 msgstr ""
 
-msgid "AICCU (SIXXS)"
-msgstr ""
-
 msgid "ANSI T1.413"
 msgstr ""
 
@@ -209,9 +206,6 @@ msgid "ATM device number"
 msgstr "ATM Geräteindex"
 
 msgid "ATU-C System Vendor ID"
-msgstr ""
-
-msgid "AYIYA"
 msgstr ""
 
 msgid "Access Concentrator"
@@ -322,13 +316,6 @@ msgstr ""
 msgid "Allowed IPs"
 msgstr "Erlaubte IP-Adressen"
 
-msgid ""
-"Also see <a href=\"https://www.sixxs.net/faq/connectivity/?faq=comparison"
-"\">Tunneling Comparison</a> on SIXXS"
-msgstr ""
-"Siehe auch <a href=\"https://www.sixxs.net/faq/connectivity/?faq=comparison"
-"\">Tunneling Comparison</a> bei SIXXS."
-
 msgid "Always announce default router"
 msgstr "Immer Defaultrouter ankündigen"
 
@@ -409,11 +396,11 @@ msgstr "Antennenkonfiguration"
 msgid "Any zone"
 msgstr "Beliebige Zone"
 
-msgid "Apply"
-msgstr "Anwenden"
+msgid "Apply request failed with status <code>%h</code>"
+msgstr ""
 
-msgid "Applying changes"
-msgstr "Änderungen werden angewandt"
+msgid "Apply unchecked"
+msgstr ""
 
 msgid ""
 "Assign a part of given length of every public IPv6-prefix to this interface"
@@ -523,9 +510,6 @@ msgstr "Ungültige Adresse angegeben!"
 msgid "Band"
 msgstr "Frequenztyp"
 
-msgid "Behind NAT"
-msgstr "NAT"
-
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
 "configuration files marked by opkg, essential base files and the user "
@@ -604,11 +588,19 @@ msgstr "Änderungen"
 msgid "Changes applied."
 msgstr "Änderungen angewendet."
 
+msgid "Changes have been reverted."
+msgstr ""
+
 msgid "Changes the administrator password for accessing the device"
 msgstr "Ändert das Administratorpasswort für den Zugriff auf dieses Gerät"
 
 msgid "Channel"
 msgstr "Kanal"
+
+msgid ""
+"Channel %d is not available in the %s regulatory domain and has been auto-"
+"adjusted to %d."
+msgstr ""
 
 msgid "Check"
 msgstr "Prüfen"
@@ -696,11 +688,14 @@ msgstr ""
 msgid "Configuration"
 msgstr "Konfiguration"
 
-msgid "Configuration applied."
-msgstr "Konfiguration angewendet."
-
 msgid "Configuration files will be kept."
 msgstr "Konfigurationsdateien sichern"
+
+msgid "Configuration has been applied."
+msgstr ""
+
+msgid "Configuration has been rolled back!"
+msgstr ""
 
 msgid "Confirmation"
 msgstr "Bestätigung"
@@ -714,11 +709,14 @@ msgstr "Verbunden"
 msgid "Connection Limit"
 msgstr "Verbindungslimit"
 
-msgid "Connection to server fails when TLS cannot be used"
-msgstr "TLS zwingend vorraussetzen und abbrechen wenn TLS fehlschlägt."
-
 msgid "Connections"
 msgstr "Verbindungen"
+
+msgid ""
+"Could not regain access to the device after applying the configuration "
+"changes. You might need to reconnect if you modified network related "
+"settings such as the IP address or wireless security credentials."
+msgstr ""
 
 msgid "Country"
 msgstr "Land"
@@ -848,9 +846,6 @@ msgstr "Default Gateway"
 msgid "Default is stateless + stateful"
 msgstr "Der Standardwert ist zustandslos und zustandsorientiert"
 
-msgid "Default route"
-msgstr "Default Route"
-
 msgid "Default state"
 msgstr "Ausgangszustand"
 
@@ -892,6 +887,9 @@ msgstr "Das Gerät startet neu..."
 msgid "Device unreachable"
 msgstr "Das Gerät ist nicht erreichbar"
 
+msgid "Device unreachable!"
+msgstr ""
+
 msgid "Diagnostics"
 msgstr "Diagnosen"
 
@@ -925,6 +923,9 @@ msgstr "Deaktiviert (Standard)"
 
 msgid "Discard upstream RFC1918 responses"
 msgstr "Eingehende RFC1918-Antworten verwerfen"
+
+msgid "Dismiss"
+msgstr ""
 
 msgid "Displaying only packages containing"
 msgstr "Nur Pakete mit folgendem Inhalt anzeigen"
@@ -1043,6 +1044,11 @@ msgstr "Notfall"
 msgid "Enable"
 msgstr "Aktivieren"
 
+msgid ""
+"Enable <abbr title=\"Internet Group Management Protocol\">IGMP</abbr> "
+"snooping"
+msgstr ""
+
 msgid "Enable <abbr title=\"Spanning Tree Protocol\">STP</abbr>"
 msgstr "<abbr title=\"Spanning Tree Protocol\">STP</abbr> aktivieren"
 
@@ -1100,6 +1106,9 @@ msgstr "Aktivieren/Deaktivieren"
 
 msgid "Enabled"
 msgstr "Aktiviert"
+
+msgid "Enables IGMP snooping on this bridge"
+msgstr ""
 
 msgid ""
 "Enables fast roaming among access points that belong to the same Mobility "
@@ -1182,6 +1191,9 @@ msgid "FT over the Air"
 msgstr ""
 
 msgid "FT protocol"
+msgstr ""
+
+msgid "Failed to confirm apply within %ds, waiting for rollback…"
 msgstr ""
 
 msgid "File"
@@ -1386,9 +1398,6 @@ msgstr "Auflegen"
 msgid "Header Error Code Errors (HEC)"
 msgstr "Anzahl Header-Error-Code-Fehler (HEC)"
 
-msgid "Heartbeat"
-msgstr ""
-
 msgid ""
 "Here you can configure the basic aspects of your device like its hostname or "
 "the timezone."
@@ -1503,9 +1512,6 @@ msgstr "IPv6 WAN Status"
 
 msgid "IPv6 address"
 msgstr "IPv6 Adresse"
-
-msgid "IPv6 address delegated to the local tunnel endpoint (optional)"
-msgstr "Zum lokalen Tunnelendpunkt delegierte IPv6-Adresse (optional)"
 
 msgid "IPv6 assignment hint"
 msgstr "IPv6 Zuweisungshinweis"
@@ -2121,9 +2127,6 @@ msgstr ""
 msgid "NTP server candidates"
 msgstr "NTP Server Kandidaten"
 
-msgid "NTP sync time-out"
-msgstr "NTP Synchronisierungstimeout"
-
 msgid "Name"
 msgstr "Name"
 
@@ -2248,6 +2251,9 @@ msgstr "Chiffriertes Gruppenpasswort"
 msgid "Obfuscated Password"
 msgstr "Chiffriertes Passwort"
 
+msgid "Obtain IPv6-Address"
+msgstr ""
+
 msgid "Off-State Delay"
 msgstr "Verzögerung für Ausschalt-Zustand"
 
@@ -2298,14 +2304,6 @@ msgstr "Option entfernt"
 
 msgid "Optional"
 msgstr "Optional"
-
-msgid "Optional, specify to override default server (tic.sixxs.net)"
-msgstr ""
-"Optional, angeben um den Standardserver (tic.sixxs.net) zu überschreiben"
-
-msgid "Optional, use when the SIXXS account has more than one tunnel"
-msgstr ""
-"Optional, angeben wenn das SIXSS Konto mehr als einen Tunnel beinhaltet"
 
 msgid ""
 "Optional. 32-bit mark for outgoing encrypted packets. Enter value in hex, "
@@ -2801,9 +2799,6 @@ msgstr "IPv6-Adresse anfordern"
 msgid "Request IPv6-prefix of length"
 msgstr "IPv6-Präfix dieser Länge anfordern"
 
-msgid "Require TLS"
-msgstr "TLS erfordern"
-
 msgid "Required"
 msgstr "Benötigt"
 
@@ -2871,6 +2866,15 @@ msgstr "Passwort zeigen/verstecken"
 msgid "Revert"
 msgstr "Verwerfen"
 
+msgid "Revert changes"
+msgstr ""
+
+msgid "Revert request failed with status <code>%h</code>"
+msgstr ""
+
+msgid "Reverting configuration…"
+msgstr ""
+
 msgid "Root"
 msgstr "Root"
 
@@ -2885,9 +2889,6 @@ msgstr "Erlaubte IP-Addressen routen"
 
 msgid "Route type"
 msgstr "Routen-Typ"
-
-msgid "Routed IPv6 prefix for downstream interfaces"
-msgstr "Geroutetes IPv6-Präfix für nachgelagerte Schnittstellen"
 
 msgid "Router Advertisement-Service"
 msgstr "Router-Advertisement-Dienst"
@@ -2912,14 +2913,6 @@ msgid "Run filesystem check"
 msgstr "Dateisystemprüfung durchführen"
 
 msgid "SHA256"
-msgstr ""
-
-msgid ""
-"SIXXS supports TIC only, for static tunnels using IP protocol 41 (RFC4213) "
-"use 6in4 instead"
-msgstr ""
-
-msgid "SIXXS-handle[/Tunnel-ID]"
 msgstr ""
 
 msgid "SNR"
@@ -2949,9 +2942,6 @@ msgstr "Speichern"
 msgid "Save & Apply"
 msgstr "Speichern & Anwenden"
 
-msgid "Save &#38; Apply"
-msgstr "Speichern &#38; Anwenden"
-
 msgid "Scan"
 msgstr "Scan"
 
@@ -2979,19 +2969,6 @@ msgstr "Clients isolieren"
 
 msgid "Server Settings"
 msgstr "Servereinstellungen"
-
-msgid "Server password"
-msgstr "Server Passwort"
-
-msgid ""
-"Server password, enter the specific password of the tunnel when the username "
-"contains the tunnel ID"
-msgstr ""
-"Server Passwort bzw. das tunnelspezifische Passwort wenn der Benutzername "
-"eine Tunnel-ID beinhaltet."
-
-msgid "Server username"
-msgstr "Server Benutzername"
 
 msgid "Service Name"
 msgstr "Service-Name"
@@ -3093,9 +3070,6 @@ msgstr "Sortieren"
 msgid "Source"
 msgstr "Quelle"
 
-msgid "Source routing"
-msgstr "Quell-Routing"
-
 msgid "Specifies the directory the device is attached to"
 msgstr "Nennt das Verzeichnis, an welches das Gerät angebunden ist"
 
@@ -3141,6 +3115,9 @@ msgstr "Start"
 
 msgid "Start priority"
 msgstr "Startpriorität"
+
+msgid "Starting configuration apply…"
+msgstr ""
 
 msgid "Startup"
 msgstr "Systemstart"
@@ -3317,6 +3294,16 @@ msgstr ""
 "werden:"
 
 msgid ""
+"The device could not be reached within %d seconds after applying the pending "
+"changes, which caused the configuration to be rolled back for safety "
+"reasons. If you believe that the configuration changes are correct "
+"nonetheless, perform an unchecked configuration apply. Alternatively, you "
+"can dismiss this warning and edit changes before attempting to apply again, "
+"or revert all pending changes to keep the currently working configuration "
+"state."
+msgstr ""
+
+msgid ""
 "The device file of the memory or partition (<abbr title=\"for example\">e.g."
 "</abbr> <code>/dev/sda1</code>)"
 msgstr "Die Gerätedatei des Speichers oder der Partition (z.B.: /dev/sda)"
@@ -3336,9 +3323,6 @@ msgstr ""
 "Dateigröße gelistet. Vergleichen Sie diese mit der Originaldatei um die "
 "Integrität sicherzustellen.<br /> Klicken Sie \"Fortfahren\" um die Flash-"
 "Prozedur zu starten."
-
-msgid "The following changes have been committed"
-msgstr "Die folgenden Änderungen wurden angewendet"
 
 msgid "The following changes have been reverted"
 msgstr "Die folgenden Änderungen wurden verworfen"
@@ -3414,13 +3398,6 @@ msgstr ""
 "Adresse beziehen müssen um auf das Gerät zugreifen zu können."
 
 msgid ""
-"The tunnel end-point is behind NAT, defaults to disabled and only applies to "
-"AYIYA"
-msgstr ""
-"Der lokale Tunnel-Endpunkt ist hinter einem NAT. Standard ist deaktiviert, "
-"nur auf AYIYA anwendbar."
-
-msgid ""
 "The uploaded image file does not contain a supported format. Make sure that "
 "you choose the generic image format for your platform."
 msgstr ""
@@ -3430,8 +3407,8 @@ msgstr ""
 msgid "There are no active leases."
 msgstr "Es gibt z.Z. keine aktiven Leases."
 
-msgid "There are no pending changes to apply!"
-msgstr "Es gibt keine ausstehenen Änderungen anzuwenden!"
+msgid "There are no changes to apply."
+msgstr ""
 
 msgid "There are no pending changes to revert!"
 msgstr "Es gibt keine ausstehenen Änderungen zurückzusetzen!"
@@ -3486,7 +3463,7 @@ msgid ""
 "This is the content of /etc/rc.local. Insert your own commands here (in "
 "front of 'exit 0') to execute them at the end of the boot process."
 msgstr ""
-"Dies ist der Inhalt von /etc.rc.local. Hier kann man eigene Befehle einfügen "
+"Dies ist der Inhalt von /etc/rc.local. Hier kann man eigene Befehle einfügen "
 "(vor 'exit 0'), die dann am Ende des Bootvorgangs ausgeführt werden."
 
 msgid ""
@@ -3591,15 +3568,6 @@ msgstr "Tunnelschnittstelle"
 
 msgid "Tunnel Link"
 msgstr "Basisschnittstelle"
-
-msgid "Tunnel broker protocol"
-msgstr "Tunnel-Boker-Protokoll"
-
-msgid "Tunnel setup server"
-msgstr "Tunnel-Setup-Server"
-
-msgid "Tunnel type"
-msgstr "Tunneltyp"
 
 msgid "Tx-Power"
 msgstr "Sendestärke"
@@ -3714,7 +3682,7 @@ msgstr "Benutze Routing-Tabelle"
 
 msgid ""
 "Use the <em>Add</em> Button to add a new lease entry. The <em>MAC-Address</"
-"em> indentifies the host, the <em>IPv4-Address</em> specifies the fixed "
+"em> identifies the host, the <em>IPv4-Address</em> specifies the fixed "
 "address to use, and the <em>Hostname</em> is assigned as a symbolic name to "
 "the requesting host. The optional <em>Lease time</em> can be used to set non-"
 "standard host-specific lease time, e.g. 12h, 3d or infinite."
@@ -3782,12 +3750,6 @@ msgstr "Hersteller"
 msgid "Vendor Class to send when requesting DHCP"
 msgstr "Bei DHCP-Anfragen gesendete Vendor-Klasse"
 
-msgid "Verbose"
-msgstr "Umfangreiche Ausgaben"
-
-msgid "Verbose logging by aiccu daemon"
-msgstr "Aktiviert erweiterte Protokollierung durch den AICCU-Prozess"
-
 msgid "Verify"
 msgstr "Verifizieren"
 
@@ -3819,17 +3781,14 @@ msgstr ""
 "WPA-Verschlüsselung benötigt wpa_supplicant (für Client-Modus) oder hostapd "
 "(für AP oder Ad-Hoc Modus)."
 
-msgid ""
-"Wait for NTP sync that many seconds, seting to 0 disables waiting (optional)"
-msgstr ""
-"Warte die angegebene Anzahl an Sekunden auf NTP-Synchronisierung, der Wert 0 "
-"deaktiviert das Warten (optional)"
-
 msgid "Waiting for changes to be applied..."
 msgstr "Änderungen werden angewandt..."
 
 msgid "Waiting for command to complete..."
 msgstr "Der Befehl wird ausgeführt..."
+
+msgid "Waiting for configuration to get applied… %ds"
+msgstr ""
 
 msgid "Waiting for device..."
 msgstr "Warte auf Gerät..."
@@ -3848,13 +3807,6 @@ msgid ""
 msgstr ""
 "Wenn PSK in Verwendung ist, können PMK-Schlüssel lokal ohne Inter-Access-"
 "Point-Kommunikation erzeugt werden."
-
-msgid "Whether to create an IPv6 default route over the tunnel"
-msgstr ""
-"Gibt an, ob eine IPv6-Default-Route durch den Tunnel etabliert werden soll"
-
-msgid "Whether to route only packets from delegated prefixes"
-msgstr "Gibt an, ob nur Pakete von delegierten Präfixen geroutet werden sollen"
 
 msgid "Width"
 msgstr "Breite"
@@ -3997,9 +3949,6 @@ msgstr "kbit/s"
 msgid "local <abbr title=\"Domain Name System\">DNS</abbr> file"
 msgstr "Lokale DNS-Datei"
 
-msgid "minimum 1280, maximum 1480"
-msgstr "Minimum 1280, Maximum 1480"
-
 msgid "minutes"
 msgstr "Minuten"
 
@@ -4074,108 +4023,3 @@ msgstr "ja"
 
 msgid "« Back"
 msgstr "« Zurück"
-
-#~ msgid "Action"
-#~ msgstr "Aktion"
-
-#~ msgid "Buttons"
-#~ msgstr "Knöpfe"
-
-#~ msgid "Handler"
-#~ msgstr "Handler"
-
-#~ msgid "Maximum hold time"
-#~ msgstr "Maximalzeit zum Halten der Verbindung"
-
-#~ msgid "Minimum hold time"
-#~ msgstr "Minimalzeit zum Halten der Verbindung"
-
-#~ msgid "Path to executable which handles the button event"
-#~ msgstr "Ausführbare Datei welche das Schalter-Ereignis verarbeitet"
-
-#~ msgid "Specifies the button state to handle"
-#~ msgstr "Gibt den zu behandelnden Tastenstatus an"
-
-#~ msgid "This page allows the configuration of custom button actions"
-#~ msgstr ""
-#~ "Diese Seite ermöglicht die Konfiguration benutzerdefinierter "
-#~ "Tastenaktionen"
-
-#~ msgid "Leasetime"
-#~ msgstr "Laufzeit"
-
-#~ msgid "Optional."
-#~ msgstr "Optional"
-
-#~ msgid "AuthGroup"
-#~ msgstr "Berechtigungsgruppe"
-
-#~ msgid "automatic"
-#~ msgstr "automatisch"
-
-#~ msgid "AR Support"
-#~ msgstr "AR-Unterstützung"
-
-#~ msgid "Atheros 802.11%s Wireless Controller"
-#~ msgstr "Atheros 802.11%s W-LAN Adapter"
-
-#~ msgid "Background Scan"
-#~ msgstr "Hintergrundscan"
-
-#~ msgid "Compression"
-#~ msgstr "Kompression"
-
-#~ msgid "Disable HW-Beacon timer"
-#~ msgstr "Deaktiviere Hardware-Beacon Zeitgeber"
-
-#~ msgid "Do not send probe responses"
-#~ msgstr "Scan-Anforderungen nicht beantworten"
-
-#~ msgid "Fast Frames"
-#~ msgstr "Schnelle Frames"
-
-#~ msgid "Maximum Rate"
-#~ msgstr "Höchstübertragungsrate"
-
-#~ msgid "Minimum Rate"
-#~ msgstr "Mindestübertragungsrate"
-
-#~ msgid "Multicast Rate"
-#~ msgstr "Multicastrate"
-
-#~ msgid "Outdoor Channels"
-#~ msgstr "Funkkanal für den Ausseneinsatz"
-
-#~ msgid "Regulatory Domain"
-#~ msgstr "Geltungsbereich (Regulatory Domain)"
-
-#~ msgid "Separate WDS"
-#~ msgstr "Separates WDS"
-
-#~ msgid "Static WDS"
-#~ msgstr "Statisches WDS"
-
-#~ msgid "Turbo Mode"
-#~ msgstr "Turbo Modus"
-
-#~ msgid "XR Support"
-#~ msgstr "XR-Unterstützung"
-
-#~ msgid "An additional network will be created if you leave this unchecked."
-#~ msgstr ""
-#~ "Erzeugt ein zusätzliches Netzwerk wenn diese Option nicht ausgewählt ist"
-
-#~ msgid "Join Network: Settings"
-#~ msgstr "Netzwerk beitreten: Einstellungen"
-
-#~ msgid "CPU"
-#~ msgstr "Prozessor"
-
-#~ msgid "Port %d"
-#~ msgstr "Port %d"
-
-#~ msgid "Port %d is untagged in multiple VLANs!"
-#~ msgstr "Port %d ist untagged in mehreren VLANs!"
-
-#~ msgid "VLAN Interface"
-#~ msgstr "VLAN Schnittstelle"

@@ -1,0 +1,11 @@
+
+config netmon
+	option res_1 '8.8.8.8'
+	option checktime '333'
+	option res_2 'ya.ru'
+	option res_3 '77.88.8.1'
+	option action 'rport'
+	option portdelay '10'
+	option inittime '45'
+	option algcheck 'All'
+
