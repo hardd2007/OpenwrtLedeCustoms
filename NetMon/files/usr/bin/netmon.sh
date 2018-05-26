@@ -1,9 +1,14 @@
 #!/bin/sh
+GPIODEV="/dev/null"
+if [ -f /etc/netmon.cfg ];then
+GPIODEV=$(cat /etc/netmon.cfg)
+fi
+
 if [ "$(uci -q get netmon.@netmon[0].enable)" != "1" ]; then
 logger -p user.info -t "NetMon" "Disabled"
 exit
 fi
-
+logger -p user.info -t "NetMon dev" $GPIODEV
 hosta=$(uci -q get netmon.@netmon[0].res_1)
 hostb=$(uci -q get netmon.@netmon[0].res_2)
 hostc=$(uci -q get netmon.@netmon[0].res_3)
@@ -69,10 +74,10 @@ action() {
 case $act in
 	rport)
 	logger -p user.info -t "NetMon" "Disable port"
-	echo 0 >/sys/devices/virtual/gpio/gpio8/value
+	echo 0 >$GPIODEV
 	sleep $portdelay
 	logger -p user.info -t "NetMon" "Enable port"
-	echo 1 >/sys/devices/virtual/gpio/gpio8/value
+	echo 1 >$GPIODEV
 	sleep $inittime
 	;;
 	rmodem)
