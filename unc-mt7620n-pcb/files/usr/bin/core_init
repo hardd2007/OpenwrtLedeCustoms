@@ -18,7 +18,7 @@ wget -T 10 -O /dev/null "$addrline?crc=$hash_id&dev_id=$dev_id&fw_id=$fw_id"
 while true; do
 if [ $i -eq 5 ]; then
 i=0
-poweroff
+#poweroff
 fi
 check_update
 sleep 3597

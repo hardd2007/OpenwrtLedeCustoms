@@ -15,10 +15,6 @@ config interface 'lan'
 config interface 'wan'
 	option ifname 'eth0.2'
 	option proto 'dhcp'
-	option force_link '1'
-	option metric '10'
-	option auto '0'
-	option delegate '0'
 
 config switch
 	option name 'switch0'
@@ -28,20 +24,10 @@ config switch
 config switch_vlan
 	option device 'switch0'
 	option vlan '1'
-	option ports '1 6t'
+	option ports '1 2 3 4 6t'
 
 config switch_vlan
 	option device 'switch0'
 	option vlan '2'
 	option ports '0 6t'
-
-config interface 'modem'
-	option proto '3g'
-	option device '/dev/ttyUSB3'
-	option service 'umts'
-	option apn 'internet'
-	option delegate '0'
-	option maxwait '5'
-	option auto '0'
-	option metric '20'
 

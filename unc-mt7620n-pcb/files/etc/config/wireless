@@ -12,4 +12,5 @@ config wifi-iface 'default_radio0'
 	option mode 'ap'
 	option ssid 'HardD-WRT'
 	option encryption 'none'
+	option disabled '1'
 
