@@ -15,12 +15,12 @@ Author: Petar Koretic <petar.koretic@sartura.hr>
 -%>
 
 <%-
-local fs     = require "nixio"
-local target = fs.uname().machine
+local nx     = require "nixio"
+local target = nx.uname().machine
 -%>
 
-<fieldset class="cbi-section">
-	<legend><%:Available Containers%></legend>
+<div class="cbi-section">
+	<h3><%:Available Containers%></h3>
 	<div class="cbi-section-node">
 		<div class="table cbi-section-table" id="t_lxc_list">
 			<div class="tr cbi-section-table-titles">
@@ -30,15 +30,15 @@ local target = fs.uname().machine
 			</div>
 		</div>
 	</div>
-</fieldset>
+</div>
 
-<fieldset class="cbi-section">
+<div class="cbi-section">
 	<span id="lxc-list-output"></span>
-</fieldset>
+</div>
 
 <hr />
-<fieldset class="cbi-section">
-	<legend><%:Create New Container%></legend>
+<div class="cbi-section">
+	<h3><%:Create New Container%></h3>
 	<div class="cbi-section-node">
 		<div class="table cbi-section-table" id="t_lxc_create">
 			<div class="tr cbi-section-table-titles">
@@ -56,15 +56,14 @@ local target = fs.uname().machine
 			</div>
 		</div>
 	</div>
-</fieldset>
+</div>
 
-<fieldset class="cbi-section">
+<div class="cbi-section">
 	<span id="lxc-add-output"></span>
-</fieldset>
+</div>
 
 <hr />
 
-<script type="text/javascript" src="<%=resource%>/cbi.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 	window.img    = { "red" : "<%=resource%>/cbi/red.gif", "green" : "<%=resource%>/cbi/green.gif", "purple" : "<%=resource%>/cbi/purple.gif" };
@@ -159,7 +158,7 @@ local target = fs.uname().machine
 		var div3 = document.createElement("div");
 		div3.className = "td";
 		div3.style.width = "50%";
-		div3.innerHTML = actions
+		div3.innerHTML = actions;
 
 		document.getElementById("t_lxc_list").appendChild(div0);
 		div0.appendChild(div1);
@@ -213,8 +212,8 @@ local target = fs.uname().machine
 		}
 		else if (action == "destroy")
 		{
-			var div = self.parentNode.parentNode
-			var img = div.querySelector('img')
+			var div = self.parentNode.parentNode;
+			var img = div.querySelector('img');
 
 			if (img.getAttribute('src') != window.img["red"])
 			{

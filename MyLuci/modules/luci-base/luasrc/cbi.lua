@@ -1226,13 +1226,14 @@ function TypedSection.parse(self, novld)
 		local stval = RESORT_PREFIX .. self.config .. "." .. self.sectiontype
 		local order = self.map:formvalue(stval)
 		if order and #order > 0 then
-			local sid
-			local num = 0
+			local sids, sid = { }, nil
 			for sid in util.imatch(order) do
-				self.map.uci:reorder(self.config, sid, num)
-				num = num + 1
+				sids[#sids+1] = sid
 			end
-			self.changed = (num > 0)
+			if #sids > 0 then
+				self.map.uci:reorder(self.config, sids)
+				self.changed = true
+			end
 		end
 	end
 
@@ -1416,6 +1417,12 @@ function AbstractValue.parse(self, section, novld)
 			self:add_error(section, "invalid", val_err)
 		end
 
+		if self.alias then
+			self.section.aliased = self.section.aliased or {}
+			self.section.aliased[section] = self.section.aliased[section] or {}
+			self.section.aliased[section][self.alias] = true
+		end
+
 		if fvalue and (self.forcewrite or not (fvalue == cvalue)) then
 			if self:write(section, fvalue) then
 				-- Push events
@@ -1425,10 +1432,16 @@ function AbstractValue.parse(self, section, novld)
 		end
 	else							-- Unset the UCI or error
 		if self.rmempty or self.optional then
-			if self:remove(section) then
-				-- Push events
-				self.section.changed = true
-				--luci.util.append(self.map.events, self.events)
+			if not self.alias or
+			   not self.section.aliased or
+			   not self.section.aliased[section] or
+			   not self.section.aliased[section][self.alias]
+			then
+				if self:remove(section) then
+					-- Push events
+					self.section.changed = true
+					--luci.util.append(self.map.events, self.events)
+				end
 			end
 		elseif cvalue ~= fvalue and not novld then
 			-- trigger validator with nil value to get custom user error msg.
@@ -1454,7 +1467,7 @@ function AbstractValue.cfgvalue(self, section)
 	if self.tag_error[section] then
 		value = self:formvalue(section)
 	else
-		value = self.map:get(section, self.option)
+		value = self.map:get(section, self.alias or self.option)
 	end
 
 	if not value then
@@ -1495,12 +1508,12 @@ AbstractValue.transform = AbstractValue.validate
 
 -- Write to UCI
 function AbstractValue.write(self, section, value)
-	return self.map:set(section, self.option, value)
+	return self.map:set(section, self.alias or self.option, value)
 end
 
 -- Remove from UCI
 function AbstractValue.remove(self, section)
-	return self.map:del(section, self.option)
+	return self.map:del(section, self.alias or self.option)
 end
 
 
@@ -1830,6 +1843,15 @@ function DynamicList.formvalue(self, section)
 	end
 
 	return value
+end
+
+
+DropDown = class(MultiValue)
+
+function DropDown.__init__(self, ...)
+	ListValue.__init__(self, ...)
+	self.template = "cbi/dropdown"
+	self.delimiter = " "
 end
 
 

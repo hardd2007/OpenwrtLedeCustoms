@@ -1,8 +1,0 @@
-NOTDETECTED="Модем не обнаружен"
-NODEVICE="Нет устройства"
-PINERROR="PIN код неверный"
-CONNECTED="Соединение установлено"
-CONNECT="Подключить"
-DISCONNECTED="Выключено"
-DISCONNECT="Отключить"
-NOINFO="Нет информации"
