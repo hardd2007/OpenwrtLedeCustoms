@@ -91,7 +91,7 @@ define Package/WT3020files/postinst
 	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
 	echo "----LUA----"
-	/home/hardd/MNT/Lua/lua.sh $(TARGET_DIR)
+	/home/hardd/MNT/MYREP/Lua/lua.sh $(TARGET_DIR)
 	echo "----LUA----"
 
 	

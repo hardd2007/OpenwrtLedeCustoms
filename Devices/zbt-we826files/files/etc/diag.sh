@@ -3,7 +3,7 @@
 . /lib/functions/leds.sh
 
 get_status_led() {
-	status_led="wt3020:blue:power"
+	status_led="zbt-we826:green:wifi"
 }
 
 set_state() {

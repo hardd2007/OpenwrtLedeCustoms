@@ -88,8 +88,11 @@ define Package/zbt-we826files/postinst
 	rm -f $(TARGET_DIR)/lib/upgrade/ubnt.sh
 #	rm -f $(TARGET_DIR)/www/index.html
 	rm -f $(TARGET_DIR)/etc/uci-defaults/20_migrate_feeds
-	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-$(PKGARCH)/$(PKG_NAME)/* $(TARGET_DIR)/
+	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
+	echo "----LUA----"
+	/home/hardd/MNT/MYREP/Lua/lua.sh $(TARGET_DIR)
+	echo "----LUA----"
 
 	
 

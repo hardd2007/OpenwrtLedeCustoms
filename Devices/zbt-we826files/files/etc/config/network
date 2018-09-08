@@ -5,20 +5,17 @@ config interface 'loopback'
 	option ipaddr '127.0.0.1'
 	option netmask '255.0.0.0'
 
-config globals 'globals'
-	option ula_prefix 'fdd2:4ebd:7919::/48'
 
 config interface 'lan'
 	option type 'bridge'
 	option ifname 'eth0.1'
 	option proto 'static'
-	option ipaddr '192.168.1.1'
+	option ipaddr '192.168.17.254'
 	option netmask '255.255.255.0'
 	option ip6assign '60'
 
 config device 'lan_dev'
 	option name 'eth0.1'
-	option macaddr '78:a3:51:2e:dd:88'
 
 config interface 'wan'
 	option ifname 'eth0.2'
@@ -26,7 +23,6 @@ config interface 'wan'
 
 config device 'wan_dev'
 	option name 'eth0.2'
-	option macaddr '78:a3:51:2e:dd:89'
 
 config interface 'wan6'
 	option ifname 'eth0.2'

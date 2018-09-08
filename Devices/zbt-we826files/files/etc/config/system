@@ -17,12 +17,14 @@ config timeserver 'ntp'
 config led
 	option default '0'
 	option name 'wifi'
-	option sysfs 'rt2800soc-phy0::radio'
-	option trigger 'phy0radio'
+	option sysfs 'zbt-we826:green:wifi'
+	option trigger 'netdev'
+	option dev 'wlan0'
+	option mode 'tx rx'
 
 config led
 	option default '0'
-	option name 'sys'
-	option sysfs 'zbt-we826:green:power'
-	option trigger 'heartbeat'
+	option name 'usb'
+	option sysfs 'zbt-we826:green:usb'
+	option trigger 'usb-host'
 
