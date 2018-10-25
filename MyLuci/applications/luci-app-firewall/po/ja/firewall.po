@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-30 17:00+0200\n"
-"PO-Revision-Date: 2018-06-30 23:19+0900\n"
+"PO-Revision-Date: 2018-05-27 21:24+0900\n"
 "Last-Translator: INAGAKI Hiroshi <musashino.open@gmail.com>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -369,9 +369,6 @@ msgstr "転送を拒否"
 
 msgid "Refuse input"
 msgstr "入力を拒否"
-
-msgid "Refuse output"
-msgstr "出力を拒否"
 
 msgid "Requires hardware NAT support. Implemented at least for mt7621"
 msgstr ""

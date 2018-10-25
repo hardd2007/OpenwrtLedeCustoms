@@ -61,9 +61,6 @@ msgstr "Puffer méret (MB)"
 msgid "Config file directory"
 msgstr "Beállítási fájl könyvtára"
 
-msgid "Custom WEB UI directory"
-msgstr ""
-
 msgid "DHT enabled"
 msgstr "DHT engedélyezve"
 

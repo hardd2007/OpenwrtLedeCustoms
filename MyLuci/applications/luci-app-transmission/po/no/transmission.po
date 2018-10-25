@@ -61,9 +61,6 @@ msgstr "Bufferstørrelse i MB"
 msgid "Config file directory"
 msgstr "Mappe for konfigurasjonsfil"
 
-msgid "Custom WEB UI directory"
-msgstr ""
-
 msgid "DHT enabled"
 msgstr "DHT aktivert"
 

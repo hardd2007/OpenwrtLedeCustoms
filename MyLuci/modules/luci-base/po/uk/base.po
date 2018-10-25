@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2018-09-01 00:10+0300\n"
+"PO-Revision-Date: 2018-07-20 11:30+0300\n"
 "Last-Translator: Yurii <yuripet@gmail.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -346,7 +346,7 @@ msgstr ""
 "наприклад, для RBL-послуг"
 
 msgid "Allowed IPs"
-msgstr "Дозволено IP-адреси"
+msgstr ""
 
 msgid "Always announce default router"
 msgstr "Завжди оголошувати типовим маршрутизатором"
@@ -555,7 +555,7 @@ msgid "Bad address specified!"
 msgstr "Вказано неправильну адресу!"
 
 msgid "Band"
-msgstr "Група"
+msgstr ""
 
 msgid "Beacon Interval"
 msgstr "Інтервал маяка"
@@ -627,12 +627,6 @@ msgstr "Скасувати"
 
 msgid "Category"
 msgstr "Категорія"
-
-msgid "Caution: Configuration files will be erased"
-msgstr "Увага: файли конфігурації буде видалено."
-
-msgid "Caution: System upgrade will be forced"
-msgstr "Увага: систему буде оновлено примусово"
 
 msgid "Chain"
 msgstr "Ланцюжок"
@@ -744,8 +738,8 @@ msgstr "Конфігурація"
 msgid "Configuration failed"
 msgstr "Помилка налаштування"
 
-msgid "Configuration files will be kept"
-msgstr "Конфігураційні файли буде збережено"
+msgid "Configuration files will be kept."
+msgstr "Конфігураційні файли буде збережено."
 
 msgid "Configuration has been applied."
 msgstr "Конфігурацію застосовано."
@@ -910,7 +904,7 @@ msgid "Default gateway"
 msgstr "Типовий шлюз"
 
 msgid "Default is stateless + stateful"
-msgstr "Типовим є БЕЗ та ЗІ збереженням стану"
+msgstr ""
 
 msgid "Default state"
 msgstr "Типовий стан"
@@ -1386,9 +1380,6 @@ msgstr "Примусово TKIP та CCMP (AES)"
 msgid "Force link"
 msgstr "Примусове з’єднання"
 
-msgid "Force upgrade"
-msgstr "Примусове оновлення"
-
 msgid "Force use of NAT-T"
 msgstr "Примусово використовувати NAT-T"
 
@@ -1553,9 +1544,6 @@ msgstr "Група IKE DH"
 msgid "IP Addresses"
 msgstr "IP-адреси"
 
-msgid "IP Protocol"
-msgstr "IP-протокол"
-
 msgid "IP address"
 msgstr "IP-адреса"
 
@@ -1600,9 +1588,6 @@ msgstr "Префікс IPv4"
 
 msgid "IPv4 prefix length"
 msgstr "Довжина префікса IPv4"
-
-msgid "IPv4+IPv6"
-msgstr "IPv4+IPv6"
 
 msgid "IPv4-Address"
 msgstr "IPv4-адреса"
@@ -2178,9 +2163,6 @@ msgstr "Режим"
 msgid "Model"
 msgstr "Модель"
 
-msgid "Modem default"
-msgstr "Типові налаштування модема"
-
 msgid "Modem device"
 msgstr "Модем"
 
@@ -2258,7 +2240,7 @@ msgid "NT Domain"
 msgstr "Домен NT"
 
 msgid "NTP server candidates"
-msgstr "Кандидати для синхронізації сервера NTP"
+msgstr "Кандидати для синхронізації NTP-сервера"
 
 msgid "Name"
 msgstr "Ім’я"
@@ -2365,6 +2347,9 @@ msgstr "Не пов’язаний"
 msgid "Not connected"
 msgstr "Не підключено"
 
+msgid "Note: Configuration files will be erased."
+msgstr "Примітка: конфігураційні файли буде видалено."
+
 msgid "Note: interface name length"
 msgstr "Примітка: довжина імені інтерфейсу"
 
@@ -2441,7 +2426,7 @@ msgid "Option removed"
 msgstr "Опція видалена"
 
 msgid "Optional"
-msgstr "Необов’язково"
+msgstr ""
 
 msgid ""
 "Optional. 32-bit mark for outgoing encrypted packets. Enter value in hex, "
@@ -2931,7 +2916,7 @@ msgid "Request IPv6-address"
 msgstr "Запит IPv6-адреси"
 
 msgid "Request IPv6-prefix of length"
-msgstr "Запит довжини IPv6-префіксу"
+msgstr ""
 
 msgid "Required"
 msgstr "Потрібно"
@@ -3021,7 +3006,7 @@ msgid "Route Allowed IPs"
 msgstr "Маршрутизація дозволених IP-адрес"
 
 msgid "Route type"
-msgstr "Тип маршруту"
+msgstr ""
 
 msgid "Router Advertisement-Service"
 msgstr "Служба оголошень маршрутизатора"
@@ -3094,15 +3079,6 @@ msgid "See \"mount\" manpage for details"
 msgstr "Подробиці дивись на сторінці керівництва \"mount\"."
 
 msgid ""
-"Select 'Force upgrade' to flash the image even if the image format check "
-"fails. Use only if you are sure that the firmware is correct and meant for "
-"your device!"
-msgstr ""
-"Щоб прошити образ, навіть якщо не вдається виконати перевірку його формату, "
-"виберіть \"Примусове оновлення\". Використовуйте тільки якщо ви впевнені, що "
-"мікропрограма є правильною і призначена для вашого пристрою!"
-
-msgid ""
 "Send LCP echo requests at the given interval in seconds, only effective in "
 "conjunction with failure threshold"
 msgstr ""
@@ -3113,7 +3089,7 @@ msgid "Separate Clients"
 msgstr "Розділяти клієнтів"
 
 msgid "Server Settings"
-msgstr "Налаштування сервера"
+msgstr "Настройки сервера"
 
 msgid "Service Name"
 msgstr "Назва (ім’я) сервісу"
@@ -3258,7 +3234,7 @@ msgid "Start priority"
 msgstr "Стартовий пріоритет"
 
 msgid "Starting configuration apply…"
-msgstr "Розпочато застосування конфігурації…"
+msgstr "Застосовується стартова конфігурація…"
 
 msgid "Starting wireless scan..."
 msgstr "Розпочато сканування бездротових мереж..."
@@ -3470,7 +3446,7 @@ msgid ""
 "\"Proceed\" below to start the flash procedure."
 msgstr ""
 "Образ завантажено. Нижче наведено контрольну суму та розмір файлу. "
-"Порівняйте їх з вихідним файлом, щоб переконатися в цілісності даних.<br /> "
+"Порівняйте їх з вихідним файлом, шоб переконатися в цілісності даних.<br /> "
 "Натисніть \"Продовжити\", щоб розпочати процедуру прошивання."
 
 msgid "The following changes have been reverted"
@@ -3540,8 +3516,8 @@ msgid ""
 msgstr ""
 "Система перепрошивається.<br /> <strong>НЕ ВИМИКАЙТЕ ЖИВЛЕННЯ ПРИСТРОЮ!</"
 "strong><br /> Зачекайте кілька хвилин перед тим, як пробувати знову "
-"під’єднатися. Залежно від налаштувань, можливо, треба буде оновити адресу "
-"вашого комп’ютера, щоб знову отримати доступ до пристрою."
+"з'єднатися. Залежно від ваших настройок, можливо, вам треба буде оновити "
+"адресу вашого комп'ютера, щоб знову отримати доступ до пристрою."
 
 msgid ""
 "The uploaded image file does not contain a supported format. Make sure that "
@@ -3573,7 +3549,7 @@ msgid ""
 "There is no password set on this router. Please configure a root password to "
 "protect the web interface and enable SSH."
 msgstr ""
-"Цей маршрутизатор не має пароля. Встановіть пароль, щоб захистити веб-"
+"Цей маршрутизатор не має пароля. Встановіть пароль, шоб захистити веб-"
 "інтерфейс і увімкнути SSH."
 
 msgid "This IPv4 address of the relay"
@@ -3714,7 +3690,7 @@ msgid "Tunnel Interface"
 msgstr "Інтерфейс тунелю"
 
 msgid "Tunnel Link"
-msgstr "Посилання тунелю"
+msgstr ""
 
 msgid "Tx-Power"
 msgstr "Потужність передавача"
@@ -3985,7 +3961,6 @@ msgid ""
 "When using a PSK, the PMK can be generated locally without inter AP "
 "communications"
 msgstr ""
-"При використанні PSK, PMK може бути створений локально без взаємодії між AP"
 
 msgid "Width"
 msgstr "Ширина"

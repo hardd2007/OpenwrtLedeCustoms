@@ -609,12 +609,6 @@ msgstr "Abbrechen"
 msgid "Category"
 msgstr "Kategorie"
 
-msgid "Caution: Configuration files will be erased"
-msgstr ""
-
-msgid "Caution: System upgrade will be forced"
-msgstr ""
-
 msgid "Chain"
 msgstr "Kette"
 
@@ -726,8 +720,8 @@ msgstr "Konfiguration"
 msgid "Configuration failed"
 msgstr "Konfiguration fehlgeschlagen"
 
-msgid "Configuration files will be kept"
-msgstr ""
+msgid "Configuration files will be kept."
+msgstr "Konfigurationsdateien sichern"
 
 msgid "Configuration has been applied."
 msgstr "Die Konfiguration wurde angewendet."
@@ -1366,9 +1360,6 @@ msgstr "Erzwinge TKIP und CCMP (AES)"
 msgid "Force link"
 msgstr "Erzwinge Verbindung"
 
-msgid "Force upgrade"
-msgstr ""
-
 msgid "Force use of NAT-T"
 msgstr "Benutzung von NAT-T erzwingen"
 
@@ -1532,9 +1523,6 @@ msgstr ""
 msgid "IP Addresses"
 msgstr "IP-Adressen"
 
-msgid "IP Protocol"
-msgstr ""
-
 msgid "IP address"
 msgstr "IP-Adresse"
 
@@ -1579,9 +1567,6 @@ msgstr "IPv4 Bereich"
 
 msgid "IPv4 prefix length"
 msgstr "Länge des IPv4 Präfix"
-
-msgid "IPv4+IPv6"
-msgstr ""
 
 msgid "IPv4-Address"
 msgstr "IPv4-Adresse"
@@ -2151,9 +2136,6 @@ msgstr "Modus"
 msgid "Model"
 msgstr "Modell"
 
-msgid "Modem default"
-msgstr ""
-
 msgid "Modem device"
 msgstr "Modemgerät"
 
@@ -2338,6 +2320,9 @@ msgstr "Nicht assoziiert"
 
 msgid "Not connected"
 msgstr "Nicht verbunden"
+
+msgid "Note: Configuration files will be erased."
+msgstr "Warnung: Konfigurationsdateien werden gelöscht."
 
 msgid "Note: interface name length"
 msgstr "Hinweis: Länge des Namens beachten"
@@ -3071,12 +3056,6 @@ msgstr "Sektion entfernt"
 
 msgid "See \"mount\" manpage for details"
 msgstr "Siehe \"mount\" Handbuch für Details"
-
-msgid ""
-"Select 'Force upgrade' to flash the image even if the image format check "
-"fails. Use only if you are sure that the firmware is correct and meant for "
-"your device!"
-msgstr ""
 
 msgid ""
 "Send LCP echo requests at the given interval in seconds, only effective in "
@@ -4200,12 +4179,8 @@ msgstr "ja"
 
 msgid "« Back"
 msgstr "« Zurück"
-
-#~ msgid "Configuration files will be kept."
-#~ msgstr "Konfigurationsdateien sichern"
-
-#~ msgid "Note: Configuration files will be erased."
-#~ msgstr "Warnung: Konfigurationsdateien werden gelöscht."
+<<<<<<< HEAD
+=======
 
 #~ msgid "<abbr title='Pairwise: %s / Group: %s'>%s - %s</abbr>"
 #~ msgstr "<abbr title='Paarweise: %s / Gruppe: %s'>%s - %s</abbr>"
@@ -4296,3 +4271,4 @@ msgstr "« Zurück"
 
 #~ msgid "IPv6 WAN Status"
 #~ msgstr "IPv6 WAN Status"
+>>>>>>> 86660f92d... i18n: sync translations

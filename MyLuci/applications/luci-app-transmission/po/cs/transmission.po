@@ -59,9 +59,6 @@ msgstr "Velikost mezipaměti v MB"
 msgid "Config file directory"
 msgstr "Složka pro uložení konfiguračního souboru"
 
-msgid "Custom WEB UI directory"
-msgstr ""
-
 msgid "DHT enabled"
 msgstr "Povolit DHT"
 

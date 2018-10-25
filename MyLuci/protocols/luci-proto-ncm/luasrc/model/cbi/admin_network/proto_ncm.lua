@@ -19,13 +19,16 @@ local ipv6, delay, defaultroute, metric, peerdns, dns
 device = section:taboption("general", Value, "device", translate("Modem device"))
 device.rmempty = false
 
-local dev
-for dev in nixio.fs.glob("/dev/ttyUSB*") do
-    device:value(dev)
+local device_suggestions = nixio.fs.glob("/dev/cdc-wdm*")
+	or nixio.fs.glob("/dev/ttyUSB*")
+
+if device_suggestions then
+	local node
+	for node in device_suggestions do
+		device:value(node)
+	end
 end
-for dev in nixio.fs.glob("/dev/cdc-wdm*") do
-    device:value(dev)
-end
+
 
 mode = section:taboption("general", Value, "mode", translate("Service Type"))
 mode:value("", translate("Modem default"))

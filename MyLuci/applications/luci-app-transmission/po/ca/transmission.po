@@ -61,9 +61,6 @@ msgstr ""
 msgid "Config file directory"
 msgstr "Directori de fitxer de configuració"
 
-msgid "Custom WEB UI directory"
-msgstr ""
-
 msgid "DHT enabled"
 msgstr "DHT habilitat"
 

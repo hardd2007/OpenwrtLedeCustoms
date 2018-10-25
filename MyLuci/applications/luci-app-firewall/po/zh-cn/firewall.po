@@ -1,5 +1,5 @@
 #
-# Yangfl <mmyangfl@gmail.com>, 2017, 2018.
+# Yangfl <mmyangfl@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
@@ -8,7 +8,7 @@ msgstr ""
 "Language-Team:  <debian-l10n-chinese@lists.debian.org>\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"PO-Revision-Date: 2018-08-08 08:28+0800\n"
+"PO-Revision-Date: 2017-10-28 18:56+0800\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%s in %s"
@@ -45,7 +45,7 @@ msgid "Accept input"
 msgstr "接受入站"
 
 msgid "Accept output"
-msgstr "接受出站"
+msgstr ""
 
 msgid "Action"
 msgstr "动作"
@@ -54,7 +54,7 @@ msgid "Add"
 msgstr "添加"
 
 msgid "Add and edit..."
-msgstr "添加并编辑…"
+msgstr "添加并编辑..."
 
 msgid "Advanced Settings"
 msgstr "高级设置"
@@ -104,7 +104,7 @@ msgid "Discard input"
 msgstr "丢弃入站"
 
 msgid "Discard output"
-msgstr "丢弃出站"
+msgstr ""
 
 msgid "Do not rewrite"
 msgstr "不重写"
@@ -116,7 +116,7 @@ msgid "Do not track input"
 msgstr "不跟踪入站"
 
 msgid "Do not track output"
-msgstr "不跟踪出站"
+msgstr ""
 
 msgid "Drop invalid packets"
 msgstr "丢弃无效数据包"
@@ -185,13 +185,13 @@ msgid "From %s in %s with source %s and %s"
 msgstr "来自 %s 位于 %s 源端口 %s 源 MAC %s"
 
 msgid "From %s on <var>this device</var>"
-msgstr "来自 %s 位于<var>本设备</var>"
+msgstr ""
 
 msgid "From %s on <var>this device</var> with source %s"
-msgstr "来自 %s 位于<var>本设备</var>源于 %s"
+msgstr ""
 
 msgid "From %s on <var>this device</var> with source %s and %s"
-msgstr "来自 %s 位于<var>本设备</var>源端口 %s 源 MAC %s"
+msgstr ""
 
 msgid "General Settings"
 msgstr "基本设置"
@@ -320,7 +320,7 @@ msgid "Output"
 msgstr "出站数据"
 
 msgid "Output zone"
-msgstr "出站区域"
+msgstr ""
 
 msgid "Passes additional arguments to iptables. Use with care!"
 msgstr "传递到 iptables 的额外参数。小心使用！"
@@ -349,9 +349,6 @@ msgstr "拒绝转发"
 
 msgid "Refuse input"
 msgstr "拒绝入站"
-
-msgid "Refuse output"
-msgstr "拒绝出站"
 
 msgid "Requires hardware NAT support. Implemented at least for mt7621"
 msgstr "需要硬件 NAT 支持。目前 mt7621 已实现"
@@ -525,13 +522,13 @@ msgid "Tuesday"
 msgstr "星期二"
 
 msgid "Unnamed SNAT"
-msgstr "未命名 SNAT"
+msgstr ""
 
 msgid "Unnamed forward"
-msgstr "未命名转发"
+msgstr ""
 
 msgid "Unnamed rule"
-msgstr "未命名规则"
+msgstr ""
 
 msgid "Via %s"
 msgstr "通过 %s"
@@ -590,7 +587,7 @@ msgid "minute"
 msgstr "分钟"
 
 msgid "not"
-msgstr "非"
+msgstr ""
 
 msgid "port"
 msgstr "端口"

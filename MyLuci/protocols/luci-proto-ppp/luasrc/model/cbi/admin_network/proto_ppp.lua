@@ -103,7 +103,7 @@ function keepalive_interval.write(self, section, value)
 	if f > 0 then
 		m:set(section, "keepalive", "%d %d" %{ f, i })
 	else
-		m:set(section, "keepalive", "0")
+		m:del(section, "keepalive")
 	end
 end
 
