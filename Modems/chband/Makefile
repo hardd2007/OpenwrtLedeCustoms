@@ -11,6 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/chband
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Modem
 	TITLE:=Change bands for 4G Modem
 	PKGARCH:=all
 	DEPENDS:=+comgt +luci-proto-3g

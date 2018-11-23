@@ -26,6 +26,7 @@ define Package/myncm
 $(call Package/myncm/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   TITLE+=NCM 3G/4G Support
   DEPENDS:=+comgt +wwan +netifd
 endef
@@ -34,6 +35,7 @@ define Package/luci-proto-myncm
 $(call Package/myncm/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   TITLE:=Support for NCM Luci
   DEPENDS:=+myncm
 endef

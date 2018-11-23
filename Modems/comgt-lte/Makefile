@@ -21,6 +21,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/comgt-lte/Default
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
 endef
 
 define Package/comgt-lte

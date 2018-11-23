@@ -14,6 +14,7 @@ include $(INCLUDE_DIR)/cmake.mk
 define Package/umbim-lite
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   DEPENDS:=+libubox +kmod-usb-net +kmod-usb-net-cdc-mbim +wwan
   TITLE:=Control utility for mobile broadband modems
 endef

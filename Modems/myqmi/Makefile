@@ -26,6 +26,7 @@ define Package/myqmi
 $(call Package/myqmi/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
   TITLE:=Protocol support for qmi
   DEPENDS:=+netifd +uqmi
 endef
@@ -38,6 +39,7 @@ define Package/luci-proto-myqmi
 $(call Package/myqmi/Default)
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
 #  SUBMENU:=6. Protocols
   TITLE:=Support for uqmi
   DEPENDS:=+uqmi +myqmi

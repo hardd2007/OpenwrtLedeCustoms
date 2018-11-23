@@ -4,7 +4,7 @@
 $CONFIG['version'] = 5;
 
 # collectd's datadir
-$CONFIG['datadir'] = '/var/lib/collectd/rrd';
+$CONFIG['datadir'] = '/data/rrd';
 
 # location of the types.db file
 $CONFIG['typesdb'][] = '/usr/share/collectd/types.db';

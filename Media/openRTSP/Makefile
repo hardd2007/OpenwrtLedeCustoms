@@ -10,6 +10,7 @@ include $(TOPDIR)/rules.mk
 define Package/openRTSP
 	SECTION:=MYREP
 	CATEGORY:=MYREP
+	SUBMENU:=Media
 	TITLE:=Openrtsp for ipcamera
 	DEPENDS:=+libstdcpp
 endef

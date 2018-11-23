@@ -11,6 +11,7 @@ PKG_FLAGS:=nonshared
 define Package/chat-lite
   SECTION:=MYREP
   CATEGORY:=MYREP
+  SUBMENU:=Modem
 #  DEPENDS:=+libubox
   TITLE:=Establish conversation with a modem
 endef

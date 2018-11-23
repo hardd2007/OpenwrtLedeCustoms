@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=motion
+PKG_NAME:=motion-ffmpeg
 PKG_VERSION:=4.2
 PKG_RELEASE:=1
 
@@ -25,15 +25,16 @@ PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/motionf
+define Package/motion-ffmpeg
   SECTION:=MYREP
   CATEGORY:=MYREP
-  DEPENDS:=+libjpeg +libpthread +libmicrohttpd +libffmpeg-custom +libffmpeg-full
+  SUBMENU:=Media
+  DEPENDS:=+libjpeg +libpthread +libmicrohttpd +libffmpeg-full
   TITLE:=webcam motion sensing and logging
   URL:=https://motion-project.github.io/
 endef
 
-define Package/motionf/conffiles
+define Package/motion-ffmpeg/conffiles
 /etc/motion.conf
 endef
 
@@ -47,7 +48,7 @@ CONFIGURE_ARGS+= \
 	--without-bktr \
 	--with-ffmpeg=$(STAGING_DIR)/usr
 	
-define Package/motionf/install
+define Package/motion-ffmpeg/install
 	$(INSTALL_DIR) $(1)/etc
 	$(CP) $(PKG_BUILD_DIR)/motion-dist.conf $(1)/etc/motion.conf
 	$(INSTALL_DIR) $(1)/usr/bin
@@ -55,4 +56,4 @@ define Package/motionf/install
 
 endef
 
-$(eval $(call BuildPackage,motionf))
+$(eval $(call BuildPackage,motion-ffmpeg))

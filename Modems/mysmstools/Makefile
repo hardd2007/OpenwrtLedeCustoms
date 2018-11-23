@@ -16,7 +16,7 @@ define Package/mysmstools
 endef
 
 define Package/mysmstools/description
- Small program for SMS.
+ Small program for SMS.2018
 endef
 
 define Build/Prepare
