@@ -22,9 +22,9 @@ PKG_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/pure-ftpd/Default
-  SUBMENU:=File Transfer
-  SECTION:=net
-  CATEGORY:=Network
+  SUBMENU:=Net
+  SECTION:=MYREP
+  CATEGORY:=MYREP
   DEPENDS:=+libelf1
   TITLE:=Secure FTP made easy!
   URL:=http://www.pureftpd.org/project/pure-ftpd

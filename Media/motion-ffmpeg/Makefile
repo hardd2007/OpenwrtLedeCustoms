@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=motion-ffmpeg
+PKG_NAME:=motion
 PKG_VERSION:=4.2
 PKG_RELEASE:=1
 
@@ -29,7 +29,7 @@ define Package/motion-ffmpeg
   SECTION:=MYREP
   CATEGORY:=MYREP
   SUBMENU:=Media
-  DEPENDS:=+libjpeg +libpthread +libmicrohttpd +libffmpeg-full
+  DEPENDS:= +libjpeg +libpthread +libmicrohttpd +libffmpeg-full-H3
   TITLE:=webcam motion sensing and logging
   URL:=https://motion-project.github.io/
 endef
