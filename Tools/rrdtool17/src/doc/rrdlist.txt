@@ -1,0 +1,41 @@
+RRDLIST(1)                          rrdtool                         RRDLIST(1)
+
+
+
+NNAAMMEE
+       rrdlist - List directories and rrd databases.
+
+SSYYNNOOPPSSIISS
+       rrrrddttooooll lliisstt [----ddaaeemmoonn|--dd _a_d_d_r_e_s_s] _p_a_t_h
+
+DDEESSCCRRIIPPTTIIOONN
+       The lliisstt function connects to rrdcached, the RRD caching daemon, and
+       issues a "list" command for the given path. This provides an 'ls-like'
+       interface for traversing and listing the rrd database tree.
+
+       _p_a_t_h    The path (starting with '/') with '/' being the rrdcached
+               base_dir.
+
+       ----ddaaeemmoonn|--dd _a_d_d_r_e_s_s
+               Address of the rrdcached daemon. If not specified, the
+               RRDCACHED_ADDRESS environment variable must be set (see below).
+               For a list of accepted formats, see the --ll option in the
+               rrdcached manual.
+
+                rrdtool list --daemon 127.0.0.1:42218 /cluster/nodes/node1
+
+EENNVVIIRROONNMMEENNTT VVAARRIIAABBLLEESS
+       The following environment variables may be used to change the behavior
+       of "rrdtool list":
+
+       RRRRDDCCAACCHHEEDD__AADDDDRREESSSS
+           If this environment variable is set it will have the same effect as
+           specifying the "--daemon" option on the command line. If both are
+           present, the command line argument takes precedence.
+
+AAUUTTHHOORR
+       Sebastien Dugue <sebastien.dugue@atos.net>
+
+
+
+1.5.999                           2016-09-08                        RRDLIST(1)

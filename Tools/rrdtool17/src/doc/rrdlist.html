@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>rrdlist</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<h1 id="NAME">NAME</h1>
+
+<p>rrdlist - List directories and rrd databases.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>rrdtool</b> <b>list</b> <span style="white-space: nowrap;">[<b>--daemon</b>|<b>-d</b> <i>address</i>]</span> <i>path</i></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The <b>list</b> function connects to <a href="./rrdcached.html">rrdcached</a>, the RRD caching daemon, and issues a &quot;list&quot; command for the given path. This provides an &#39;ls-like&#39; interface for traversing and listing the rrd database tree.</p>
+
+<dl>
+
+<dt id="path"><i>path</i></dt>
+<dd>
+
+<p>The path (starting with &#39;/&#39;) with &#39;/&#39; being the rrdcached base_dir.</p>
+
+</dd>
+<dt id="daemon--d-address"><b>--daemon</b>|<b>-d</b> <i>address</i></dt>
+<dd>
+
+<p>Address of the <a href="./rrdcached.html">rrdcached</a> daemon. If not specified, the RRDCACHED_ADDRESS environment variable must be set (see below). For a list of accepted formats, see the <b>-l</b> option in the <a href="./rrdcached.html">rrdcached</a> manual.</p>
+
+<pre><code> rrdtool list --daemon 127.0.0.1:42218 /cluster/nodes/node1</code></pre>
+
+</dd>
+</dl>
+
+<h1 id="ENVIRONMENT-VARIABLES">ENVIRONMENT VARIABLES</h1>
+
+<p>The following environment variables may be used to change the behavior of <code>rrdtool&nbsp;list</code>:</p>
+
+<dl>
+
+<dt id="RRDCACHED_ADDRESS"><b>RRDCACHED_ADDRESS</b></dt>
+<dd>
+
+<p>If this environment variable is set it will have the same effect as specifying the <code>--daemon</code> option on the command line. If both are present, the command line argument takes precedence.</p>
+
+</dd>
+</dl>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>Sebastien Dugue &lt;sebastien.dugue@atos.net&gt;</p>
+
+
+</body>
+
+</html>
+
+
