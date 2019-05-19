@@ -1,6 +1,6 @@
 #!/bin/sh
-ccmd="/home/hardd/MNT/Lua/LuaSrcDiet --noopt-binequiv"
-ccmd2="/home/hardd/MNT/Lua/LuaSrcDiet --opt-comments --noopt-binequiv  --opt-whitespace --opt-emptylines --opt-numbers --opt-locals --noopt-srcequiv"
+ccmd="/home/hardd/MNT/MYREP/Lua/LuaSrcDiet --noopt-binequiv"
+ccmd2="/home/hardd/MNT/MYREP/Lua/LuaSrcDiet --opt-comments --noopt-binequiv  --opt-whitespace --opt-emptylines --opt-numbers --opt-locals --noopt-srcequiv"
 echo "Dir: "$1
 if $ccmd -o $1.o $1
 then 

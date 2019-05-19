@@ -125,9 +125,10 @@ am__installdirs = "$(DESTDIR)$(pmacct_dir)" \
 	"$(DESTDIR)$(pmacct_examples_kafka_dir)" \
 	"$(DESTDIR)$(pmacct_examples_lg_dir)" \
 	"$(DESTDIR)$(pmacct_sql_dir)"
-
-DATA = $(pmacct__DATA) $(pmacct_sql__DATA)
-
+DATA = $(pmacct__DATA) $(pmacct_docs__DATA) $(pmacct_examples__DATA) \
+	$(pmacct_examples_amqp__DATA) $(pmacct_examples_avro__DATA) \
+	$(pmacct_examples_kafka__DATA) $(pmacct_examples_lg__DATA) \
+	$(pmacct_sql__DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
@@ -327,11 +328,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-
-#SUBDIRS = src examples/lg
-
-SUBDIRS = src
-
+SUBDIRS = src examples/lg
 ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = include sql examples docs CONFIG-KEYS FAQS QUICKSTART \
 	UPGRADE $(am__append_1)
@@ -361,8 +358,7 @@ pmacct_examples__DATA = examples/allow.lst.example examples/bgp_agent.map.exampl
 pmacct_examples_kafka__DATA = examples/kafka/kafka_consumer.py
 pmacct_examples_amqp__DATA = examples/amqp/amqp_receiver.py
 pmacct_examples_avro__DATA = examples/avro/avro_file_decoder.py
-pmacct_examples_lg__DATA = ""
-#examples/lg/pmbgp.py examples/lg/pmbgp
+pmacct_examples_lg__DATA = examples/lg/pmbgp.py examples/lg/pmbgp
 @USING_SQL_TRUE@pmacct_sql__DATA = sql/pmacct-create-db_bgp_v1.mysql sql/pmacct-create-db.pgsql \
 @USING_SQL_TRUE@	sql/pmacct-create-db_v1.mysql sql/pmacct-create-db_v2.mysql \
 @USING_SQL_TRUE@	sql/pmacct-create-db_v3.mysql sql/pmacct-create-db_v4.mysql \

@@ -1,0 +1,18 @@
+{
+	"ping": {
+		"title": "Ping latency on {{HOST}}",
+		"vertical": "Milliseconds",
+		"legend_format": "%5.1lf"
+	},
+	"ping_stddev": {
+		"title": "Ping standard deviation on {{HOST}}",
+		"vertical": "Milliseconds",
+		"legend_format": "%5.1lf"
+	},
+	"ping_droprate": {
+		"title": "Ping droprate on {{HOST}}",
+		"vertical": "percent",
+		"legend_format": "%5.1lf",
+		"scale": 100
+	}
+}

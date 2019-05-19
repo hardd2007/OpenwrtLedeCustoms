@@ -13,7 +13,7 @@ PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://cairographics.org/releases/
-PKG_MD5SUM:=d3e1a1035ae563812d4dd44a74fb0dd0
+PKG_MD5SUM:=b60a82f405f9400bbfdcf850b1728d25
 PKG_FIXUP:=libtool
 
 include $(INCLUDE_DIR)/package.mk

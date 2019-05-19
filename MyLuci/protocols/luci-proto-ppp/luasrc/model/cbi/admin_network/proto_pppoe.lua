@@ -103,7 +103,7 @@ function keepalive_interval.write(self, section, value)
 	if f > 0 then
 		m:set(section, "keepalive", "%d %d" %{ f, i })
 	else
-		m:del(section, "keepalive")
+		m:set(section, "keepalive", "0")
 	end
 end
 
@@ -119,7 +119,7 @@ host_uniq = section:taboption("advanced", Value, "host_uniq",
 	translate("Raw hex-encoded bytes. Leave empty unless your ISP require this"))
 
 host_uniq.placeholder = translate("auto")
-host_uniq.datatype    = "hex"
+host_uniq.datatype    = "hexstring"
 
 
 demand = section:taboption("advanced", Value, "demand",

@@ -622,6 +622,12 @@ function del_network(self, n)
 					_uci:delete("wireless", s['.name'], "network")
 				end
 			end)
+
+		local ok, fw = pcall(require, "luci.model.firewall")
+		if ok then
+			fw.init()
+			fw:del_network(n)
+		end
 	end
 	return r
 end
@@ -813,6 +819,7 @@ function del_wifinet(self, net)
 end
 
 function get_status_by_route(self, addr, mask)
+	local route_statuses = { }
 	local _, object
 	for _, object in ipairs(utl.ubus()) do
 		local net = object:match("^network%.interface%.(.+)")
@@ -822,12 +829,14 @@ function get_status_by_route(self, addr, mask)
 				local rt
 				for _, rt in ipairs(s.route) do
 					if not rt.table and rt.target == addr and rt.mask == mask then
-						return net, s
+						route_statuses[net] = s
 					end
 				end
 			end
 		end
 	end
+
+	return route_statuses
 end
 
 function get_status_by_address(self, addr)
@@ -864,24 +873,28 @@ function get_status_by_address(self, addr)
 	end
 end
 
-function get_wannet(self)
-	local net, stat = self:get_status_by_route("0.0.0.0", 0)
-	return net and network(net, stat.proto)
+function get_wan_networks(self)
+	local k, v
+	local wan_nets = { }
+	local route_statuses = self:get_status_by_route("0.0.0.0", 0)
+
+	for k, v in pairs(route_statuses) do
+		wan_nets[#wan_nets+1] = network(k, v.proto)
+	end
+
+	return wan_nets
 end
 
-function get_wandev(self)
-	local _, stat = self:get_status_by_route("0.0.0.0", 0)
-	return stat and interface(stat.l3_device or stat.device)
-end
+function get_wan6_networks(self)
+	local k, v
+	local wan6_nets = { }
+	local route_statuses = self:get_status_by_route("::", 0)
 
-function get_wan6net(self)
-	local net, stat = self:get_status_by_route("::", 0)
-	return net and network(net, stat.proto)
-end
+	for k, v in pairs(route_statuses) do
+		wan6_nets[#wan6_nets+1] = network(k, v.proto)
+	end
 
-function get_wan6dev(self)
-	local _, stat = self:get_status_by_route("::", 0)
-	return stat and interface(stat.l3_device or stat.device)
+	return wan6_nets
 end
 
 function get_switch_topologies(self)
@@ -1150,6 +1163,10 @@ end
 
 function protocol.is_dynamic(self)
 	return (self:_ubus("dynamic") == true)
+end
+
+function protocol.is_auto(self)
+	return (self:_get("auto") ~= "0")
 end
 
 function protocol.is_alias(self)

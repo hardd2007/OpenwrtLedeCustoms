@@ -1,4 +1,4 @@
-SUBDIRS = src
+SUBDIRS = src examples/lg
 ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = include sql examples docs CONFIG-KEYS FAQS QUICKSTART UPGRADE
 if USING_SQL
@@ -32,8 +32,7 @@ pmacct_examples__DATA = examples/allow.lst.example examples/bgp_agent.map.exampl
 pmacct_examples_kafka__DATA = examples/kafka/kafka_consumer.py
 pmacct_examples_amqp__DATA = examples/amqp/amqp_receiver.py
 pmacct_examples_avro__DATA = examples/avro/avro_file_decoder.py
-pmacct_examples_lg__DATA = 
-
+pmacct_examples_lg__DATA = examples/lg/pmbgp.py examples/lg/pmbgp
 if USING_SQL
 pmacct_sql__DATA = sql/pmacct-create-db_bgp_v1.mysql sql/pmacct-create-db.pgsql \
 	sql/pmacct-create-db_v1.mysql sql/pmacct-create-db_v2.mysql \

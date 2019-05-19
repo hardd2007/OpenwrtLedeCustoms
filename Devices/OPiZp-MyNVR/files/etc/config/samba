@@ -1,0 +1,16 @@
+
+config samba
+	option homes '1'
+	option name 'NVR'
+	option description 'OPiZp-NVR'
+	option workgroup 'HOME'
+
+config sambashare
+	option browseable 'yes'
+	option name 'pub-data'
+	option path '/mnt'
+	option guest_ok 'yes'
+	option create_mask '0644'
+	option dir_mask '0755'
+	option read_only 'yes'
+

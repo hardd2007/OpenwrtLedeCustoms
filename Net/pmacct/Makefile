@@ -57,7 +57,7 @@ define Package/pmacct
   SECTION:=MYREP
   CATEGORY:=MYREP
   SUBMENU:=Net
-  DEPENDS:=+libpcap +libpthread +zlib +libopenssl +libsqlite3 +libmysqlclient
+  DEPENDS:=+libpcap +libpthread +zlib +libopenssl +libsqlite3 +libmeriadbclient
   TITLE:=a powerful IP accounting set of tools
   URL:=http://www.pmacct.net/
 endef

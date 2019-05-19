@@ -1,0 +1,113 @@
+{
+	"cache_result": {
+		"title": "MySQL query cache ({{PI}}) on {{HOST}}",
+		"vertical": "Queries/s",
+		"type": "stacked",
+		"legend": {
+			"qcache-not_cached": {
+				"name": "Not Cached",
+				"color": "f0a000"
+			},
+			"qcache-inserts": {
+				"name": "Inserts",
+				"color": "0000ff"
+			},
+			"qcache-hits": {
+				"name": "Hits",
+				"color": "00e000"
+			},
+			"qcache-prunes": {
+				"name": "Lowmem Prunes",
+				"color": "ff0000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"cache_size": {
+		"title": "MySQL query cache size ({{PI}}) on {{HOST}}",
+		"vertical": "Queries in cache",
+		"type": "stacked",
+		"legend": {
+			"value": {
+				"name": "Queries"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"mysql_commands": {
+		"title": "MySQL commands ({{PI}}) on {{HOST}}",
+		"vertical": "Issues/s",
+		"type": "stacked",
+		"legend_format": "%5.1lf%s"
+	},
+	"mysql_handler": {
+		"title": "MySQL handler ({{PI}}) on {{HOST}}",
+		"vertical": "Invocations",
+		"type": "stacked",
+		"legend": {
+			"rollback": {
+				"color": "000000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"mysql_locks": {
+		"title": "MySQL locks ({{PI}}) on {{HOST}}",
+		"vertical": "locks",
+		"legend": {
+			"immediate": {
+				"color": "ff0000"
+			},
+			"waited": {
+				"color": "00ff00"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"mysql_octets": {
+		"title": "MySQL Traffic ({{PI}}) on {{HOST}}",
+		"vertical": "Bits per second",
+		"type": "io",
+		"legend": {
+			"rx": {
+				"name": "Receive",
+				"color": "0000ff"
+			},
+			"tx": {
+				"name": "Transmit",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"threads": {
+		"title": "MySQL threads ({{PI}}) on {{HOST}}",
+		"vertical": "Threads",
+		"type": "stacked",
+		"legend": {
+			"cached": {
+				"name": "Cached",
+				"color": "00e000"
+			},
+			"connected": {
+				"name": "Connected",
+				"color": "0000ff"
+			},
+			"running": {
+				"name": "Running",
+				"color": "ff0000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"total_threads": {
+		"title": "MySQL created threads ({{PI}}) on {{HOST}}",
+		"vertical": "Created Threads",
+		"legend": {
+			"value": {
+				"name": "Created"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	}
+}

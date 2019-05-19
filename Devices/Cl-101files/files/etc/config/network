@@ -1,0 +1,54 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'lan'
+	option type 'bridge'
+	option ifname 'eth0.1'
+	option proto 'static'
+	option ipaddr '192.168.17.254'
+	option netmask '255.255.255.0'
+
+config interface 'wan'
+	option ifname 'eth0.2'
+	option proto 'dhcp'
+
+config switch
+	option name 'rt305x'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'rt305x'
+	option vlan '1'
+	option ports '1 2 3 4 6t'
+
+config switch_vlan
+	option device 'rt305x'
+	option vlan '2'
+	option ports '0 6t'
+
+config interface '4g_stck'
+	option proto '3g'
+	option apn 'internet'
+	option delegate '0'
+	option maxwait '10'
+	option metric '10'
+	option service 'umts'
+	option device '/dev/ttyS0'
+
+config interface '4g_hilink'
+	option proto 'dhcp'
+	option ifname 'eth1'
+	option delegate '0'
+	option metric '10'
+
+config interface '4g_rndis'
+	option proto 'dhcp'
+	option ifname 'usb0'
+	option delegate '0'
+	option metric '10'
+

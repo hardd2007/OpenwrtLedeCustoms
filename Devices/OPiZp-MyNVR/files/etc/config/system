@@ -1,0 +1,49 @@
+
+config system
+	option ttylogin '0'
+	option log_size '64'
+	option urandom_seed '0'
+	option hostname 'HardD-WRT'
+	option zonename 'Europe/Moscow'
+	option timezone 'MSK-3'
+	option log_proto 'udp'
+	option conloglevel '8'
+	option cronloglevel '8'
+	option zram_comp_algo 'lzo'
+
+config timeserver 'ntp'
+	option enabled '1'
+	list server '0.europe.pool.ntp.org'
+	list server '1.europe.pool.ntp.org'
+	list server '2.europe.pool.ntp.org'
+	list server '3.europe.pool.ntp.org'
+
+config led
+	option default '0'
+	option name 'sys'
+	option sysfs 'orangepi:myled:Green'
+	option trigger 'timer'
+	option delayon '1500'
+	option delayoff '1500'
+
+config led
+	option name 'hdd'
+	option sysfs 'orangepi:myled:YellowL'
+	option trigger 'usbport'
+	option default '0'
+	list port 'usb5-port1'
+
+config led
+	option default '0'
+	option name 'usb2'
+	option sysfs 'orangepi:myled:YellowR'
+	option trigger 'usb-host'
+
+config led
+	option default '0'
+	option name 'wifi'
+	option sysfs 'orangepi:myled:Blue'
+	option trigger 'netdev'
+	option dev 'wlan0'
+	option mode 'tx rx'
+

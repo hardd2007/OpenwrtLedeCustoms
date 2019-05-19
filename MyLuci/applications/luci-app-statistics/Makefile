@@ -8,7 +8,8 @@ include $(TOPDIR)/rules.mk
 
 LUCI_TITLE:=LuCI Statistics Application
 LUCI_DEPENDS:= \
-	+collectd +collectd-mod-rrdtool +collectd-mod-iwinfo \
+	+luci-lib-iptparser \
+	+collectd +rrdtool1 +collectd-mod-rrdtool +collectd-mod-iwinfo \
 	+collectd-mod-cpu +collectd-mod-memory \
 	+collectd-mod-interface +collectd-mod-load +collectd-mod-network
 

@@ -98,7 +98,7 @@
 				local nnode = node.nodes[r]
 				write('<li><a href="%s">%s</a></li>' %{
 					nodeurl(prefix, r, nnode.query),
-					pcdata(striptags(translate(nnode.title)))
+					striptags(translate(nnode.title))
 				})
 			end
 
@@ -116,13 +116,13 @@
 				local grandchildren = disp.node_childs(nnode)
 
 				if #grandchildren > 0 then
-					write('<li class="dropdown"><a class="menu" href="#">%s</a>' % pcdata(striptags(translate(nnode.title))))
+					write('<li class="dropdown"><a class="menu" href="#">%s</a>' % striptags(translate(nnode.title)))
 					render_submenu(category .. "/" .. r, nnode)
 					write('</li>')
 				else
 					write('<li><a href="%s">%s</a></li>' %{
 						nodeurl(category, r, nnode.query),
-						pcdata(striptags(translate(nnode.title)))
+						striptags(translate(nnode.title))
 					})
 				end
 			end
@@ -167,11 +167,12 @@
 		<% if css then %>
 			<style title="text/css"><%= css %></style>
 		<% end -%>
+		<script src="<%=url('admin/translations', luci.i18n.context.lang)%><%# ?v=PKG_VERSION %>"></script>
 		<script src="<%=resource%>/cbi.js"></script>
 		<script src="<%=resource%>/xhr.js"></script>
 	</head>
 
-	<body class="lang_<%=luci.i18n.context.lang%> <%- if node then %><%= striptags( node.title ) %><%- end %>">
+	<body class="lang_<%=luci.i18n.context.lang%> <% if node then %><%= striptags( node.title ) %><%- end %>" data-page="<%= table.concat(disp.context.requestpath, "-") %>">
 		<header>
 			<div class="fill">
 				<div class="container">
@@ -193,7 +194,9 @@
 				<div class="alert-message warning">
 					<h4><%:No password set!%></h4>
 					<p><%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%></p>
-					<div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
+					<% if disp.lookup("admin/system/admin") then %>
+					  <div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
+					<% end %>
 				</div>
 			<%- end -%>
 
