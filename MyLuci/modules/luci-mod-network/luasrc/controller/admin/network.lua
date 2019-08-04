@@ -103,18 +103,18 @@ function index()
 
 		if nixio.fs.access("/etc/config/dhcp") then
 			page = node("admin", "network", "dhcp")
-			page.target = cbi("admin_network/dhcp")
+			page.target = view("network/dhcp")
 			page.title  = _("DHCP and DNS")
 			page.order  = 30
 
 			page = node("admin", "network", "hosts")
-			page.target = cbi("admin_network/hosts")
+			page.target = view("network/hosts")
 			page.title  = _("Hostnames")
 			page.order  = 40
 		end
 
 		page  = node("admin", "network", "routes")
-		page.target = cbi("admin_network/routes")
+		page.target = view("network/routes")
 		page.title  = _("Static Routes")
 		page.order  = 50
 
@@ -311,7 +311,7 @@ local function _wifi_get_scan_results(cache_key)
 		return results.values[cache_key]
 	end
 
-	return { }
+	return nil
 end
 
 function wifi_scan_trigger(radio, update)
@@ -343,10 +343,13 @@ function wifi_scan_trigger(radio, update)
 		end
 
 		if update then
-			for _, bss in ipairs(_wifi_get_scan_results(cache_key)) do
-				if not bssids[bss.bssid] then
-					bss.stale = true
-					data[#data + 1] = bss
+			local cached = _wifi_get_scan_results(cache_key)
+			if cached then
+				for _, bss in ipairs(cached) do
+					if not bssids[bss.bssid] then
+						bss.stale = true
+						data[#data + 1] = bss
+					end
 				end
 			end
 		end
@@ -361,7 +364,7 @@ end
 function wifi_scan_results(radio)
 	local results = radio and _wifi_get_scan_results("scan_%s" % radio)
 
-	if results and #results > 0 then
+	if results then
 		luci.http.prepare_content("application/json")
 		luci.http.write_json(results)
 	else

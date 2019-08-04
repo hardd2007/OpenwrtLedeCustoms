@@ -12,8 +12,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=A5-V11files
-PKG_VERSION:=2.4.1
-PKG_RELEASE:=07102016
+PKG_VERSION:=2.4.4
+PKG_RELEASE:=19072019
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
@@ -75,9 +75,9 @@ endef
 define Package/A5-V11files/postinst
 #!/bin/sh
 
-	rm -f $(TARGET_DIR)/bin/board_detect
-	rm -f $(TARGET_DIR)/bin/config_generate
-#	rm -f $(TARGET_DIR)/etc/config/samba
+	rm -fR $(TARGET_DIR)/bin/board_detect
+	rm -fR $(TARGET_DIR)/bin/config_generate
+#	rm -fR $(TARGET_DIR)/etc/config/samba
 	rm -fR  $(TARGET_DIR)/etc/board.d
 	rm -f $(TARGET_DIR)/etc/uci-defaults/10_migrate-shadow
 	rm -f $(TARGET_DIR)/etc/hotplug.d/block/10-mount
@@ -90,8 +90,12 @@ define Package/A5-V11files/postinst
 #	rm -f $(TARGET_DIR)/www/index.html
 	rm -f $(TARGET_DIR)/etc/init.d/enablemodem
 	rm -f $(TARGET_DIR)/etc/init.d/gpio_switch
-	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-mipsel_24kec/$(PKG_NAME)/* $(TARGET_DIR)/
+	cp -fR $(TARGET_ROOTFS_DIR)/$(PKG_NAME)-$(PKG_VERSION)/ipkg-$(PKGARCH)/$(PKG_NAME)/* $(TARGET_DIR)/
 	rm -fR $(TARGET_DIR)/CONTROL
+#	mips-openwrt-linux-musl-strip --strip-debug $(TARGET_DIR)/lib/modules/4.9.86/*
+	echo "----LUA----"
+	/home/hardd/MNT/MYREP/Lua/lua.sh $(TARGET_DIR)
+	echo "----LUA----"
 
 
 

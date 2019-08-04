@@ -10,7 +10,7 @@ config interface 'lan'
 	option ifname 'eth0'
 	option proto 'static'
 	option netmask '255.255.255.0'
-	option ipaddr '192.168.4.254'
+	option ipaddr '192.168.17.254'
 
 config device 'lan_dev'
 	option name 'eth0'
