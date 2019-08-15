@@ -1,0 +1,2 @@
+i2c-gpio-custom bus0=0,18,20
+w1-gpio-custom bus0=0,29,0
